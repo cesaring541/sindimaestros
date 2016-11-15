@@ -3,7 +3,7 @@ var User = require('./models/user'); //Import database model
 var express = require('express');
 var router = express.Router();
 
-router.get('/users/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
     User.find({},function(err, objUser){
     res.render('user/users', {objUser:objUser});
