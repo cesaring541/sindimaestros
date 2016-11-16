@@ -57,275 +57,266 @@
     </section>
 
     <section>
-        <div class="modal modal-success" id="myModalCreateAffiliates">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" align="center"><b>Crear Afiliado</b></h4>
-              </div>
-              <div class="modal-body">
+      <div class="modal modal-success" id="myModalCreateAffiliates">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" align="center"><b>Crear Afiliado</b></h4>
+            </div>
+            <div class="modal-body">
 
-            <!-- Forma interna de la ventana modal -->
-            <form role="form">
+              <!-- Forma interna de la ventana modal -->
+              <form role="form">
 
-            <div class="box-body">
-            <div class="row">
-            <div class="col-md-6">
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-6">
 
-              <div class="form-group">
-                <label for="idAffiliate">Cédula Afiliado</label>
-                <input class="form-control" type="text" placeholder="Cédula de ciudadania">
-              </div>     
+                      <div class="form-group">
+                        <label for="idAffiliate">Cédula Afiliado</label>
+                        <input class="form-control" type="text" placeholder="Cédula de ciudadania">
+                      </div>     
 
-              <div class="form-group">
-                <label for="firstNameAffiliate">Primer Nombre</label>
-                <input class="form-control" type="text" placeholder="Primer Nombre">
-              </div>
+                      <div class="form-group">
+                        <label for="firstNameAffiliate">Primer Nombre</label>
+                        <input class="form-control" type="text" placeholder="Primer Nombre">
+                      </div>
 
-              <div class="form-group">
-                <label for="firstNameAffiliate">Licencia Educativa</label>
-                <input class="form-control" type="text" placeholder="Licencia Educativa">
-              </div>        
-                
-              <div class="form-group">
-                <label>Clase Empleado</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Docente</option>
-                  <option>Directivo Docente</option>
-                </select>
-              </div>
+                      <div class="form-group">
+                        <label for="firstNameAffiliate">Licencia Educativa</label>
+                        <input class="form-control" type="text" placeholder="Licencia Educativa">
+                      </div>        
+                  
+                      <div class="form-group">
+                        <label>Clase Empleado</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Docente</option>
+                          <option>Directivo Docente</option>
+                        </select>
+                      </div>
 
-              <div class="form-group">
-                <label>Fecha de nacimiento</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
+                      <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+
+                      <div class="form-group">
+                        <label>Área de desempeño</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Primaria</option>
+                          <option>Bachillerato</option>
+                          <option>Directivo Docente</option>
+                          <option>Provisional</option>
+                          <option>Adminsitrativo</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Título</label>
+                        <input class="form-control" type="text" id="exampleInputFile" placeholder="Título">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Docente</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Activo</option>
+                          <option>Activo Pensionado</option>
+                          <option>Pensionado Retirado</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Integra comité</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Ninguno</option>
+                          <option>Municipal</option>
+                          <option>Zonal</option>
+                          <option>Junta Directiva</option>
+                        </select>
+                      </div>               
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+
+                      <div class="form-group">
+                          <label for="exampleInputFile">Fotocopia cédula</label>
+                          <input class="form-control" type="file" id="exampleInputFile">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="secondNameAffiliate">Segundo Nombre</label>
+                        <input class="form-control" type="text" placeholder="Segundo Nombre">
+                      </div>
+                    
+                      <div class="form-group">
+                        <label>Genero</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Femenino</option>
+                          <option>Masculino</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="idAffiliate">Dirección de Residencia</label>
+                        <input class="form-control" type="text" placeholder="Dirección de residencia">
+                      </div> 
+                    
+                      <!-- /.form-group -->
+                      <div class="form-group">
+                        <label>Municipio</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Tunja</option>
+                          <option>Paipa</option>
+                          <option disabled="disabled">Duitama (disabled)</option>
+                          <option>Sogamoso</option>                  
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Decreto Docente</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">2277</option>
+                          <option>1278</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Zona</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Zona 1</option>
+                          <option>Zona 2</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Deporte Favorito</label>
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Ala Delta</option>
+                          <option>Baloncesto</option>
+                          <option>Caza</option>
+                          <option>Danza</option>
+                          <option>Fútbol</option>
+                          <option>Golf</option>
+                        </select>
+                      </div>
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
                   </div>
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
+                  <!-- /.row -->
                 </div>
-                <!-- /.input group -->
-              </div>
 
-              <div class="form-group">
-                <label>Área de desempeño</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Primaria</option>
-                  <option>Bachillerato</option>
-                  <option>Directivo Docente</option>
-                  <option>Provisional</option>
-                  <option>Adminsitrativo</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Título</label>
-                <input class="form-control" type="text" id="exampleInputFile" placeholder="Título">
-              </div>
-
-              <div class="form-group">
-                <label>Docente</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Activo</option>
-                  <option>Activo Pensionado</option>
-                  <option>Pensionado Retirado</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Integra comité</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Ninguno</option>
-                  <option>Municipal</option>
-                  <option>Zonal</option>
-                  <option>Junta Directiva</option>
-                </select>
-              </div>               
+              </form>
 
             </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-
-              <div class="form-group">
-                  <label for="exampleInputFile">Fotocopia cédula</label>
-                  <input class="form-control" type="file" id="exampleInputFile">
-              </div>
-
-              <div class="form-group">
-                <label for="secondNameAffiliate">Segundo Nombre</label>
-                <input class="form-control" type="text" placeholder="Segundo Nombre">
-              </div>
-              
-              <div class="form-group">
-                <label>Genero</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Femenino</option>
-                  <option>Masculino</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="idAffiliate">Dirección de Residencia</label>
-                <input class="form-control" type="text" placeholder="Dirección de residencia">
-              </div> 
-              
-              <!-- /.form-group -->
-              <div class="form-group">
-                <label>Municipio</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Tunja</option>
-                  <option>Paipa</option>
-                  <option disabled="disabled">Duitama (disabled)</option>
-                  <option>Sogamoso</option>                  
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Decreto Docente</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">2277</option>
-                  <option>1278</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Zona</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Zona 1</option>
-                  <option>Zona 2</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Deporte Favorito</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Ala Delta</option>
-                  <option>Baloncesto</option>
-                  <option>Caza</option>
-                  <option>Danza</option>
-                  <option>Fútbol</option>
-                  <option>Golf</option>
-                </select>
-              </div>
-
-              <!-- /.form-group -->
+        
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-outline">Crear Afiliado</button>
             </div>
-            <!-- /.col -->
           </div>
-          <!-- /.row -->
+          <!-- /.modal-content -->
         </div>
-
-            </form>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-outline">Crear Afiliado</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
     </section>
 
     <section>
-    <div class="modal modal-warning" id="myModalEditAffiliates">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" align="center"><b>Editar Afiliados</b></h4>
-              </div>
-              <div class="modal-body">
-              
+      <div class="modal modal-warning" id="myModalEditAffiliates">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" align="center"><b>Editar Afiliados</b></h4>
+            </div>
+            <div class="modal-body">
               <!-- TABLA DE AFILIADOS -->
-
               <div class="box-body">
 
-              <form action="#" method="get" class="modal-warning">
-                <div class="input-group">
-                  <input type="text" name="q" class="form-control" placeholder="Search...">
-                      <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                        </button>
-                      </span>
-                </div>
-              </form>
+                <form action="#" method="get" class="modal-warning">
+                  <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                          </button>
+                        </span>
+                  </div>
+                </form>
 
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>Cédula</th>
-                  <th>Primer Nombre</th>
-                  <th>Segundo nombre</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
-                  <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button></th>
-                </tr>
-                </thead>
-                
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
-                  <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                  <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
-                  <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>U</td>
-                  <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
-                  <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
-                </tr>
-                </tbody>
-              </table>
-            </div>
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Cédula</th>
+                      <th>Primer Nombre</th>
+                      <th>Segundo nombre</th>
+                      <th>Engine version</th>
+                      <th>CSS grade</th>
+                      <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
+                      <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button></th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                    <tr>
+                      <td>Trident</td>
+                      <td>Internet
+                        Explorer 4.0
+                      </td>
+                      <td>Win 95+</td>
+                      <td> 4</td>
+                      <td>X</td>
+                      <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
+                      <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
+                    </tr>
+                    <tr>
+                      <td>Trident</td>
+                      <td>Internet
+                        Explorer 5.0
+                      </td>
+                      <td>Win 95+</td>
+                      <td>5</td>
+                      <td>C</td>
+                      <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
+                      <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
+                    </tr>
+                    <tr>
+                      <td>Other browsers</td>
+                      <td>All others</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>U</td>
+                      <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
+                      <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
-              </div>
             </div>
-            <!-- /.modal-content -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline">Save changes</button>
+            </div>
           </div>
-          <!-- /.modal-dialog -->
+          <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
+      </div>
     </section>
 
   </div>
 
-  <!-- =============================================== -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-    </div>
-    <div align="right"><strong>Copyright &copy;2016 <a href="http://wennova.com/">We-nnova</a>.</strong> All rights reserved.</div>
-  </footer>
-
+  <% include ./partials/footer.ejs %>
   
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
