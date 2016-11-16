@@ -6,7 +6,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 
     Joined.find({},function(err, objJoined){
-    res.render('afiliados.ejs', {objJoined:objJoined});
+    res.render('afiliados.ejs', {
+    	objJoined:objJoined,
+    	title: "Afiliados"
+    });
   });
 });
 // MODULE Joineds

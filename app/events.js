@@ -6,7 +6,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 
     Event.find({},function(err, objEvent){
-    res.render('eventos.ejs', {objEvent:objEvent});
+    res.render('eventos.ejs', {
+      objEvent:objEvent,
+      title: "Eventos"
+    });
   });
 });
 

@@ -6,7 +6,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 
     User.find({},function(err, objUser){
-    res.render('users.ejs', {objUser:objUser});
+    res.render('users.ejs', {
+      objUser:objUser,
+      title: "Usuarios"
+    });
   });
 });
 

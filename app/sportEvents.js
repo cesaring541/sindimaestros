@@ -6,7 +6,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 
     Sports.find({},function(err, objSport){
-    res.render('eventos_deportivos.ejs', {objSport:objSport});
+    res.render('eventos_deportivos.ejs', {
+      objSport:objSport,
+      title: "Eventos Deportivos"
+    });
   });
 });
 

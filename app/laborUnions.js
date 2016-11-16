@@ -6,7 +6,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 
     Union.find({},function(err, objUnion){
-    res.render('sindicato.ejs', {objUnion:objUnion});
+    res.render('sindicato.ejs', {
+      objUnion:objUnion,
+      title: "Sindicato"
+    });
   });
 });
 
