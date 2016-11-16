@@ -10,7 +10,7 @@ var joinedSchema = mongoose.Schema({
 	address 					: { type: String, required: true},
     email						: { type: String, required: true},
     rh 							: { type: String, enum: ['AB+','AB-','A+','A-','B+','B-','O+','O-'] },
-    annexedDocument 			: []
+    annexedDocument 			: [],
     gender 						: { type: String, enum: ['M','F','O'] },
     municipality    			: { type: String, required: true},
     cellPhoneNumber 			: { type: String, required: true},    

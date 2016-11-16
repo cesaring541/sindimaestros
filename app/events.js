@@ -3,10 +3,10 @@ var Event = require('./models/event'); //Import database model
 var express = require('express');
 var router = express.Router();
 
-router.get('/events/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
     Event.find({},function(err, objEvent){
-    res.render('event/events', {objEvent:objEvent});
+    res.render('eventos.ejs', {objEvent:objEvent});
   });
 });
 

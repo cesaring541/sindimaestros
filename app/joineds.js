@@ -3,10 +3,10 @@ var Joined = require('./models/joined'); //Import database model
 var express = require('express');
 var router = express.Router();
 
-router.get('/joineds/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
     Joined.find({},function(err, objJoined){
-    res.render('joined/joineds', {objJoined:objJoined});
+    res.render('afiliados.ejs', {objJoined:objJoined});
   });
 });
 // MODULE Joineds

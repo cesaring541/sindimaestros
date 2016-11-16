@@ -3,10 +3,10 @@ var Union = require('./models/laborUnion'); //Import database model
 var express = require('express');
 var router = express.Router();
 
-router.get('/union/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
-    User.find({},function(err, objUnion){
-    res.render('union/unions', {objUnion:objUnion});
+    Union.find({},function(err, objUnion){
+    res.render('sindicato.ejs', {objUnion:objUnion});
   });
 });
 

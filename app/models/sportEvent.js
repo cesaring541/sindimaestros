@@ -2,7 +2,7 @@ var mongoosePaginate=require('mongoose-paginate');
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
-var userSchema = mongoose.Schema({    
+var sportEventSchema = mongoose.Schema({    
     startDate 			: { type: Date},
     typeOfParticipation : { type: String, enum: ['Individual','Grupal'] },
     gender 				: { type: String, enum: ['M','F','O'] },
@@ -10,5 +10,5 @@ var userSchema = mongoose.Schema({
     endDate				: { type: Date},
     category	 		: { type: String, enum: ['A','B','C','D'] }
 });
-userSchema.plugin(mongoosePaginate);
-module.exports = mongoose.model('User', userSchema);
+sportEventSchema.plugin(mongoosePaginate);
+module.exports = mongoose.model('SportEvent', sportEventSchema);

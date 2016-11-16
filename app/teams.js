@@ -3,12 +3,12 @@ var Team = require('./models/team'); //Import database model
 var express = require('express');
 var router = express.Router();
 
-router.get('/team/', function(req, res, next) {
+/*router.get('/team/', function(req, res, next) {
 
     Event.find({},function(err, objTeam){
     res.render('team/teams', {objTeam:objTeam});
   });
-});
+});*/
 
 // MODULE teams
 //ADD team

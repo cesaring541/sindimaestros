@@ -8,6 +8,11 @@ var livereload = require('livereload')
 var mongoose = require('mongoose');
 var routes = require('./app/index');
 var users = require('./app/users');
+var events = require('./app/events');
+var joineds = require('./app/joineds');
+var laborUnions = require('./app/laborUnions');
+var sportEvents = require('./app/sportEvents');
+var teams = require('./app/teams');
 
 var app = express();
 
@@ -25,6 +30,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/events', events);
+app.use('/joineds', joineds);
+app.use('/laborUnions', laborUnions);
+app.use('/sportEvents', sportEvents);
+app.use('/teams', teams); // Pendiente
 
 //require('./app/users');
 
@@ -71,7 +81,7 @@ app.use(function(err, req, res, next) {
 
 app.set('port', process.env.PORT || 3000);
 var server = app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + server.address().port);
+  console.log('Servidor ejecutándose en el puerto ' + server.address().port);
   server = livereload.createServer();
   server.watch(__dirname + "/views");
 

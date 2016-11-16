@@ -3,10 +3,10 @@ var Sports = require('./models/sportEvent'); //Import database model
 var express = require('express');
 var router = express.Router();
 
-router.get('/sport/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
-    Event.find({},function(err, objSport){
-    res.render('sport/sports', {objSport:objSport});
+    Sports.find({},function(err, objSport){
+    res.render('eventos_deportivos.ejs', {objSport:objSport});
   });
 });
 
