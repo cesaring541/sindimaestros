@@ -7,8 +7,8 @@ router.get('/', function(req, res, next) {
 
     Joined.find({},function(err, objJoined){
     res.render('afiliados.ejs', {
-    	objJoined:objJoined,
-    	title: "Afiliados"
+    	user : req.user, // Logged user
+    	objJoined:objJoined
     });
   });
 });

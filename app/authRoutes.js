@@ -2,8 +2,7 @@ module.exports = function(app, passport) {
 
     app.get('/login', function(req, res) {
         res.render('login.ejs', {
-        	message: req.flash('loginMessage'),
-        	title: "Ingresar"
+        	message: req.flash('loginMessage')
         }); 
     });
 
@@ -15,8 +14,7 @@ module.exports = function(app, passport) {
 
     app.get('/signup', function(req, res) {
         res.render('signup.ejs', {
-        	message: req.flash('signupMessage'),
-        	title: "Registrarse"
+        	message: req.flash('signupMessage')
         });
     });
 

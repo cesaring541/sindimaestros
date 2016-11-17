@@ -7,8 +7,8 @@ router.get('/', function(req, res, next) {
 
     Union.find({},function(err, objUnion){
     res.render('sindicato.ejs', {
-      objUnion:objUnion,
-      title: "Sindicato"
+      user : req.user, // Logged user
+      objUnion:objUnion
     });
   });
 });

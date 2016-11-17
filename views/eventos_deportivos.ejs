@@ -1,306 +1,248 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <% include ./partials/head.ejs %>
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
+  <head>
+    <title>Eventos deportivos | Sindimaestros</title>
+    <% include ./partials/head.ejs %>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
 
-  <% include ./partials/nav-header.ejs %>
+      <% include ./partials/nav-header.ejs %>
 
-  <% include ./partials/left-column.ejs %>
+      <% include ./partials/left-column.ejs %>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>Gestionar Eventos Deportivos</h1>
-    </section>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>Gestionar Eventos Deportivos</h1>
+        </section>
+        
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
 
-
-    
-    <!-- Main content -->
-
-  <section class="content">
-      <div class="row">
-
-      <!-- Panel de Creacion de Eventos -->
-        <div class="col-md-6">
-          <div class="box box-success">
-            <div class="box-header with-border label-success" align="center">
-              <h3 class="box-title"><b>CREAR EVENTO DEPORTIVO</b></h3>          
-            </div>
-            <div class="box-body">
-                   <form role="form">
+            <!-- Panel de Creacion de Eventos -->
+              <div class="col-md-6">
+                <div class="box box-success">
+                  <div class="box-header with-border label-success" align="center">
+                    <h3 class="box-title"><b>CREAR EVENTO DEPORTIVO</b></h3>          
+                  </div>
+                  <div class="box-body">
+                   <form role="form" action="new-sportEvent" method="POST">
                       <div class="row">
                         <div class="col-md-6">
                           
                           <div class="form-group">
-                            <label>Tipo de Participación Evento</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Individual</option>
-                              <option>Conjunto</option>
-                              <option>Otro</option>
-                            </select>
+                            <label for="secondNameAffiliate">Nombre del Evento</label>
+                            <input class="form-control" type="text" placeholder="Nombre del Evento" name="nameEvent">
                           </div>
 
                           <div class="form-group">
                             <label>Fecha de inicio del Evento</label>
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
+                            <div class="date wideForm">
+                              <input type="date" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa" name="startDate">
                             </div>
                             <!-- /.input group -->
                           </div>
 
                           <div class="form-group">
                             <label>Tipo de Participacion</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Individual</option>
-                              <option>Grupal</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <label>Género</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Masculino</option>
-                              <option>Femenino</option>
+                            <select class="form-control select2 wideForm" name="typeOfParticipation">
+                              <option value="Individual" selected="selected">Individual</option>
+                              <option value="Grupal">Grupal</option>
                             </select>
                           </div>
                             
                         </div>
 
                         <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="secondNameAffiliate">Nombre del Evento</label>
-                            <input class="form-control" type="text" placeholder="Nombre del Evento">
-                          </div>
                             
                           <div class="form-group">
+                            <label>Categoría</label>
+                            <select class="form-control select2 wideForm" name="category">
+                              <option value="A" selected="selected">A</option>
+                              <option value="B">B</option>
+                              <option value="C">C</option>
+                              <option value="D">D</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
                             <label>Fecha de finalización del Evento</label>
-                            <div class="input-group date">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
+                            <div class="date wideForm">
+                              <input type="date" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa" name="endDate">
                             </div>
                           </div>
 
                           <div class="form-group">
-                            <label>Categoría</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">A</option>
-                              <option>B</option>
-                              <option>C</option>
-                              <option>D</option>
+                            <label>Género</label>
+                            <select class="form-control select2 wideForm" name="gender">
+                              <option value="M" selected="selected">Masculino</option>
+                              <option value="F">Femenino</option>
                             </select>
                           </div>
+
                         </div>
-                        
                       </div>
 
                       <div class="modal-footer label-success">
                         <button type="button" class="btn btn-success">Cancelar</button>
-                        <button type="button" class="btn btn-success">Crear Evento</button>
+                        <button type="submit" class="btn btn-success">Crear Evento</button>
                       </div>
                       <!-- /.row -->
                    </form>   
-            </div>                   
-          </div>      
-        </div>
+                  </div>                   
+                </div>      
+              </div>
 
-      <!-- Panel de Edicion de Eventos -->
-        <div class="col-md-6">
-          <div class="box box-success">
-            <div class="box-header with-border label-success" align="center">
-              <h3 class="box-title"><b>LISTA DE EVENTOS DEPORTIVOS</b></h3>          
-            </div>
+            <!-- Panel Tabla de Eventos -->
+              <div class="col-md-6">
+                <div class="box box-success">
+                  <div class="box-header with-border label-success" align="center">
+                    <h3 class="box-title"><b>LISTA DE EVENTOS DEPORTIVOS</b></h3>         
+                  </div>
 
-            <div class="content">
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                  <tr class="label-success">
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Categoría</th>
-                    <th>Género</th>
-                  </tr>
-                </thead>
+                  <div class="content">
+                    <table id="example2" class="table table-bordered table-hover">
+                      <thead>
+                        <tr class="label-success">
+                          <th>Nombre del Evento</th>
+                          <th>Categoría</th>
+                          <th>Fecha de Inicio</th>
+                          <th>Fecha de Finalización</th>
+                          <th>Tipo</th>
+                          <th>Género</th>
+                        </tr>
+                      </thead>
+                                
+                      <tbody>
+                        <% if (objSport) { %>
+                        <% objSport.forEach(function(obj) { %>
+                        <tr class="<%= obj._id %>" style="text-align:center;">
+                          <td><%= obj.nameEvent %></td>
+                          <td><%= obj.category %></td>
+                          <td><%= obj.startDate %> </td>
+                          <td><%= obj.endDate %></td>
+                          <td><%= obj.typeOfParticipation %></td>
+                          <td><%= obj.gender %></td>
                           
-                <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet Explorer 4.0</td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet Explorer 5.0</td>
-                    <td>Win 95+</td>
-                    <td>5</td>                           
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr><tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-                   
-          </div>      
-        </div>
+                          <td>
+                            <button id="<%= obj._id %>" class="show-modify-form btn btn-warning btn-block ">Editar <i class="fa fa-pencil"></i></button>
+                            <input type="hidden" value="<%= obj._id %>">
+                          </td>
 
-      <!-- Panel de Creacion de Eventos -->
-        <div class="col-md-6">
-          <div class="box box-info">
-            <div class="box-header with-border label-info" align="center">
-              <h3 class="box-title"><b>GESTIONAR EVENTO DEPORTIVO</b></h3>          
-            </div>
-            <div class="box-body">
-                   <form role="form">
-                      <div class="row">
-                        <div class="col-md-6">
-                          
-                          <div class="form-group">
-                            <label>Evento Deportivo</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Evento 1</option>
-                              <option>Evento 2</option>
-                              <option>Evento 3</option>
-                            </select>
+                        </tr>
+                        <% }); %>
+                        <% } else { %>
+                        <td colspan="" rowspan="" headers="">Para crear un usuario, dé click en el boton <span class="fa fa-plus-circle"></span></td>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                         
+                </div>      
+              </div>
+
+            <!-- Panel de Modificación de Eventos -->
+              <div class="col-md-6">
+                <div class="box box-info">
+                  <div class="box-header with-border label-info" align="center">
+                    <h3 class="box-title"><b>MODIFICAR EVENTO DEPORTIVO</b></h3>          
+                  </div>
+                  <div class="box-body">
+                     <form role="form">
+                        <div class="row">
+                          <div class="col-md-6">
+                            
+                            <div class="form-group">
+                              <label>Evento Deportivo</label>
+                              <select class="form-control select2 wideForm">
+                                <option selected="selected">Evento 1</option>
+                                <option>Evento 2</option>
+                                <option>Evento 3</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Fecha de inicio del Evento</label>
+                              <div class="input-group date">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
+                              </div>
+                              <!-- /.input group -->
+                            </div>
+
+                            <div class="form-group">
+                              <label>Tipo de Participacion</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">Individual</option>
+                                <option>Grupal</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Género</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">Masculino</option>
+                                <option>Femenino</option>
+                              </select>
+                            </div>
+                              
                           </div>
 
-                          <div class="form-group">
-                            <label>Fecha de inicio del Evento</label>
-                            <div class="input-group date">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="secondNameAffiliate">Nombre del Evento</label>
+                              <input class="form-control" type="text" placeholder="Nombre del Evento">
+                            </div>
+                              
+                            <div class="form-group">
+                              <label>Fecha de finalización del Evento</label>
+                              <div class="input-group date">
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
                               <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
+                              </div>
                             </div>
-                            <!-- /.input group -->
-                          </div>
 
-                          <div class="form-group">
-                            <label>Tipo de Participacion</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Individual</option>
-                              <option>Grupal</option>
-                            </select>
+                            <div class="form-group">
+                              <label>Categoría</label>
+                              <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                              </select>
+                            </div>
                           </div>
-
-                          <div class="form-group">
-                            <label>Género</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Masculino</option>
-                              <option>Femenino</option>
-                            </select>
-                          </div>
-                            
+                          
                         </div>
 
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="secondNameAffiliate">Nombre del Evento</label>
-                            <input class="form-control" type="text" placeholder="Nombre del Evento">
-                          </div>
-                            
-                          <div class="form-group">
-                            <label>Fecha de finalización del Evento</label>
-                            <div class="input-group date">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label>Categoría</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">A</option>
-                              <option>B</option>
-                              <option>C</option>
-                              <option>D</option>
-                            </select>
-                          </div>
+                        <div class="modal-footer label-info">
+                          <button type="button" class="btn btn-info">Cancelar</button>
+                          <button type="button" class="btn btn-info">Crear Evento</button>
                         </div>
-                        
-                      </div>
-
-                      <div class="modal-footer label-info">
-                        <button type="button" class="btn btn-info">Cancelar</button>
-                        <button type="button" class="btn btn-info">Crear Evento</button>
-                      </div>
-                      <!-- /.row -->
-                   </form>   
-            </div>                   
-          </div>      
-        </div>
-      <!-- Fin Panel Gestionar Eventos -->
+                        <!-- /.row -->
+                     </form>   
+                  </div>                   
+                </div>      
+              </div>
+            
+            </div>
+        </section>
       </div>
 
-      
-    </section>
+      <% include ./partials/footer.ejs %>
 
-  </div>
+    </div>
+    <!-- ./wrapper -->
 
-  <% include ./partials/footer.ejs %>
-  
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-</div>
-<!-- ./wrapper -->
+    <% include ./partials/footer-scripts.ejs %>
 
-<!-- jQuery 2.2.3 -->
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-</body>
+  </body>
 </html>

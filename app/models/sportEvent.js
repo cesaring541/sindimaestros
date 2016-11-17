@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
 var sportEventSchema = mongoose.Schema({    
-    startDate 			: { type: Date},
-    typeOfParticipation : { type: String, enum: ['Individual','Grupal'] },
-    gender 				: { type: String, enum: ['M','F','O'] },
     nameEvent			: { type: String, required: true},
+    category	 		: { type: String, enum: ['A','B','C','D'] },
+    startDate 			: { type: Date},
     endDate				: { type: Date},
-    category	 		: { type: String, enum: ['A','B','C','D'] }
+    typeOfParticipation : { type: String, enum: ['Individual','Grupal'] },
+    gender 				: { type: String, enum: ['M','F','O'] }
 });
 sportEventSchema.plugin(mongoosePaginate);
 module.exports = mongoose.model('SportEvent', sportEventSchema);

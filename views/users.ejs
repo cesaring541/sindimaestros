@@ -1,271 +1,255 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <% include ./partials/head.ejs %>
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+  <head>
+    <title>Usuarios | Sindimaestros</title>
 
-  <% include ./partials/nav-header.ejs %>
+    <% include ./partials/head.ejs %>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
 
-  <% include ./partials/left-column.ejs %>
+      <% include ./partials/nav-header.ejs %>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Gestionar Usuarios
-      </h1>
-    </section>
+      <% include ./partials/left-column.ejs %>
 
-<!-- ===================================================================== -->
-    <!-- Main content -->
-    <section class="content">
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Gestionar Usuarios
+          </h1>
+        </section>
 
-      
-      <div class="row"><!-- Small boxes (Crear Usuarios) -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>150</h3>
+        <!-- ===================================================================== -->
+        <!-- Main content -->
+        <section class="content">
 
-              <p>Crear Usuarios</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            
-            <a type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#myModalSaveUsers">
-            <b>Take me there</b>
-            </a>
-            
-          </div>
-        </div>
-        
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
-              <p>Editar Usuarios</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-edit"></i>
-            </div>
-            <a type="button" class="btn btn-block btn-warning btn-sm" data-toggle="modal" href="#myModalEditUsers"><b>Take me there</b>
-            </a>
-          </div>        
-      </div>
-    </section>
+          <div class="row"><!-- Small boxes (Crear Usuarios) -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>150</h3>
 
-    <section>
-        <div class="modal" id="myModalSaveUsers">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header label-success" >
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" align="center"><b>Crear Usuario</b></h4>
-              </div>
-              <div class="modal-body">
-
-                <!-- Forma interna de la ventana modal -->
-                <form role="form">
-                  <div class="box-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <label for="exampleInputEmail1">Afiliado</label>                
-                        <select name="rol" class="form-control">
-                          <option value="administrador">Si</option>
-                          <option value="presidente">No</option>                  
-                        </select>
-
-                      <div class="form-group">
-                      <div>
-                      <label for=""></label>
-                      </div>
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                      </div>
-
-                      <label for="exampleInputEmail1">Rol</label>                
-                      <select name="rol" class="form-control">
-                        <option value="administrador">Administrador</option>
-                        <option value="presidente">Presidente</option>
-                        <option value="fiscal">Fiscal</option>
-                        <option value="tesorero">Tesorero</option>
-                      </select>
-                      
-                    </div>  
-
-                    <div class="col-md-6">
-
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Nombres y Apellidos</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombres y apellidos" disabled="true">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Confirmar Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.box-body -->
-                  </div>
-                </form>
-
-              </div>
-              <div class="modal-footer label-success">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-outline">Guardar Usuario</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-    </section>
-
-    <section>
-    <div class="modal" id="myModalEditUsers">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header btn-warning">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" align="center"><b>Editar Usuarios</b></h4>
-              </div>
-              <div class="modal-body">
-              
-              <!-- TABLA DE USUARIOS -->
-
-              <div class="box-body">
-
-              <form action="#" method="get" class="modal-warning">
-                <div class="input-group">
-                  <input type="text" name="q" class="form-control" placeholder="Search...">
-                      <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                        </button>
-                      </span>
+                  <p>Crear Usuarios</p>
                 </div>
-              </form>
-
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th bgcolor="#f39c12">Rendering engineS</th>
-                  <th bgcolor="#f39c12">Browser</th>
-                  <th bgcolor="#f39c12">Platform(s)</th>
-                  <th bgcolor="#f39c12">Engine version</th>
-                  <th bgcolor="#f39c12">CSS grade</th>
-                  <th bgcolor="#f39c12">Editar</th>
-                  <th bgcolor="#f39c12"></th>
-                </tr>
-                </thead>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
                 
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
-                  <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button></th>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                  <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
-                  <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>U</td>
-                  <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
-                  <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-
-              </div>
-              <div class="modal-footer label-warning">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
+                <a type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#myModalSaveUsers">
+                <b>Take me there</b>
+                </a>
               </div>
             </div>
-            <!-- /.modal-content -->
+            
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>44</h3>
+                  <p>Editar Usuarios</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-edit"></i>
+                </div>
+                <a type="button" class="btn btn-block btn-warning btn-sm" data-toggle="modal" href="#myModalEditUsers"><b>Take me there</b>
+                </a>
+              </div>        
+            </div>
           </div>
-          <!-- /.modal-dialog -->
-        </div>
-    </section>
+        </section>
 
-  </div>
+        <section>
+          <div class="modal" id="myModalSaveUsers">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header label-success" >
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" align="center"><b>Crear Usuario</b></h4>
+                </div>
 
-  <% include ./partials/footer.ejs %>
+                <div class="modal-body">
+                  <!-- Forma interna de la ventana modal -->
+                  <form role="form">
+                    <div class="box-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label for="exampleInputEmail1">Afiliado</label>                
+                          <select name="rol" class="form-control">
+                            <option value="administrador">Si</option>
+                            <option value="presidente">No</option>                  
+                          </select>
 
-    </div>    
-  <div class="control-sidebar-bg"></div>
-</div>
-<!-- ./wrapper -->
+                          <div class="form-group">
+                            <div>
+                              <label for=""></label>
+                            </div>
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                          </div>
 
-<!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="plugins/morris/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="plugins/knob/jquery.knob.js"></script>
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- Slimscroll -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-</body>
+                          <label for="exampleInputEmail1">Rol</label>                
+                          <select name="rol" class="form-control">
+                            <option value="administrador">Administrador</option>
+                            <option value="presidente">Presidente</option>
+                            <option value="fiscal">Fiscal</option>
+                            <option value="tesorero">Tesorero</option>
+                          </select>
+                        </div>  
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Nombres y Apellidos</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombres y apellidos" disabled="true">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Confirmar Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          </div>
+                        </div>
+                      </div>
+                    <!-- /.box-body -->
+                    </div>
+                  </form>
+                </div>
+
+                <div class="modal-footer label-success">
+                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-outline">Guardar Usuario</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </section>
+
+        <section>
+          <div class="modal" id="myModalEditUsers">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header btn-warning">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" align="center"><b>Editar Usuarios</b></h4>
+                </div>
+                <div class="modal-body">  
+                  <!-- TABLA DE USUARIOS -->
+                  <div class="box-body">
+                    <form action="#" method="get" class="modal-warning">
+                      <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                          </button>
+                        </span>
+                      </div>
+                    </form>
+
+                    <table id="example2" class="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th bgcolor="#f39c12">Rendering engineS</th>
+                          <th bgcolor="#f39c12">Browser</th>
+                          <th bgcolor="#f39c12">Platform(s)</th>
+                          <th bgcolor="#f39c12">Engine version</th>
+                          <th bgcolor="#f39c12">CSS grade</th>
+                          <th bgcolor="#f39c12">Editar</th>
+                          <th bgcolor="#f39c12"></th>
+                        </tr>
+                      </thead>
+                      
+                      <tbody>
+                        <tr>
+                          <td>Trident</td>
+                          <td>Internet
+                            Explorer 4.0
+                          </td>
+                          <td>Win 95+</td>
+                          <td> 4</td>
+                          <td>X</td>
+                          <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
+                          <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button></th>
+                        </tr>
+                        <tr>
+                          <td>Trident</td>
+                          <td>Internet
+                            Explorer 5.0
+                          </td>
+                          <td>Win 95+</td>
+                          <td>5</td>
+                          <td>C</td>
+                          <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
+                          <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button>
+                        </tr>
+                        <tr>
+                          <td>Other browsers</td>
+                          <td>All others</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>U</td>
+                          <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
+                          <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="modal-footer label-warning">
+                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline">Save changes</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+              <!-- /.modal-dialog -->
+          </div>
+        </section>
+
+      </div>
+
+      <% include ./partials/footer.ejs %>
+
+    </div>
+
+    <!-- ./wrapper -->
+
+    <% include ./partials/footer-scripts.ejs %>
+
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Morris.js charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="plugins/morris/morris.min.js"></script>
+    <!-- Sparkline -->
+    <script src="plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="plugins/knob/jquery.knob.js"></script>
+    <!-- daterangepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="dist/js/pages/dashboard.js"></script>
+  </body>
 </html>

@@ -7,8 +7,8 @@ router.get('/', function(req, res, next) {
 
     Event.find({},function(err, objEvent){
     res.render('eventos.ejs', {
-      objEvent:objEvent,
-      title: "Eventos"
+      user : req.user, // Logged user
+      objEvent:objEvent
     });
   });
 });

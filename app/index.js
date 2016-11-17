@@ -1,14 +1,15 @@
-//var User = require('./models/user'); //Import database model
+module.exports = function(app, passport) {
 
-var express = require('express');
-var router = express.Router();
+    app.get('/', function(req, res, next) {
+        res.render('index.ejs'); 
+    });
+};
 
-router.get('/', function(req, res, next) {
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
 
-    //User.find({},function(err, objUser){
-    res.render('index.ejs');
-  //});
-});
+    if (req.isAuthenticated())
+        return next();
 
-
-module.exports = router;
+    res.redirect('/login');
+}
