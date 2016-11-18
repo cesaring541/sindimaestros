@@ -11,13 +11,6 @@ var flash    = require('connect-flash');
 var morgan = require('morgan');
 var cookieSession = require('cookie-session');
 
-//var users = require('./app/users');
-var events = require('./app/events');
-var joineds = require('./app/joineds');
-var laborUnions = require('./app/laborUnions');
-//var sportEvents = require('./app/sportEvents');
-var teams = require('./app/teams');
-
 var app = express();
 
 // view engine setup
@@ -37,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieSession({
   name: "session",
   keys: ["llave-1", "llave-2"]
-})); // session secret
+}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -45,18 +38,13 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./config/passport')(passport); // pass passport for configuration
 
 // Routes =========================================================
-require('./app/index.js')(app, passport);
+require('./app/indexRoutes.js')(app);
 require('./app/authRoutes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./app/users.js')(app, passport);
-//app.use('/users', users);sportEvents
-app.use('/events', events);
-app.use('/joineds', joineds);
-app.use('/laborUnions', laborUnions);
-require('./app/sportEvents.js')(app, passport);
-//app.use('/sportEvents', sportEvents);
-app.use('/teams', teams); // Pendiente
-
-//require('./app/users');
+require('./app/usersRoutes.js')(app, passport);
+require('./app/eventsRoutes.js')(app, passport);
+require('./app/joinedsRoutes.js')(app, passport);
+require('./app/laborUnionsRoutes.js')(app, passport);
+require('./app/sportEventsRoutes.js')(app, passport);
 
 
 var configDB = require('./config/database.js');
