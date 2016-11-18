@@ -1,4 +1,5 @@
 var Sports = require('./models/sportEvent'); //Import database model
+var moment = require('moment');
 
 module.exports = function(app, passport) {
 
@@ -6,7 +7,8 @@ module.exports = function(app, passport) {
     Sports.find({},function(err, objSport){
       res.render('eventos_deportivos.ejs', {
         user : req.user, // Logged user
-        objSport :objSport
+        objSport :objSport,
+        message: ""
       });
     });
   });
@@ -62,10 +64,10 @@ module.exports = function(app, passport) {
 
       objSport.save({_id:id}, function(err){
         if (err) {
-          res.end('error');
+          res.redirect("/sportEvents");
         }
         else{
-          res.send('success');
+          res.redirect("/sportEvents");
         }
       });        
     });
