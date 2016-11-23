@@ -12,6 +12,12 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
+    app.get('/profile', function(req, res) {
+        res.render('profile.ejs', {
+            user: req.user
+        }); 
+    });
+
     app.get('/signup', function(req, res) {
         res.render('signup.ejs', {
         	message: req.flash('signupMessage')
