@@ -19,47 +19,485 @@
       <h1>Gestionar Afiliados</h1>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-
-      
-      <div class="row"><!-- Small boxes (Crear Afiliados) -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>150</h3>
-              <p>Crear Afiliados</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-
-            <a href="panel_afiliados.html" class="small-box-footer">Take me there<i></i></a>
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-5">
+          <div class="contains">
+            <span class="btn bg-green" id="add-joined"> <i class="fa fa-plus-circle fa-5x pull-left" href="#"></i> Agregar Afiliado </span>
           </div>
         </div>
-        
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
-
-              <p>Editar Afilados</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-edit"></i>
-            </div>
-            
-            <a href="panel_editar_afiliados.html" class="small-box-footer">Take me there<i></i></a>
-
+        <div class="col-md-3 col-sm-4 col-xs-5">
+          <div class="contains">
+            <span class="list-joineds btn btn-primary"><i class="fa fa-reorder fa-5x pull-left"></i> Listar Afiliados </span>
           </div>
-        </div>        
+        </div>
+      </div>
+
+      <!-- Alertas -->
+      <% if (message.length > 0) { %>
+        <div class="alert alert-danger" style="margin-top: 10px;"><%= message %></div>
+      <% } %>
+
+      <div class="box-body">
+
+        <!-- Tabla de usuarios -->
+        <div class="table-users fresh-table">
+          <div class="toolbar">
+            <!--button id="alertBtn" class="btn btn-default">Botón de Alerta</button-->
+          </div>
+
+          <table id="fresh-table" class="table">
+            <thead>
+              <th data-field="identityCard">Documento de identidad </th>
+              <th data-field="fullname">Nombre </th>
+              <th data-field="email">Email </th>
+              <th data-field="state">Estado </th>
+              <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
+            </thead>
+            <tbody>
+              <% if (objJoined != undefined) { %>
+              <% objJoined.forEach(function(objJoi) { %>
+              <tr class="<%= objJoi._id %>" style="text-align:center;">
+                <td><%= objJoi.identityCard %></td>
+                <td><%= objJoi.fullName %></td>
+                <td><%= objJoi.email %></td>
+                <% if (objJoi.state === "Activo") { %>
+                  <td><i class="fa fa-circle text-success"></i>  <%= objJoi.state %></td>
+                <% } else { %>
+                  <td><i class="fa fa-circle text-danger"></i>  <%= objJoi.state %></td>
+                <% } %>
+              </tr>
+              <% }); %>
+              <% } else { %>
+              <td colspan="" rowspan="" headers="">Para crear un usuario, dé click en el boton <span class="fa fa-plus-circle"></span></td>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Formulario agregar -->
+        <form class="form-joined" id="formJoined" enctype="multipart/form-data" action="createJoined" method="POST" >
+          <div id="form-add-joined" class="col-md-12" style="display: none;">
+            <div>
+              <label for=""><h2>Ingrese el nuevo afiliado</h2></label>
+            </div>
+
+            <section class="col-md-6 ">
+              <div class="form-group" id="identityCard">
+                <label for="bio">Documento de identidad:</label><br>
+                <input class="form-control" type="text" name="identityCard" required>
+              </div>
+
+              <div class="form-group" id="fullname">
+                <label for="bio">Nombre:</label><br>
+                <input class="form-control" type="text" name="fullname" required>
+              </div>
+
+              <div class="form-group" id="birthdate">
+                <label for="bio">Fecha de nacimiento:</label><br>
+                <input class="form-control" type="date" name="birthdate">
+              </div>
+
+              <div class="form-group" id="address">
+                <label for="bio">Dirección casa:</label><br>
+                <input class="form-control" type="text" name="address" required>
+              </div>
+
+              <div class="form-group" id="email">
+                <label for="bio">Email:</label><br>
+                <input id="Email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">RH:</label><br>
+                <select class="form-control" type="brand" name="rh">
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Género:</label><br>
+                <select class="form-control" type="brand" name="gender">
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
+                  <option value="O">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Municipio:</label><br>
+                <select class="form-control" type="brand" name="municipality">
+                <!--json-->
+                </select>
+              </div>
+
+              <div class="form-group" id="cellPhoneNumber">
+                <label for="bio">Número celular:</label><br>
+                <input class="form-control" type="text" name="cellPhoneNumber" required>
+              </div>
+
+              <div class="form-group" id="educationalInstitution">
+                <label for="bio">Institución Educativa:</label><br>
+                <input class="form-control" type="text" name="educationalInstitution" required>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Área de desempeño:</label><br>
+                <select class="form-control" type="brand" name="areaPerformance">
+                  <option value="Primaria">Primaria</option>
+                  <option value="Bachillerato">Bachillerato</option>
+                  <option value="DirectivoDocente">Directivo Docente</option>
+                  <option value="Provisional">Provisional</option>
+                  <option value="Administrativo">Administrativo</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Universidad:</label><br>
+                <select class="form-control" type="brand" name="university">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Normalista:</label><br>
+                <select class="form-control" type="brand" name="normalista">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Especialista:</label><br>
+                <select class="form-control" type="brand" name="specialist">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Doctorado:</label><br>
+                <select class="form-control" type="brand" name="doctorate">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">typeOfAppointment:</label><br>
+                <select class="form-control" type="brand" name="typeOfAppointment">
+                  <option value="Provisional">Provisional</option>
+                  <option value="Propiedad">Propiedad</option>
+                  <option value="Administrativo">Administrativo</option>
+                  <option value="Nacional">Nacional</option>
+                  <option value="Departamental">Departamental</option>
+                  <option value="Nacionalizado">Nacionalizado</option>
+                  <option value="Municipal">Municipal</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Estado:</label><br>
+                <select class="form-control" type="brand" name="state">
+                  <option value="Activo">Activo</option>
+                  <option value="ActivoPensionado">Activo Pensionado</option>
+                  <option value="PensionadoRetirado">Pensionado Retirado</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="municipalityWorking">
+                <label for="bio">municipalityWorking:</label><br>
+                <input class="form-control" type="text" name="municipalityWorking" required>
+              </div>
+
+              <div class="form-group" id="degree">
+                <label for="bio">degree:</label><br>
+                <input class="form-control" type="text" name="degree" required>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Profesional:</label><br>
+                <select class="form-control" type="brand" name="professional">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Magister:</label><br>
+                <select class="form-control" type="brand" name="MasterDegree">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="promotionLadder">
+                <label for="bio">promotionLadder:</label><br>
+                <input class="form-control" type="text" name="promotionLadder" required>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Teaching:</label><br>
+                <select class="form-control" type="brand" name="Teaching">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Nivel:</label><br>
+                <select class="form-control" type="brand" name="level">
+                  <option value="Preescolar">Preescolar</option>
+                  <option value="Primaria">Primaria</option>
+                  <option value="Basica">Basica</option>
+                  <option value="Media">Media</option>
+                </select>
+              </div>
+
+             
+
+              <div class="form-group" id="attendant" style="display: none;">
+                <div class="form-group" id="nameAttendant1">
+                  <label for="bio">Nombres y apellidos del acudiente 1:</label><br>
+                  <input class="form-control" type="text" name="nameAttendant1" >
+                </div>
+                <div class="form-group" id="phoneAttendant1">
+                  <label for="bio">Teléfono fijo del acudiente 1:</label><br>
+                  <input class="form-control" type="number" name="phoneAttendant1" >
+                </div>
+
+                <div class="form-group" id="nameAttendant2">
+                  <label for="bio">Nombres y apellidos del acudiente 2:</label><br>
+                  <input class="form-control" type="text" name="nameAttendant2" >
+                </div>
+                <div class="form-group" id="phoneAttendant2">
+                  <label for="bio">Teléfono fijo del acudiente 2:</label><br>
+                  <input class="form-control" type="number" name="phoneAttendant2" >
+                </div>
+                
+                
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Estado:</label><br>
+                <select class="form-control" type="brand" name="status">
+                  <option value="Activo">Activo</option>
+                  <option value="Inactivo">Inactivo</option>
+                </select>
+              </div>
+
+            </section>
+
+            <section class="col-md-6">
+              
+              <div class="form-group" id="code">
+                <label for="bio">Documento de identidad:</label><br>
+                <input class="form-control" type="number" name="code" required>
+              </div>
+
+              <div class="form-group" id="lastname">
+                <label for="bio">Apellido:</label><br>
+                <input class="form-control" type="text" name="lastname" required>
+              </div>
+
+              <div class="form-group" id="password">
+                <label for="bio">Contraseña:</label><br>
+                <input class="form-control" type="password" name="password" required>
+                <div id="pswd_info" style="display: none;">
+                  <h4>La contraseña debería cumplir con los siguientes requerimientos:</h4>
+                  <p id="length">Debería tener <strong>8 carácteres</strong> como mínimo</p>
+                  <p id="letter">Al menos debería tener <strong>una letra minúscula</strong></p>
+                  <p id="capital">Al menos debería tener <strong>una letra mayúscula</strong></p>
+                  <p id="number">Al menos debería tener <strong>un número</strong></p>
+                  <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
+                </div>
+              </div>
+              
+              <div class="form-group" id="attendant2" style="display: none;">
+                <div class="form-group" id="addressAttendant1">
+                  <label for="bio">Dirección del acudiente 1:</label><br>
+                  <input class="form-control" type="text" name="addressAttendant1" >
+                </div>
+
+                <div class="form-group" id="cellphoneAttendant1">
+                  <label for="bio">Teléfono celular del acudiente 1:</label><br>
+                  <input class="form-control" type="number" name="cellphoneAttendant1" >
+                </div>
+
+                <div class="form-group" id="addressAttendant2">
+                  <label for="bio">Dirección del acudiente 2:</label><br>
+                  <input class="form-control" type="text" name="addressAttendant2" >
+                </div>
+
+                <div class="form-group" id="cellphoneAttendant2">
+                  <label for="bio">Teléfono celular del acudiente 2:</label><br>
+                  <input class="form-control" type="number" name="cellphoneAttendant2" >
+                </div>
+              </div>
+              
+
+              
+
+              <!--<div>
+                <label for="bio">Descripcion del curso:</label><br>
+                <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
+              </div>-->
+            </section>
+
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+            <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
+            <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+          </div>
+        </form>
+
+
+        <!-- Formulario modificar usuario -->
+        <form id="frm-modify-user" class="form-user" method="POST">
+          <div id="form-modify-user" class="col-md-12" style="display: none;" >
+            <div>
+              <label for=""><h2>Modificar usuario</h2></label>
+            </div>
+
+            <section class="col-md-6 ">
+              <div class="form-group" id="role">
+                <label for="bio">Rol:</label><br>
+                <select class="form-control" type="brand" id="roles_list2" name="role" required></select>
+              </div>
+
+              <div class="form-group" id="firstname">
+                <label for="bio">Nombre:</label><br>
+                <input id="mod_firstname" class="form-control" type="text" name="firstname" required>
+              </div>
+
+              <div class="form-group" id="email">
+                <label for="bio">Email:</label><br>
+                <input id="mod_email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+              </div>
+
+             
+
+              <div class="form-group" id="mod_attendant" style="display: none;">
+
+                <div class="form-group" id="nameAttendant1">
+                  <label for="bio">Nombres y apellidos del acudiente 1:</label><br>
+                  <input id="mod_nameAttendant1" class="form-control" type="text" name="nameAttendant1" >
+                </div>
+                <div class="form-group" id="phoneAttendant1">
+                  <label for="bio">Teléfono fijo del acudiente 1:</label><br>
+                  <input id="mod_phoneAttendant1" class="form-control" type="number" name="phoneAttendant1" >
+                </div>
+
+                <div class="form-group" id="nameAttendant2">
+                  <label for="bio">Nombres y apellidos del acudiente 2:</label><br>
+                  <input id="mod_nameAttendant2" class="form-control" type="text" name="nameAttendant2" >
+                </div>
+                <div class="form-group" id="phoneAttendant2">
+                  <label for="bio">Teléfono fijo del acudiente 2:</label><br>
+                  <input id="mod_phoneAttendant2" class="form-control" type="number" name="phoneAttendant2" >
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Estado:</label><br>
+                <select id="mod_status" class="form-control" type="brand" name="status">
+                  <option value="Activo">Activo</option>
+                  <option value="Inactivo">Inactivo</option>
+                </select>
+              </div>
+
+            </section>
+
+            <section class="col-md-6">
+              
+              <div class="form-group" id="code">
+                <label for="bio">Documento de identidad:</label><br>
+                <input class="form-control" type="number" name="code" id="mod_code" required>
+              </div>
+
+              <div class="form-group" id="lastname">
+                <label for="bio">Apellido:</label><br>
+                <input id="mod_lastname" class="form-control" type="text" name="lastname" required>
+              </div>
+
+              <div class="form-group" id="password">
+                <label for="bio">Contraseña:</label><br>
+                <input id="mod_password" class="form-control" type="password" name="password" required>
+                <div id="pswd_info" style="display: none;">
+                  <h4>La contraseña debería cumplir con los siguientes requerimientos:</h4>
+                  <p id="length">Debería tener <strong>8 carácteres</strong> como mínimo</p>
+                  <p id="letter">Al menos debería tener <strong>una letra minúscula</strong></p>
+                  <p id="capital">Al menos debería tener <strong>una letra mayúscula</strong></p>
+                  <p id="number">Al menos debería tener <strong>un número</strong></p>
+                  <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
+                </div>
+              </div>
+              
+              <div class="form-group" id="mod_attendant2" style="display: none;">
+                <div class="form-group" id="addressAttendant1">
+                  <label for="bio">Dirección del acudiente 1:</label><br>
+                  <input id="mod_addressAttendant1" class="form-control" type="text" name="addressAttendant1" >
+                  <input id="idAttendant1" class="form-control" type="text" name="idAttendant1" style="display: none;">
+                </div>
+
+                <div class="form-group" id="cellphoneAttendant1">
+                  <label for="bio">Teléfono celular del acudiente 1:</label><br>
+                  <input id="mod_cellphoneAttendant1" class="form-control" type="number" name="cellphoneAttendant1" >
+                </div>
+
+                <div class="form-group" id="addressAttendant2">
+                  <label for="bio">Dirección del acudiente 2:</label><br>
+                  <input id="mod_addressAttendant2" class="form-control" type="text" name="addressAttendant2" >
+                  <input id="idAttendant2" class="form-control" type="text" name="idAttendant2" style="display: none;">
+                </div>
+
+                <div class="form-group" id="cellphoneAttendant2">
+                  <label for="bio">Teléfono celular del acudiente 2:</label><br>
+                  <input id="mod_cellphoneAttendant2" class="form-control" type="number" name="cellphoneAttendant2" >
+                </div>
+              </div>
+
+              <!--<div>
+                <label for="bio">Descripcion del curso:</label><br>
+                <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
+              </div>-->
+            </section>
+
+            <input id="button_update" type="submit" class="modify-user btn btn-primary btn-block btn-flat" value="Actualizar usuario"></input>
+            <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
+            <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+          </div>
+        </form>
       </div>
     </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <section>
-      <div class="modal modal-success" id="myModalCreateAffiliates">
+      <div class=" modal-success" id="myModalCreateAffiliates">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -233,7 +671,7 @@
     </section>
 
     <section>
-      <div class="modal modal-warning" id="myModalEditAffiliates">
+      <div class=" modal-warning" id="myModalEditAffiliates">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -324,6 +762,69 @@
 <!-- ./wrapper -->
 
 <% include ./partials/footer-scripts.ejs %>
+
+  <!-- Javascript fresh bootstrap table -->
+  <script type="text/javascript" src="js/bootstrap-table.js"></script>
+  <script type="text/javascript">
+    var $table = $('#fresh-table'),
+    $alertBtn = $('#alertBtn'),
+    full_screen = false;
+    $().ready(function(){
+      $table.bootstrapTable({
+        toolbar: ".toolbar",
+        showRefresh: false,
+        search: true,
+        showToggle: true,
+        showColumns: true,
+        pagination: true,
+        striped: true,
+        sortable: true,
+        pageSize: 8,
+        pageList: [8,10,25,50],
+        formatShowingRows: function(pageFrom, pageTo, totalRows){
+          //do nothing here, we don't want to show the text "showing x of y from..."
+        },
+        formatRecordsPerPage: function(pageNumber){
+          return pageNumber + " filas visibles";
+        },
+        icons: {
+          refresh: 'fa fa-refresh',
+          toggle: 'fa fa-th-list',
+          columns: 'fa fa-columns',
+          detailOpen: 'fa fa-plus-circle',
+          detailClose: 'fa fa-minus-circle'
+        }
+      });
+    });
+    $(function () {
+      $alertBtn.click(function () {
+        alert("Alerta");
+      });
+    });
+    function operateFormatter(value, row, index) {
+      return [
+        '<a id="'+row._class+'" rel="tooltip" title="Editar" class="table-action edit" href="javascript:void(0)" title="Edit">',
+          ' <i class="fa fa-edit"> Editar</i> ',
+        '</a>',
+        '<a id="'+row._class+'" rel="tooltip" title="Eliminar" class="table-action remove" href="javascript:void(0)" title="Remove" style="color:red; padding-left:1em;">',
+          ' <i class="fa fa-remove"> Eliminar</i> ',
+        '</a>'
+      ].join('');
+    }
+    window.operateEvents = {
+      'click .edit': function (e, value, row, index) {
+        //tableButtonEvent.edit(row._class);
+        //console.log(value, row, index);
+      },
+      'click .remove': function (e, value, row, index) {
+        //tableButtonEvent.remove(row._class);
+        //console.log(value, JSON.stringify(row, null, '\t'), index);
+      }
+    };
+  </script>
+  
+  <!-- Script main-->
+  <script src="js/mainJoineds.js" type="text/javascript" charset="utf-8" ></script>
 
 </body>
 </html>
