@@ -17,8 +17,7 @@ module.exports = function(app, passport) {
 
     var user = new User();
     user.joined   = req.body.joined;
-    user.name     = req.body.name;
-    user.lastName = req.body.lastName;
+    user.fullname = req.body.fullname;
     user.email    = req.body.email;
     user.password = req.body.password;
     user.role     = req.body.role;
@@ -54,8 +53,7 @@ module.exports = function(app, passport) {
       if (err) ;
 
       objUser.joined   = req.body.joined;  
-      objUser.name     = req.body.name;
-      objUser.lastName = req.body.lastName;
+      objUser.fullname     = req.body.fullname;
       objUser.email    = req.body.email;
       objUser.password = req.body.password;
       objUser.role     = req.body.role;

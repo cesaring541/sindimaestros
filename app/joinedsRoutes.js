@@ -6,8 +6,7 @@ module.exports = function(app, passport) {
     Joined.find({},function(err, objJoined){
       res.render('afiliados.ejs', {
         user : req.user, // Logged user
-        objJoined: objJoined,
-        message: ""
+        objJoined: objJoined
       });
     });
   });
@@ -16,8 +15,7 @@ module.exports = function(app, passport) {
   app.post('/new-joined',function(req,res,next){
 
     var joined = new Joined();
-	joined.name 						= req.body.name;
-	joined.lastName 					= req.body.lastName;
+	joined.fullname 						= req.body.fullname;
 	joined.identityCard 				= req.body.identityCard;
 	joined.birthdate 					= req.body.birthdate;
 	joined.address 						= req.body.address;
@@ -48,13 +46,13 @@ module.exports = function(app, passport) {
 	joined.Zone 						= req.body.Zone;
 	joined.integraCommittee 			= req.body.integraCommittee;
 	joined.delegateGeneralAssembly 		= req.body.delegateGeneralAssembly;
-
+	joined.employeeClass	= req.body.employeeClass;
     joined.save(function (err) {
       if (err){
         console.log('err: '+err);
       } else {
         console.log('Objeto almacenado');
-        res.redirect('/joineds');
+        res.send('/joineds');
       }
     });
   });
@@ -79,8 +77,7 @@ module.exports = function(app, passport) {
     Joined.findById(id, function(err, objJoined){
       if (err) ;
 
-      	objJoined.name 						= req.body.name;
-		objJoined.lastName 					= req.body.lastName;
+    objJoined.fullname 						= req.body.fullname;
 		objJoined.identityCard 				= req.body.identityCard;
 		objJoined.birthdate 				= req.body.birthdate;
 		objJoined.address 					= req.body.address;
@@ -111,6 +108,8 @@ module.exports = function(app, passport) {
 		objJoined.Zone 						= req.body.Zone;
 		objJoined.integraCommittee 			= req.body.integraCommittee;
 		objJoined.delegateGeneralAssembly	= req.body.delegateGeneralAssembly;
+		objJoined.employeeClass	= req.body.employeeClass;
+		
 
         objEvent.save({_id:id}, function(err){
           if (err) {

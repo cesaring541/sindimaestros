@@ -3,17 +3,16 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
 var joinedSchema = mongoose.Schema({
-    name       					: { type: String, required: true },
-    lastName					: { type: String, required: true },
-    identityCard 				: { type: String, required: true },    
+  fullname       					: { type: String, required: true },
+  identityCard 				: { type: String, required: true },    
 	birthdate 					: { type: Date },
 	address 					: { type: String, required: true },
-    email						: { type: String, required: true },
-    rh 							: { type: String, enum: ['AB+','AB-','A+','A-','B+','B-','O+','O-'] },
-    annexedDocument 			: [],
-    gender 						: { type: String, enum: ['M','F','O'] },
-    municipality    			: { type: String, required: true },
-    cellPhoneNumber 			: { type: String, required: true },    
+  email						: { type: String, required: true },
+  rh 							: { type: String, enum: ['AB+','AB-','A+','A-','B+','B-','O+','O-'] },
+  annexedDocument 			: [],
+  gender 						: { type: String, enum: ['M','F','O'] },
+  municipality    			: { type: String, required: true },
+  cellPhoneNumber 			: { type: String, required: true },    
 	educationalInstitution 		: { type: String, required: true },
 	areaPerformance 			: { type: String, required: true },
 	university 					: { type: String, enum: ['Si','No'] },
@@ -34,7 +33,8 @@ var joinedSchema = mongoose.Schema({
 	integraCommission 			: { type: String, enum: ['Electoral','Financiera','Etica','Mujer','Pedagogica'] },
 	Zone 						: { type: String, enum: ['Uno','Dos'] },
 	integraCommittee        	: { type: String, enum: ['Ninguno','Municipal','Zonal','Directiva'] },
-	delegateGeneralAssembly 	: { type: String, enum: ['Si','No', 'Municipio'] } 
+	delegateGeneralAssembly 	: { type: String, enum: ['Si','No', 'Municipio'] },
+	employeeClass							: { type: String, enum: ['Docente','Directivo Docente', 'Administrativo'] }
 });
 
 joinedSchema.plugin(mongoosePaginate);

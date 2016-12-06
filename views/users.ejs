@@ -21,47 +21,307 @@
           </h1>
         </section>
 
-        <!-- ===================================================================== -->
-        <!-- Main content -->
         <section class="content">
-
-          <div class="row"><!-- Small boxes (Crear Usuarios) -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>150</h3>
-
-                  <p>Crear Usuarios</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                
-                <a type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" href="#myModalSaveUsers">
-                <b>Take me there</b>
-                </a>
+          <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-5">
+              <div class="contains">
+                <span class="btn bg-green" id="add-user"> <i class="fa fa-plus-circle fa-5x pull-left" href="#"></i> Agregar usuario </span>
               </div>
             </div>
-            
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3>44</h3>
-                  <p>Editar Usuarios</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-edit"></i>
-                </div>
-                <a type="button" class="btn btn-block btn-warning btn-sm" data-toggle="modal" href="#myModalEditUsers"><b>Take me there</b>
-                </a>
-              </div>        
+            <div class="col-md-3 col-sm-4 col-xs-5">
+              <div class="contains">
+                <span class="list-users btn btn-primary"><i class="fa fa-reorder fa-5x pull-left"></i> Listar usuarios </span>
+              </div>
             </div>
+          </div>
+
+          <!-- Alertas -->
+          <% if (message.length > 0) { %>
+            <div class="alert alert-danger" style="margin-top: 10px;"><%= message %></div>
+          <% } %>
+
+          <div class="box-body">
+
+            <!-- Tabla de usuarios -->
+            <div class="table-users fresh-table">
+              <div class="toolbar">
+                <!--button id="alertBtn" class="btn btn-default">Botón de Alerta</button-->
+              </div>
+
+              <table id="fresh-table" class="table">
+                <thead>
+                  <th data-field="name">Nombre </th>
+                  <th data-field="lastname">Apellidos </th>
+                  <th data-field="email">Email </th>
+                  <th data-field="role">Rol </th>
+                  <th data-field="status">Estado </th>
+                  <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
+                </thead>
+                <tbody>
+                  <% if (objUser != undefined) { %>
+                  <% objUser.forEach(function(objUsr) { %>
+                  <% if (objUsr.role != "Administrador") { %>
+                  <tr class="<%= objUsr._id %>" style="text-align:center;">
+                    <td><%= objUsr.local.code %></td>
+                    <td><%= objUsr.local.firstname %> <%= objUsr.local.lastname %></td>
+                    <td><%= objUsr.local.email %> </td>
+                    <td><%= objUsr.local.role %></td>
+                    <% if (objUsr.local.status === "Activo") { %>
+                      <td><i class="fa fa-circle text-success"></i>  <%= objUsr.local.status %></td>
+                    <% } else { %>
+                      <td><i class="fa fa-circle text-danger"></i>  <%= objUsr.local.status %></td>
+                    <% } %>
+                  </tr>
+                  <% } %>
+                  <% }); %>
+                  <% } else { %>
+                  <td colspan="" rowspan="" headers="">Para crear un usuario, dé click en el boton <span class="fa fa-plus-circle"></span></td>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Formulario agregar usuario -->
+            <form class="form-user" id="formUser" enctype="multipart/form-data" action="createUser" method="POST" >
+              <div id="form-add-user" class="col-md-12" style="display: none;">
+                <div>
+                  <label for=""><h2>Ingrese el nuevo usuario</h2></label>
+                </div>
+
+                <section class="col-md-6 ">
+                  <div class="form-group" id="role">
+                    <label for="bio">Rol:</label><br>
+                    <select class="form-control" type="brand" id="roles_list" name="role" required></select>
+                  </div>
+
+                  <div class="form-group" id="firstname">
+                    <label for="bio">Nombre:</label><br>
+                    <input class="form-control" type="text" name="firstname" value="" required>
+                  </div>
+
+                  <div class="form-group" id="email">
+                    <label for="bio">Email:</label><br>
+                    <input id="Email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                    <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
+                  </div>
+
+                 
+
+                  <div class="form-group" id="attendant" style="display: none;">
+                    <div class="form-group" id="nameAttendant1">
+                      <label for="bio">Nombres y apellidos del acudiente 1:</label><br>
+                      <input class="form-control" type="text" name="nameAttendant1" value="" >
+                    </div>
+                    <div class="form-group" id="phoneAttendant1">
+                      <label for="bio">Teléfono fijo del acudiente 1:</label><br>
+                      <input class="form-control" type="number" name="phoneAttendant1" value="" >
+                    </div>
+
+                    <div class="form-group" id="nameAttendant2">
+                      <label for="bio">Nombres y apellidos del acudiente 2:</label><br>
+                      <input class="form-control" type="text" name="nameAttendant2" value="" >
+                    </div>
+                    <div class="form-group" id="phoneAttendant2">
+                      <label for="bio">Teléfono fijo del acudiente 2:</label><br>
+                      <input class="form-control" type="number" name="phoneAttendant2" value="" >
+                    </div>
+                    
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label for="bio">Estado:</label><br>
+                    <select class="form-control" type="brand" name="status">
+                      <option value="Activo">Activo</option>
+                      <option value="Inactivo">Inactivo</option>
+                    </select>
+                  </div>
+
+                </section>
+
+                <section class="col-md-6">
+                  
+                  <div class="form-group" id="code">
+                    <label for="bio">Documento de identidad:</label><br>
+                    <input class="form-control" type="number" name="code" value="" required>
+                  </div>
+
+                  <div class="form-group" id="lastname">
+                    <label for="bio">Apellido:</label><br>
+                    <input class="form-control" type="text" name="lastname" value="" required>
+                  </div>
+
+                  <div class="form-group" id="password">
+                    <label for="bio">Contraseña:</label><br>
+                    <input class="form-control" type="password" name="password" value="" required>
+                    <div id="pswd_info" style="display: none;">
+                      <h4>La contraseña debería cumplir con los siguientes requerimientos:</h4>
+                      <p id="length">Debería tener <strong>8 carácteres</strong> como mínimo</p>
+                      <p id="letter">Al menos debería tener <strong>una letra minúscula</strong></p>
+                      <p id="capital">Al menos debería tener <strong>una letra mayúscula</strong></p>
+                      <p id="number">Al menos debería tener <strong>un número</strong></p>
+                      <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group" id="attendant2" style="display: none;">
+                    <div class="form-group" id="addressAttendant1">
+                      <label for="bio">Dirección del acudiente 1:</label><br>
+                      <input class="form-control" type="text" name="addressAttendant1" value="" >
+                    </div>
+
+                    <div class="form-group" id="cellphoneAttendant1">
+                      <label for="bio">Teléfono celular del acudiente 1:</label><br>
+                      <input class="form-control" type="number" name="cellphoneAttendant1" value="" >
+                    </div>
+
+                    <div class="form-group" id="addressAttendant2">
+                      <label for="bio">Dirección del acudiente 2:</label><br>
+                      <input class="form-control" type="text" name="addressAttendant2" value="" >
+                    </div>
+
+                    <div class="form-group" id="cellphoneAttendant2">
+                      <label for="bio">Teléfono celular del acudiente 2:</label><br>
+                      <input class="form-control" type="number" name="cellphoneAttendant2" value="" >
+                    </div>
+                  </div>
+                  
+
+                  
+
+                  <!--<div>
+                    <label for="bio">Descripcion del curso:</label><br>
+                    <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
+                  </div>-->
+                </section>
+
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+                <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
+                <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+              </div>
+            </form>
+
+            <!-- Formulario modificar usuario -->
+            <form id="frm-modify-user" class="form-user" method="POST">
+              <div id="form-modify-user" class="col-md-12" style="display: none;" >
+                <div>
+                  <label for=""><h2>Modificar usuario</h2></label>
+                </div>
+
+                <section class="col-md-6 ">
+                  <div class="form-group" id="role">
+                    <label for="bio">Rol:</label><br>
+                    <select class="form-control" type="brand" id="roles_list2" name="role" required></select>
+                  </div>
+
+                  <div class="form-group" id="firstname">
+                    <label for="bio">Nombre:</label><br>
+                    <input id="mod_firstname" class="form-control" type="text" name="firstname" value="" required>
+                  </div>
+
+                  <div class="form-group" id="email">
+                    <label for="bio">Email:</label><br>
+                    <input id="mod_email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                  </div>
+
+                 
+
+                  <div class="form-group" id="mod_attendant" style="display: none;">
+                    <div class="form-group" id="nameAttendant1">
+                      <label for="bio">Nombres y apellidos del acudiente 1:</label><br>
+                      <input id="mod_nameAttendant1" class="form-control" type="text" name="nameAttendant1" value="" >
+                    </div>
+                    <div class="form-group" id="phoneAttendant1">
+                      <label for="bio">Teléfono fijo del acudiente 1:</label><br>
+                      <input id="mod_phoneAttendant1" class="form-control" type="number" name="phoneAttendant1" value="" >
+                    </div>
+
+                    <div class="form-group" id="nameAttendant2">
+                      <label for="bio">Nombres y apellidos del acudiente 2:</label><br>
+                      <input id="mod_nameAttendant2" class="form-control" type="text" name="nameAttendant2" value="" >
+                    </div>
+                    <div class="form-group" id="phoneAttendant2">
+                      <label for="bio">Teléfono fijo del acudiente 2:</label><br>
+                      <input id="phoneAttendant2" class="form-control" type="number" name="phoneAttendant2" value="" >
+                    </div>
+                    
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label for="bio">Estado:</label><br>
+                    <select id="mod_status" class="form-control" type="brand" name="status">
+                      <option value="Activo">Activo</option>
+                      <option value="Inactivo">Inactivo</option>
+                    </select>
+                  </div>
+
+                </section>
+
+                <section class="col-md-6">
+                  
+                  <div class="form-group" id="code">
+                    <label for="bio">Documento de identidad:</label><br>
+                    <input class="form-control" type="number" name="code" value="" id="mod_code" required>
+                  </div>
+
+                  <div class="form-group" id="lastname">
+                    <label for="bio">Apellido:</label><br>
+                    <input id="mod_lastname" class="form-control" type="text" name="lastname" value="" required>
+                  </div>
+
+                  <div class="form-group" id="password">
+                    <label for="bio">Contraseña:</label><br>
+                    <input id="mod_password" class="form-control" type="password" name="password" value="" required>
+                    <div id="pswd_info" style="display: none;">
+                      <h4>La contraseña debería cumplir con los siguientes requerimientos:</h4>
+                      <p id="length">Debería tener <strong>8 carácteres</strong> como mínimo</p>
+                      <p id="letter">Al menos debería tener <strong>una letra minúscula</strong></p>
+                      <p id="capital">Al menos debería tener <strong>una letra mayúscula</strong></p>
+                      <p id="number">Al menos debería tener <strong>un número</strong></p>
+                      <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group" id="mod_attendant2" style="display: none;">
+                    <div class="form-group" id="addressAttendant1">
+                      <label for="bio">Dirección del acudiente 1:</label><br>
+                      <input id="mod_addressAttendant1" class="form-control" type="text" name="addressAttendant1" value="" >
+                      <input id="idAttendant1" class="form-control" type="text" name="idAttendant1" value="" style="display: none;">
+                    </div>
+
+                    <div class="form-group" id="cellphoneAttendant1">
+                      <label for="bio">Teléfono celular del acudiente 1:</label><br>
+                      <input id="mod_cellphoneAttendant1" class="form-control" type="number" name="cellphoneAttendant1" value="" >
+                    </div>
+
+                    <div class="form-group" id="addressAttendant2">
+                      <label for="bio">Dirección del acudiente 2:</label><br>
+                      <input id="mod_addressAttendant2" class="form-control" type="text" name="addressAttendant2" value="" >
+                      <input id="idAttendant2" class="form-control" type="text" name="idAttendant2" value="" style="display: none;">
+                    </div>
+
+                    <div class="form-group" id="cellphoneAttendant2">
+                      <label for="bio">Teléfono celular del acudiente 2:</label><br>
+                      <input id="mod_cellphoneAttendant2" class="form-control" type="number" name="cellphoneAttendant2" value="" >
+                    </div>
+                  </div>
+
+                  <!--<div>
+                    <label for="bio">Descripcion del curso:</label><br>
+                    <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
+                  </div>-->
+                </section>
+
+                <input id="button_update" type="submit" class="modify-user btn btn-primary btn-block btn-flat" value="Actualizar usuario"></input>
+                <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
+                <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+              </div>
+            </form>
           </div>
         </section>
 
-        <section>
+        <!--section>
           <div class="modal" id="myModalSaveUsers">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -72,7 +332,6 @@
                 </div>
 
                 <div class="modal-body">
-                  <!-- Forma interna de la ventana modal -->
                   <form role="form">
                     <div class="box-body">
                       <div class="row">
@@ -117,7 +376,6 @@
                           </div>
                         </div>
                       </div>
-                    <!-- /.box-body -->
                     </div>
                   </form>
                 </div>
@@ -127,11 +385,8 @@
                   <button type="button" class="btn btn-outline">Guardar Usuario</button>
                 </div>
               </div>
-              <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
           </div>
-          <!-- /.modal -->
         </section>
 
         <section>
@@ -142,8 +397,7 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title" align="center"><b>Editar Usuarios</b></h4>
                 </div>
-                <div class="modal-body">  
-                  <!-- TABLA DE USUARIOS -->
+                <div class="modal-body">
                   <div class="box-body">
                     <form action="#" method="get" class="modal-warning">
                       <div class="input-group">
@@ -210,11 +464,9 @@
                   <button type="button" class="btn btn-outline">Save changes</button>
                 </div>
               </div>
-              <!-- /.modal-content -->
             </div>
-              <!-- /.modal-dialog -->
           </div>
-        </section>
+        </section-->
 
       </div>
 
