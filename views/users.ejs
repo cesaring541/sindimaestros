@@ -50,29 +50,19 @@
 
               <table id="fresh-table" class="table">
                 <thead>
-                  <th data-field="name">Nombre </th>
-                  <th data-field="lastname">Apellidos </th>
+                  <th data-field="fullname">Nombre </th>
                   <th data-field="email">Email </th>
                   <th data-field="role">Rol </th>
-                  <th data-field="status">Estado </th>
                   <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
                 </thead>
                 <tbody>
                   <% if (objUser != undefined) { %>
                   <% objUser.forEach(function(objUsr) { %>
-                  <% if (objUsr.role != "Administrador") { %>
                   <tr class="<%= objUsr._id %>" style="text-align:center;">
-                    <td><%= objUsr.local.code %></td>
-                    <td><%= objUsr.local.firstname %> <%= objUsr.local.lastname %></td>
-                    <td><%= objUsr.local.email %> </td>
-                    <td><%= objUsr.local.role %></td>
-                    <% if (objUsr.local.status === "Activo") { %>
-                      <td><i class="fa fa-circle text-success"></i>  <%= objUsr.local.status %></td>
-                    <% } else { %>
-                      <td><i class="fa fa-circle text-danger"></i>  <%= objUsr.local.status %></td>
-                    <% } %>
+                    <td><%= objUsr.fullname %></td>
+                    <td><%= objUsr.email %> </td>
+                    <td><%= objUsr.role %></td>
                   </tr>
-                  <% } %>
                   <% }); %>
                   <% } else { %>
                   <td colspan="" rowspan="" headers="">Para crear un usuario, dé click en el boton <span class="fa fa-plus-circle"></span></td>
@@ -87,73 +77,29 @@
                 <div>
                   <label for=""><h2>Ingrese el nuevo usuario</h2></label>
                 </div>
-
                 <section class="col-md-6 ">
-                  <div class="form-group" id="role">
-                    <label for="bio">Rol:</label><br>
-                    <select class="form-control" type="brand" id="roles_list" name="role" required></select>
-                  </div>
-
-                  <div class="form-group" id="firstname">
-                    <label for="bio">Nombre:</label><br>
-                    <input class="form-control" type="text" name="firstname" value="" required>
-                  </div>
-
-                  <div class="form-group" id="email">
-                    <label for="bio">Email:</label><br>
-                    <input id="Email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
-                    <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
-                  </div>
-
-                 
-
-                  <div class="form-group" id="attendant" style="display: none;">
-                    <div class="form-group" id="nameAttendant1">
-                      <label for="bio">Nombres y apellidos del acudiente 1:</label><br>
-                      <input class="form-control" type="text" name="nameAttendant1" value="" >
-                    </div>
-                    <div class="form-group" id="phoneAttendant1">
-                      <label for="bio">Teléfono fijo del acudiente 1:</label><br>
-                      <input class="form-control" type="number" name="phoneAttendant1" value="" >
-                    </div>
-
-                    <div class="form-group" id="nameAttendant2">
-                      <label for="bio">Nombres y apellidos del acudiente 2:</label><br>
-                      <input class="form-control" type="text" name="nameAttendant2" value="" >
-                    </div>
-                    <div class="form-group" id="phoneAttendant2">
-                      <label for="bio">Teléfono fijo del acudiente 2:</label><br>
-                      <input class="form-control" type="number" name="phoneAttendant2" value="" >
-                    </div>
-                    
-                    
-                  </div>
-
                   <div class="form-group">
-                    <label for="bio">Estado:</label><br>
-                    <select class="form-control" type="brand" name="status">
-                      <option value="Activo">Activo</option>
-                      <option value="Inactivo">Inactivo</option>
+                    <label for="bio">Afiliado</label><br>
+                    <select class="form-control" type="brand" id="joined" name="joined">
+                      <option value="Si">Sí+</option>
+                      <option value="No">No</option>
                     </select>
                   </div>
-
+                  <div class="form-group" id="fullname">
+                    <label for="bio">Nombre:</label><br>
+                    <input class="form-control" type="text" name="Fullname" required>
+                  </div>
+                  <div class="form-group" id="email">
+                    <label for="bio">Email:</label><br>
+                    <input id="email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                    <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
+                  </div>
                 </section>
-
                 <section class="col-md-6">
                   
-                  <div class="form-group" id="code">
-                    <label for="bio">Documento de identidad:</label><br>
-                    <input class="form-control" type="number" name="code" value="" required>
-                  </div>
-
-                  <div class="form-group" id="lastname">
-                    <label for="bio">Apellido:</label><br>
-                    <input class="form-control" type="text" name="lastname" value="" required>
-                  </div>
-
                   <div class="form-group" id="password">
                     <label for="bio">Contraseña:</label><br>
-                    <input class="form-control" type="password" name="password" value="" required>
+                    <input class="form-control" type="password" name="password" required>
                     <div id="pswd_info" style="display: none;">
                       <h4>La contraseña debería cumplir con los siguientes requerimientos:</h4>
                       <p id="length">Debería tener <strong>8 carácteres</strong> como mínimo</p>
@@ -163,36 +109,15 @@
                       <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
                     </div>
                   </div>
-                  
-                  <div class="form-group" id="attendant2" style="display: none;">
-                    <div class="form-group" id="addressAttendant1">
-                      <label for="bio">Dirección del acudiente 1:</label><br>
-                      <input class="form-control" type="text" name="addressAttendant1" value="" >
-                    </div>
-
-                    <div class="form-group" id="cellphoneAttendant1">
-                      <label for="bio">Teléfono celular del acudiente 1:</label><br>
-                      <input class="form-control" type="number" name="cellphoneAttendant1" value="" >
-                    </div>
-
-                    <div class="form-group" id="addressAttendant2">
-                      <label for="bio">Dirección del acudiente 2:</label><br>
-                      <input class="form-control" type="text" name="addressAttendant2" value="" >
-                    </div>
-
-                    <div class="form-group" id="cellphoneAttendant2">
-                      <label for="bio">Teléfono celular del acudiente 2:</label><br>
-                      <input class="form-control" type="number" name="cellphoneAttendant2" value="" >
-                    </div>
+                  <div class="form-group">
+                    <label for="bio">Rol:</label><br>
+                    <select class="form-control" type="brand" name="role">
+                      <option value="Administrador">Administrador</option>
+                      <option value="Presidente">Presidente</option>
+                      <option value="Fiscal">Fiscal</option>
+                      <option value="Tesorero">Tesorero</option>
+                    </select>
                   </div>
-                  
-
-                  
-
-                  <!--<div>
-                    <label for="bio">Descripcion del curso:</label><br>
-                    <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
-                  </div>-->
                 </section>
 
                 <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
@@ -207,72 +132,29 @@
                 <div>
                   <label for=""><h2>Modificar usuario</h2></label>
                 </div>
-
                 <section class="col-md-6 ">
-                  <div class="form-group" id="role">
-                    <label for="bio">Rol:</label><br>
-                    <select class="form-control" type="brand" id="roles_list2" name="role" required></select>
+                  <div class="form-group">
+                    <label for="bio">Afiliado</label><br>
+                    <select class="form-control" type="brand" id="mod_joined" name="joined">
+                      <option value="Si">Sí+</option>
+                      <option value="No">No</option>
+                    </select>
                   </div>
-
-                  <div class="form-group" id="firstname">
+                  <div class="form-group" id="fullname">
                     <label for="bio">Nombre:</label><br>
-                    <input id="mod_firstname" class="form-control" type="text" name="firstname" value="" required>
+                    <input class="form-control" type="text" name="mod_Fullname" required>
                   </div>
-
                   <div class="form-group" id="email">
                     <label for="bio">Email:</label><br>
                     <input id="mod_email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                    <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
                   </div>
-
-                 
-
-                  <div class="form-group" id="mod_attendant" style="display: none;">
-                    <div class="form-group" id="nameAttendant1">
-                      <label for="bio">Nombres y apellidos del acudiente 1:</label><br>
-                      <input id="mod_nameAttendant1" class="form-control" type="text" name="nameAttendant1" value="" >
-                    </div>
-                    <div class="form-group" id="phoneAttendant1">
-                      <label for="bio">Teléfono fijo del acudiente 1:</label><br>
-                      <input id="mod_phoneAttendant1" class="form-control" type="number" name="phoneAttendant1" value="" >
-                    </div>
-
-                    <div class="form-group" id="nameAttendant2">
-                      <label for="bio">Nombres y apellidos del acudiente 2:</label><br>
-                      <input id="mod_nameAttendant2" class="form-control" type="text" name="nameAttendant2" value="" >
-                    </div>
-                    <div class="form-group" id="phoneAttendant2">
-                      <label for="bio">Teléfono fijo del acudiente 2:</label><br>
-                      <input id="phoneAttendant2" class="form-control" type="number" name="phoneAttendant2" value="" >
-                    </div>
-                    
-                    
-                  </div>
-
-                  <div class="form-group">
-                    <label for="bio">Estado:</label><br>
-                    <select id="mod_status" class="form-control" type="brand" name="status">
-                      <option value="Activo">Activo</option>
-                      <option value="Inactivo">Inactivo</option>
-                    </select>
-                  </div>
-
                 </section>
-
                 <section class="col-md-6">
                   
-                  <div class="form-group" id="code">
-                    <label for="bio">Documento de identidad:</label><br>
-                    <input class="form-control" type="number" name="code" value="" id="mod_code" required>
-                  </div>
-
-                  <div class="form-group" id="lastname">
-                    <label for="bio">Apellido:</label><br>
-                    <input id="mod_lastname" class="form-control" type="text" name="lastname" value="" required>
-                  </div>
-
                   <div class="form-group" id="password">
                     <label for="bio">Contraseña:</label><br>
-                    <input id="mod_password" class="form-control" type="password" name="password" value="" required>
+                    <input id="mod_password" class="form-control" type="password" name="password" required>
                     <div id="pswd_info" style="display: none;">
                       <h4>La contraseña debería cumplir con los siguientes requerimientos:</h4>
                       <p id="length">Debería tener <strong>8 carácteres</strong> como mínimo</p>
@@ -282,31 +164,22 @@
                       <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
                     </div>
                   </div>
-                  
-                  <div class="form-group" id="mod_attendant2" style="display: none;">
-                    <div class="form-group" id="addressAttendant1">
-                      <label for="bio">Dirección del acudiente 1:</label><br>
-                      <input id="mod_addressAttendant1" class="form-control" type="text" name="addressAttendant1" value="" >
-                      <input id="idAttendant1" class="form-control" type="text" name="idAttendant1" value="" style="display: none;">
-                    </div>
-
-                    <div class="form-group" id="cellphoneAttendant1">
-                      <label for="bio">Teléfono celular del acudiente 1:</label><br>
-                      <input id="mod_cellphoneAttendant1" class="form-control" type="number" name="cellphoneAttendant1" value="" >
-                    </div>
-
-                    <div class="form-group" id="addressAttendant2">
-                      <label for="bio">Dirección del acudiente 2:</label><br>
-                      <input id="mod_addressAttendant2" class="form-control" type="text" name="addressAttendant2" value="" >
-                      <input id="idAttendant2" class="form-control" type="text" name="idAttendant2" value="" style="display: none;">
-                    </div>
-
-                    <div class="form-group" id="cellphoneAttendant2">
-                      <label for="bio">Teléfono celular del acudiente 2:</label><br>
-                      <input id="mod_cellphoneAttendant2" class="form-control" type="number" name="cellphoneAttendant2" value="" >
-                    </div>
+                  <div class="form-group">
+                    <label for="bio">Rol:</label><br>
+                    <select class="form-control" type="brand" name="role">
+                      <option value="Administrador">Administrador</option>
+                      <option value="Presidente">Presidente</option>
+                      <option value="Fiscal">Fiscal</option>
+                      <option value="Tesorero">Tesorero</option>
+                    </select>
                   </div>
+                </section>
 
+                <section class="col-md-6 ">
+                  <div class="form-group" id="role">
+                    <label for="bio">Rol:</label><br>
+                    <select  id="roles_list2" class="form-control" type="brand" id="roles_list2" name="role" required></select>
+                  </div>
                   <!--<div>
                     <label for="bio">Descripcion del curso:</label><br>
                     <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
@@ -477,31 +350,65 @@
     <!-- ./wrapper -->
 
     <% include ./partials/footer-scripts.ejs %>
-
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-      $.widget.bridge('uibutton', $.ui.button);
-    </script>
-    <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="plugins/morris/morris.min.js"></script>
-    <!-- Sparkline -->
-    <script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!-- jvectormap -->
-    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="plugins/knob/jquery.knob.js"></script>
-    <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-    <script src="plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- datepicker -->
-    <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard.js"></script>
+<script type="text/javascript" src="js/bootstrap-table.js"></script>
+  <script type="text/javascript">
+    var $table = $('#fresh-table'),
+    $alertBtn = $('#alertBtn'),
+    full_screen = false;
+    $().ready(function(){
+      $table.bootstrapTable({
+        toolbar: ".toolbar",
+        showRefresh: false,
+        search: true,
+        showToggle: true,
+        showColumns: true,
+        pagination: true,
+        striped: true,
+        sortable: true,
+        pageSize: 8,
+        pageList: [8,10,25,50],
+        formatShowingRows: function(pageFrom, pageTo, totalRows){
+          //do nothing here, we don't want to show the text "showing x of y from..."
+        },
+        formatRecordsPerPage: function(pageNumber){
+          return pageNumber + " filas visibles";
+        },
+        icons: {
+          refresh: 'fa fa-refresh',
+          toggle: 'fa fa-th-list',
+          columns: 'fa fa-columns',
+          detailOpen: 'fa fa-plus-circle',
+          detailClose: 'fa fa-minus-circle'
+        }
+      });
+    });
+    $(function () {
+      $alertBtn.click(function () {
+        alert("Alerta");
+      });
+    });
+    function operateFormatter(value, row, index) {
+      return [
+        '<a id="'+row._class+'" rel="tooltip" title="Editar" class="table-action edit" href="javascript:void(0)" title="Edit">',
+          ' <i class="fa fa-edit"> Editar</i> ',
+        '</a>',
+        '<a id="'+row._class+'" rel="tooltip" title="Eliminar" class="table-action remove" href="javascript:void(0)" title="Remove" style="color:red; padding-left:1em;">',
+          ' <i class="fa fa-remove"> Eliminar</i> ',
+        '</a>'
+      ].join('');
+    }
+    window.operateEvents = {
+      'click .edit': function (e, value, row, index) {
+        //tableButtonEvent.edit(row._class);
+        //console.log(value, row, index);
+      },
+      'click .remove': function (e, value, row, index) {
+        //tableButtonEvent.remove(row._class);
+        //console.log(value, JSON.stringify(row, null, '\t'), index);
+      }
+    };
+  </script>
+    <!-- Script main-->
+  <script src="js/mainUsers.js" type="text/javascript" charset="utf-8" ></script>
   </body>
 </html>
