@@ -4,8 +4,7 @@ var bcrypt   = require('bcrypt-nodejs');
 
 var laborUnionSchema = mongoose.Schema({
 
-    boardType	: { type: String, enum: ['Sindicato','Municipal','Zonal','Nacional'] },
-    joined     	: { type: String, required: true }
+    boardType	: { type: String, enum: ['Sindicato','Municipal','Zonal','Nacional'] }
 });
 
 laborUnionSchema.plugin(mongoosePaginate);

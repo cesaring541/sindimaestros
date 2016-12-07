@@ -1,30 +1,41 @@
 var Union = require('./models/laborUnion'); //Import database model
+var Joined = require('./models/joined');
+var Affiliation = require('./models/affiliation');
+
 
 module.exports = function(app, passport) {
 
   app.get('/laborUnions', isLoggedIn, function(req, res, next) {
     Union.find({},function(err, objUnion){
-      res.render('sindicato.ejs', {
-        user : req.user, // Logged user
-        objUnion: objUnion,
-        message: ""
-      });
+      Joined.find({},function(err, objJoined){
+        res.render('sindicato.ejs', {
+          user : req.user, // Logged user
+          objUnion: objUnion,
+          objJoined: objJoined,
+          message: ""
+        });
+      });     
     });
   });
 
   // Add new register
-  app.post('/new-union',function(req,res,next){
+  app.post('/new-affiliation',function(req,res,next){
+    console.log(req.body)
+    var affiliation = new Affiliation();
 
-    var union = new Union();
-    union.boardType = req.body.boardType;
-    union.joined    = req.body.joined;
+    console.log("req.body.userID: "+req.body.userID);
+    console.log("req.body.unionID: "+req.body.unionID);
+    console.log("req.body: "+req.body);
 
-    union.save(function (err) {
+    affiliation.userID = req.body.userID;
+    affiliation.unionID    = req.body.unionID;
+
+    affiliation.save(function (err) {
       if (err){
         console.log('err: '+err);
       } else {
         console.log('Objeto almacenado');
-        res.redirect('/unions');
+        res.redirect('/laborUnions');
       }
     });
   });

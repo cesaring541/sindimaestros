@@ -1,722 +1,258 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Eventos | Sindimaestros</title>
-  <% include ./partials/head.ejs %>
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
+  <head>
+    <title>Eventos | Sindimaestros</title>
 
-  <% include ./partials/nav-header.ejs %>
+    <% include ./partials/head.ejs %>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
 
-  <% include ./partials/left-column.ejs %>
+      <% include ./partials/nav-header.ejs %>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>Gestionar Eventos</h1>
-    </section>
+      <% include ./partials/left-column.ejs %>
 
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Gestionar Eventos
+          </h1>
+        </section>
 
-    
-    <!-- Main content -->
-
-    <section class="content">
-      <div class="row">
-
-      <!-- Panel de Creacion de Eventos -->
-        <div class="col-md-6">
-          <div class="box box-success">
-            <div class="box-header with-border" align="center">
-              <h3 class="box-title"><b>CREAR EVENTOS</b></h3>          
-            </div>
-            <div class="box-body">
-                   <form role="form">
-                      <div class="row">
-                        <div class="col-md-6">
-                          
-                          <div class="form-group">
-                            <label>Tipo de Evento</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Deportivo</option>
-                              <option>Cultural</option>
-                              <option>Académico</option>
-                              <option>Capacitación</option>
-                              <option>Juntas</option>
-                              <option>Otro</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <label>Fecha de inicio del Evento</label>
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                            </div>
-                            <!-- /.input group -->
-                          </div>
-
-                          <div class="form-group">
-                            <label>Tipo de Participacion</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Individual</option>
-                              <option>Grupal</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="idAffiliate">Número de Equipos / Grupos</label>
-                            <input class="form-control" type="number" min="1">
-                          </div>                          
-                        </div>
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="secondNameAffiliate">Nombre del Evento</label>
-                            <input class="form-control" type="text" placeholder="Nombre del Evento">
-                          </div>
-                            
-                          <div class="form-group">
-                            <label>Fecha de finalización del Evento</label>
-                            <div class="input-group date">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="idAffiliate">Integrantes por Grupo / Equipo</label>
-                            <input class="form-control" type="number" min="1">
-                          </div>
-                        </div>
-                        
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-success">Cancelar</button>
-                        <button type="button" class="btn btn-success">Crear Evento</button>
-                      </div>
-                      <!-- /.row -->
-                   </form>   
-            </div>                   
-          </div>      
-        </div>
-
-      <!-- Panel de Edicion de Eventos -->
-        <div class="col-md-6">
-          <div class="box box-warning">
-            <div class="box-header with-border" align="center">
-              <h3 class="box-title"><b>EDITAR EVENTOS</b></h3>          
-            </div>
-            
-            <form action="#" method="get" class="">
-              <div class="input-group margin">
-                <input type="text" name="q" class="form-control" placeholder="Buscar Evento">
-                    <span class="input-group-btn">
-                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                      </button>
-                    </span>
+        <section class="content">
+          <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-5">
+              <div class="contains">
+                <span class="btn bg-green" id="add-events"> <i class="fa fa-plus-circle fa-5x pull-left" href="#"></i> Agregar evento </span>
               </div>
-            </form>
-
-            <div class="box-body">
-                   <form role="form">
-                      <div class="row">
-                        <div class="col-md-6">
-                          
-                          <div class="form-group">
-                            <label>Tipo de Evento</label>
-                            <select class="form-control select2" style="width: 100%;">
-                              <option selected="selected">Deportivo</option>
-                              <option>Cultural</option>
-                              <option>Académico</option>
-                              <option>Capacitación</option>
-                              <option>Otro</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <label>Fecha de inicio del Evento</label>
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                            </div>
-                            <!-- /.input group -->
-                          </div>
-
-                          <div class="form-group">
-                            <label for="idAffiliate">Número de Equipos / Grupos</label>
-                            <input class="form-control" type="number" min="1">
-                          </div>
-                        </div>
-
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="secondNameAffiliate">Nombre del Evento</label>
-                          <input class="form-control" type="text" placeholder="Nombre del Evento">
-                        </div>
-                          
-                          <div class="form-group">
-                            <label>Fecha de finalización del Evento</label>
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="idAffiliate">Integrantes por Grupo / Equipo</label>
-                            <input class="form-control" type="number" min="1">
-                          </div>
-
-                          <div><label for=""></label></div>
-
-                          </div>
-                      </div>
-                      <div class="modal-footer">
-                            <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-warning">Guardar Cambios</button>
-                        </div>
-                      <!-- /.row -->
-                   </form>   
             </div>
-                   
-           </div>      
-        </div>
-      </div>
-
-      <div class="row">
-
-      <!-- Panel de Edicion de  Participantes-->
-        <div class="col-md-6">
-          <div class="box box-primary">
-            <div class="box-header with-border" align="center">
-              <h3 class="box-title"><b>CREAR EQUIPO / GRUPO / PARTICIPANTE</b></h3>          
+            <div class="col-md-3 col-sm-4 col-xs-5">
+              <div class="contains">
+                <span class="list-eventss btn btn-primary"><i class="fa fa-reorder fa-5x pull-left"></i> Listar eventos </span>
+              </div>
             </div>
-
-            <div class="form-group margin">
-                <label>Seleccionar Evento</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">III Simposio de Educación</option>
-                  <option>Torneo De Fútbol</option>
-                  <option>Capacitación en TIC</option>
-                </select>
-            </div>
-
-            <label for="" class="margin">Agregar Equipo / Grupo</label>
-            <div class="input-group margin">
-              <input type="text" class="form-control" placeholder="Nombre del Equipo o Grupo">
-                <div class="input-group-btn">
-                  <button type="button" class="btn btn-primary">Agregar Equipo / Grupo</button>
-                </div>                
-            </div>
-
-            <label for="" class="margin">Buscar Participantes</label>
-            <form action="#" method="get" class="">
-              <div class="input-group margin">
-                <input type="text" name="q" class="form-control" placeholder="Buscar Afiliados">
-                    <span class="input-group-btn">
-                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                      </button>
-                      <button type="button" class="btn btn-primary">Agregar Afiliados</button>
-                    </span>
-              </div>
-            </form>
-
-            <form role="form">
-
-              <div class="box-body">
-                <h4 class="box-title" align="center"><b>Equipo XXXX</b></h4>
-                <div class="row">
-                  <div class="col-md-6"></div>     
-
-                  <div class="col-md-6"></div>
-                          <!-- TABLA DE INSCRITOS -->
-                    <div class="col-xs-12">
-                      <div class="box">
-                        <div class="box-body table-responsive no-padding">
-                          <table class="table table-hover">
-                            <tbody>
-                                  <tr>
-                                    <th>CEDULA</th>
-                                    <th>NOMBRE</th>
-                                    <th>APELLIDO</th>
-                                    <th>Status</th>
-                                    <th>                                
-                                      <input type="checkbox" value="">
-                                    </th>                              
-                                  </tr>
-                                  <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="label label-success">Approved</span></td>
-                                    <th>                                
-                                      <input type="checkbox" value="">
-                                    </th>                                
-                                  </tr>
-                                  <tr>
-                                    <td>219</td>
-                                    <td>Alexander Pierce</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                    <th>                                
-                                      <input type="checkbox" value="">
-                                    </th>                                
-                                  </tr>
-                                  <tr>
-                                    <td>657</td>
-                                    <td>Bob Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="label label-primary">Approved</span></td>
-                                    <th>                                
-                                      <input type="checkbox" value="">
-                                    </th>                                
-                                  </tr>
-                                  <tr>
-                                    <td>175</td>
-                                    <td>Mike Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="label label-danger">Denied</span></td>
-                                    <th>                                
-                                      <input type="checkbox" value="">
-                                    </th>                                
-                                  </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Inscribir Grupo / Equipo / Afiliado</button>
-                      </div>
-                    </div>
-                </div>
-              </div>
-
-            </form>
-                   
-          </div>      
-        </div>
-
-        <div class="col-md-6">
-            <div class="box box-warning">
-              <div class="box-header with-border" align="center">
-                <h3 class="box-title"><b>EDITAR EQUIPO / GRUPO / PARTICIPANTE</b></h3>          
-              </div>
-              
-              <form action="#" method="get" class="">
-                <div class="input-group margin">
-                  <input type="text" name="q" class="form-control" placeholder="Buscar Equipo">
-                    <span class="input-group-btn">
-                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                      </button>
-                    </span>
-                </div>
-              </form>
-              
-              <div class="input-group margin">
-                <input type="text" class="form-control" placeholder="Nombre del Equipo o Grupo">
-                  <div class="input-group-btn">
-                    <button type="button" class="btn btn-warning">Editar Nombre Equipo</button>
-                  </div>                
-              </div>
-
-              <h4 class="box-title" align="center"><b>Equipo XXXX</b></h4>
-
-              <div class="box-body">
-                    <form role="form">
-                     <div class="row">
-                        
-                        <div class="col-xs-12">
-                         <div class="box">      
-                          <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                              <tbody>
-                                <tr>
-                                  <th>CEDULA</th>
-                                  <th>NOMBRE</th>
-                                  <th>APELLIDO</th>
-                                  <th>Status</th>
-                                  <th>                                
-                                    <button type="button" class="btn btn-warning"><i class="ion-close-circled"></i></button>
-                                  </th>                              
-                                </tr>
-                                <tr>
-                                  <td>183</td>
-                                  <td>John Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span class="label label-success">Approved</span></td>
-                                  <th>                                                                 
-                                    <button type="button" class="btn btn-warning"><i class="ion-close-circled"></i></button>
-                                    
-                                  </th>                                
-                                </tr>
-                                <tr>
-                                  <td>219</td>
-                                  <td>Alexander Pierce</td>
-                                  <td>11-7-2014</td>
-                                  <td><span class="label label-warning">Pending</span></td>
-                                  <th>                                
-                                    <button type="button" class="btn btn-warning"><i class="ion-close-circled"></i>
-                                  </th>                                
-                                </tr>
-                                <tr>
-                                  <td>657</td>
-                                  <td>Bob Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span class="label label-primary">Approved</span></td>
-                                  <th>                                
-                                    <button type="button" class="btn btn-warning"><i class="ion-close-circled"></i>
-                                  </th>                                
-                                </tr>
-                                <tr>
-                                  <td>175</td>
-                                  <td>Mike Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span class="label label-danger">Denied</span></td>
-                                  <th>                                
-                                    <button type="button" class="btn btn-warning"><i class="ion-close-circled"></i> 
-                                  </th>                                
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                          <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
-                        
-                        <div class="col-md-6">                            
-                        </div>
-                          <!-- /.col -->
-                        <div class="modal-footer">
-                              <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-                              <button type="button" class="btn btn-warning">Guardar Cambios</button>
-                        </div>
-                        </div>
-                        <!-- /.row -->
-                     </form>   
-              </div>                     
-             </div>      
-        </div>        
-      </div>
-    </section>
-
-
-    <section>
-        <div class="modal modal-primary" id="myModalAdminEvent">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" align="center"><b>Administrar Equipos / Grupos</b></h4>
-              </div>
-              <div class="modal-body">
-
-            <!-- Forma interna de la ventana modal -->
-            <form role="form">
-
-            <div class="box-body">
-            <div class="row">
-            <div class="col-md-6">
-              
-              <div class="form-group">
-                <label>Evento</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">III Simposio de Educación</option>
-                  <option>Torneo De Fútbol</option>
-                  <option>Capacitación en TIC</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="secondNameAffiliate">Nombre del Equipo / Grupo</label>
-                <input class="form-control" type="text" placeholder="Equipo 1" disabled="true">
-              </div>              
-              
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-
-              <div class="form-group">
-                <label>Equipo / Grupo</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Equipo 1</option>
-                  <option>Equipo 2</option>
-                  <option>Equipo 3</option>
-                </select>
-              </div>
-
-             <label for="secondNameAffiliate">Participantes</label>
-              <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                  <input type="text" name="q" class="form-control" placeholder="Buscar Participante">
-                    <span class="input-group-btn">
-                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                      </button>
-                    </span>
-                </div>
-              </form> 
-
-              <button type="button" class="btn btn-outline" width="100%">Agregar Participante</button>
-              
-
-              <!-- /.form-group -->
-            </div>
-            <!-- /.col -->
           </div>
 
-          <section>
-          <label for="">Integrantes Equipo / Grupo</label>
-            <table id="example2" class="table table-bordered table-hover">
+          <!-- Alertas -->
+          <% if (message.length > 0) { %>
+            <div class="alert alert-danger" style="margin-top: 10px;"><%= message %></div>
+          <% } %>
+
+          <div class="box-body">
+
+            <!-- Tabla de eventos-->
+            <div class="table-events fresh-table">
+              <div class="toolbar">
+                <!--button id="alertBtn" class="btn btn-default">Botón de Alerta</button-->
+              </div>
+
+              <table id="fresh-table" class="table">
                 <thead>
-                <tr>
-                  <th>Cédula</th>
-                  <th>Primer Nombre</th>
-                  <th>Segundo nombre</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Inscribir</th>
-                </tr>
+
+                  <th data-field="nameEvent">Nombre </th>
+                  <th data-field="eventType">Tipo </th>
+                  <th data-field="startDate">Comienzo </th>
+                  <th data-field="endDate">Finalizacion </th>
+                  <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
                 </thead>
-                
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <th><input type="checkbox" align="center"/></th>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                  <th><input type="checkbox" align="center"/></th>
-                  
-                </tr>
+                  <% if (objEvent != undefined) { %>
+                  <% objEvent.forEach(function(objEvent) { %>
+                  <tr class="<%= objEvent._id %>" style="text-align:center;">
+                    <td><%= objEvent.nameEvent %></td>
+                    <td><%= objEvent.eventType %> </td>
+                    <td><%= objEvent.startDate %></td>
+                    <td><%= objEvent.endDate %></td>
+                  </tr>
+                  <% }); %>
+                  <% } else { %>
+                  <td colspan="" rowspan="" headers="">Para crear un evento, dé click en el boton <span class="fa fa-plus-circle"></span></td>
+                  <% } %>
                 </tbody>
               </table>
-          </section>
-          <!-- /.row -->
-        </div>
+            </div>
 
+            <!-- Formulario agregar evento -->
+            <form class="form-event" id="formEvent" enctype="multipart/form-data" action="createEvent" method="POST" >
+              <div id="form-add-event" class="col-md-12" style="display: none;">
+                <div>
+                  <label for=""><h2>Ingrese el nuevo evento</h2></label>
+                </div>
+                <section class="col-md-6 ">
+                  <div class="form-group" id="nameEvent">
+                    <label for="bio">Nombre evento:</label><br>
+                    <input class="form-control" type="text" name="nameEvent" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="bio">Tipo de evento</label><br>
+                    <select class="form-control" type="brand" id="eventType" name="eventType">
+                      <option value="Seminario">Seminario</option>
+                      <option value="Capacitacion">Capacitacion</option>
+                      <option value="Asambleas">Asambleas</option>
+                      <option value="Marchas">Marchas</option>
+                      <option value="Cultural">Cultural</option>
+                      <option value="Academico">Academico</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="startDate">
+                    <label for="bio">Fecha de inicio del evento:</label><br>
+                    <input class="form-control" type="date" name="startDate">
+                  </div>
+                  <div class="form-group" id="endDate">
+                    <label for="bio">Fecha de finalización del evento:</label><br>
+                    <input class="form-control" type="date" name="endDate">
+                  </div>
+                </section>
+                <section class="col-md-6">
+                  <div class="form-group">
+                    <label for="bio">Tipo de participacion</label><br>
+                    <select class="form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation">
+                      <option value="Individual">Individual</option>
+                      <option value="Grupal">Grupal</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="numberOfTeams">
+                    <label for="bio">Numero de grupos:</label><br>
+                    <input class="form-control" type="text" name="numberOfTeams" required>
+                  </div>
+                  <div class="form-group" id="teamMembers">
+                    <label for="bio">N° de participantes por grupo:</label><br>
+                    <input class="form-control" type="text" name="teamMembers" required>
+                  </div>
+                </section>
+
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+                <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
+                <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+              </div>
             </form>
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-outline">Inscribir Participantes</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-    </section>
-
-     <section>
-        <div class="modal modal-primary" id="myModalCreateParticipant">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" align="center"><b>Crear Particpantes</b></h4>
-              </div>
-              <div class="modal-body">
-
-            <!-- Forma interna de la ventana modal -->
-            <form role="form">
-
-            <div class="box-body">
-            <div class="row">
-            <div class="col-md-6">
-              
-              <div class="form-group">
-                <label>Evento</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">III Simposio de Educación</option>
-                  <option>Torneo De Fútbol</option>
-                  <option>Capacitación en TIC</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Fecha de inicio del Evento</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
+            <!-- Formulario modificar evento -->
+            <form id="frm-modify-event" class="form-event" method="POST">
+              <div id="form-modify-event" class="col-md-12" style="display: none;" >
+                <div>
+                  <label for=""><h2>Modificar evento</h2></label>
                 </div>
-                <!-- /.input group -->
-              </div>
-
-              
-            </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-
-              <div class="form-group">
-                <label for="secondNameAffiliate">Nombre del Evento</label>
-                <input class="form-control" type="text" placeholder="Nombre del Evento">
-              </div>
-              
-              <div class="form-group">
-                <label>Fecha de finalización del Evento</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
+                <section class="col-md-6 ">
+                  <div class="form-group" id="nameEvent">
+                    <label for="bio">Nombre evento:</label><br>
+                    <input class="form-control" type="text" name="nameEvent" id="mod_nameEvent" required>
                   </div>
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                </div>
-                <!-- /.input group -->
+                  <div class="form-group">
+                    <label for="bio">Tipo de evento</label><br>
+                    <select class="form-control" type="brand" id="mod_eventType" name="eventType">
+                      <option value="Seminario">Seminario</option>
+                      <option value="Capacitacion">Capacitacion</option>
+                      <option value="Asambleas">Asambleas</option>
+                      <option value="Marchas">Marchas</option>
+                      <option value="Cultural">Cultural</option>
+                      <option value="Academico">Academico</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="startDate">
+                    <label for="bio">Fecha de inicio del evento:</label><br>
+                    <input class="form-control" type="date" name="startDate" id="mod_startDate">
+                  </div>
+                  <div class="form-group" id="endDate">
+                    <label for="bio">Fecha de finalización del evento:</label><br>
+                    <input class="form-control" type="date" name="endDate" id="mod_endDate">
+                  </div>
+                </section>
+                <section class="col-md-6">
+                  <div class="form-group">
+                    <label for="bio">Tipo de participacion</label><br>
+                    <select class="form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation" id="mod_typeOfParticipation">
+                      <option value="Individual">Individual</option>
+                      <option value="Grupal">Grupal</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="numberOfTeams">
+                    <label for="bio">Numero de grupos:</label><br>
+                    <input class="form-control" type="text" name="numberOfTeams" id="mod_numberOfTeams" required>
+                  </div>
+                  <div class="form-group" id="teamMembers">
+                    <label for="bio">N° de participantes por grupo:</label><br>
+                    <input class="form-control" type="text" name="teamMembers" id="mod_teamMembers" required>
+                  </div>
+                </section>
+                <input id="button_update" type="submit" class="modify-user btn btn-primary btn-block btn-flat" value="Actualizar usuario"></input>
+                <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
+                <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
               </div>
-
-              
-
-              <!-- /.form-group -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-
             </form>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-outline">Crear Evento</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
           </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-    </section>
-      
+        </section>
 
-    <section>
-        <div class="modal modal-success" id="myModalCreateEvent">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" align="center"><b>Crear Evento</b></h4>
-              </div>
-              <div class="modal-body">
+       </div>
 
-            <!-- Forma interna de la ventana modal -->
-            <form role="form">
+      <% include ./partials/footer.ejs %>
 
-                    <div class="box-body">
-                    <div class="row">
-                    <div class="col-md-6">
-                      
-                      <div class="form-group">
-                        <label>Tipo de Evento</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Deportivo</option>
-                          <option>Cultural</option>
-                          <option>Académico</option>
-                          <option>Capacitación</option>
-                          <option>Otro</option>
-                        </select>
-                      </div>
+    </div>
 
-                      <div class="form-group">
-                        <label>Fecha de inicio del Evento</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
+    <!-- ./wrapper -->
 
-                      <div class="form-group">
-                        <label for="idAffiliate">Número de Equipos / Grupos</label>
-                        <input class="form-control" type="number" min="1">
-                      </div>
-
-                      
-
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-6">
-
-                      <div class="form-group">
-                        <label for="secondNameAffiliate">Nombre del Evento</label>
-                        <input class="form-control" type="text" placeholder="Nombre del Evento">
-                      </div>
-                      
-                      <div class="form-group">
-                        <label>Fecha de finalización del Evento</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="idAffiliate">Integrantes por Grupo / Equipo</label>
-                        <input class="form-control" type="number" min="1">
-                      </div>
-
-                      <!-- /.form-group -->
-                    </div>
-                    <!-- /.col -->
-                  </div>
-                  <!-- /.row -->
-                </div>
-
-            </form>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-outline">Crear Evento</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-    </section>
-
-  </div>
-
-  <% include ./partials/footer.ejs %>
-
-</div>
-<!-- ./wrapper -->
-
-<% include ./partials/footer-scripts.ejs %>
-
-</body>
+    <% include ./partials/footer-scripts.ejs %>
+<script type="text/javascript" src="js/bootstrap-table.js"></script>
+  <script type="text/javascript">
+    var $table = $('#fresh-table'),
+    $alertBtn = $('#alertBtn'),
+    full_screen = false;
+    $().ready(function(){
+      $table.bootstrapTable({
+        toolbar: ".toolbar",
+        showRefresh: false,
+        search: true,
+        showToggle: true,
+        showColumns: true,
+        pagination: true,
+        striped: true,
+        sortable: true,
+        pageSize: 8,
+        pageList: [8,10,25,50],
+        formatShowingRows: function(pageFrom, pageTo, totalRows){
+          //do nothing here, we don't want to show the text "showing x of y from..."
+        },
+        formatRecordsPerPage: function(pageNumber){
+          return pageNumber + " filas visibles";
+        },
+        icons: {
+          refresh: 'fa fa-refresh',
+          toggle: 'fa fa-th-list',
+          columns: 'fa fa-columns',
+          detailOpen: 'fa fa-plus-circle',
+          detailClose: 'fa fa-minus-circle'
+        }
+      });
+    });
+    $(function () {
+      $alertBtn.click(function () {
+        alert("Alerta");
+      });
+    });
+    function operateFormatter(value, row, index) {
+      return [
+        '<a id="'+row._class+'" rel="tooltip" title="Editar" class="table-action edit" href="javascript:void(0)" title="Edit">',
+          ' <i class="fa fa-edit"> Editar</i> ',
+        '</a>',
+        '<a id="'+row._class+'" rel="tooltip" title="Eliminar" class="table-action remove" href="javascript:void(0)" title="Remove" style="color:red; padding-left:1em;">',
+          ' <i class="fa fa-remove"> Eliminar</i> ',
+        '</a>'
+      ].join('');
+    }
+    window.operateEvents = {
+      'click .edit': function (e, value, row, index) {
+        //tableButtonEvent.edit(row._class);
+        //console.log(value, row, index);
+      },
+      'click .remove': function (e, value, row, index) {
+        //tableButtonEvent.remove(row._class);
+        //console.log(value, JSON.stringify(row, null, '\t'), index);
+      }
+    };
+  </script>
+    <!-- Script main-->
+  <script src="js/mainEvents.js" type="text/javascript" charset="utf-8" ></script>
+  </body>
 </html>
