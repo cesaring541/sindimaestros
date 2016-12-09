@@ -21,6 +21,7 @@ module.exports = function(app, passport) {
     sport.startDate           = req.body.startDate;
     sport.endDate             = req.body.endDate;
     sport.typeOfParticipation = req.body.typeOfParticipation;
+    sport.numberOfTeams       = req.body.numberOfTeams;
     sport.gender              = req.body.gender;
 
     sport.save(function (err) {
@@ -58,6 +59,7 @@ module.exports = function(app, passport) {
       objSport.startDate           = req.body.startDate;
       objSport.endDate             = req.body.endDate;
       objSport.typeOfParticipation = req.body.typeOfParticipation;
+      objSport.numberOfTeams        = req.body.numberOfTeams;      
       objSport.gender              = req.body.gender;
 
       objSport.save({_id:id}, function(err){

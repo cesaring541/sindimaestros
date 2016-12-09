@@ -33,18 +33,18 @@ $(document).ready(function(){
 
 	   	$.ajax({ 
 	   		type: 'GET', 
-	   		url: '/read-event/'+dataId,
+	   		url: '/read-sportEvent/'+dataId,
 	   		dataType: 'json',
 	   		success: function (data) {	   			
 	   			$("#button_update").attr("id", dataId);
 
 	   			$("#mod_nameEvent").val(data.nameEvent);
-	   			$("#mod_eventType").val(data.eventType);
+	   			$("#mod_category").val(data.category);
 	   			$("#mod_startDate").val(data.startDate);
 	   			$("#mod_endDate").val(data.endDate);
-	   			$("#mod_typeOfParticipation").val(data.typeOfParticipation);
 	   			$("#mod_numberOfTeams").val(data.numberOfTeams);
-	   			$("#mod_teamMembers").val(data.teamMembers);
+	   			$("#mod_typeOfParticipation").val(data.typeOfParticipation);
+	   			$("#mod_gender").val(data.gender);
 	   			
 	   		},
 	   		error:function(msg) {
@@ -86,12 +86,12 @@ $(document).ready(function(){
 
 
 	// Al dar click en el boton Actualizar...
-	$('.modify-event').click(function(){
+	$('.modify-eventSport').click(function(){
 
 		var dataId = this.id;
-		$('#frm-modify-event').attr("action", "update-event/"+dataId);		
+		$('#frm-modify-eventSport').attr("action", "update-sportEvent/"+dataId);		
 
-		$('#frm-modify-event').submit();
+		$('#frm-modify-eventSport').submit();
 	});
 
 
