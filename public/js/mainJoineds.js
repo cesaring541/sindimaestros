@@ -43,15 +43,15 @@ $(document).ready(function(){
 			$("#form-add").hide(100);
 			$("#form-modify").show(100);
 
-		   	$.ajax({
-		   		type: 'GET', 
-		   		url: '/read-joined/'+dataId,
-		   		dataType: 'json',
-		   		success: function (data) {
+			$.ajax({
+				type: 'GET', 
+				url: '/read-joined/'+dataId,
+				dataType: 'json',
+				success: function (data) {
 		   			
-		   			$("#button_update").attr("id", dataId);
+					$("#button_update").attr("id", dataId);
 
-		   			$("#mod_identityCard").val(data.identityCard);
+					$("#mod_identityCard").val(data.identityCard);
 					$("#mod_fullName").val(data.fullName);
 					$("#mod_birthdate").val(data.birthdate);
 					$("#mod_address").val(data.address);
@@ -82,11 +82,11 @@ $(document).ready(function(){
 					$("#mod_integraCommittee_list option[value='"+data.integraCommittee+"']").attr("selected","selected");
 					$("#mod_delegateGeneralAssembly_list option[value='"+data.delegateGeneralAssembly+"']").attr("selected","selected");
 					$("#mod_employeeClass_list option[value='"+data.employeeClass+"']").attr("selected","selected");
-		   		},
-		   		error:function(msg) {
-		   			console.log(msg+"Peticion de datos fallida");
-		   		}
-		   	});
+				},
+				error:function(msg) {
+					console.log(msg+"Peticion de datos fallida");
+				}
+			});
 		},
 
 		// Al dar click en el boton Eliminar...
