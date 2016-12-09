@@ -52,6 +52,7 @@
                 <thead>
 
                   <th data-field="nameEvent">Nombre </th>
+                  <th data-field="sport">Deporte </th>
                   <th data-field="category">Categoria</th>
                   <th data-field="typeOfParticipation">Tipo de participación </th>
                   <th data-field="gender">Genero </th>
@@ -62,6 +63,7 @@
                   <% objSport.forEach(function(objSport) { %>
                   <tr class="<%= objSport._id %>" style="text-align:center;">
                     <td><%= objSport.nameEvent %></td>
+                    <td><%= objSport.sport %></td>
                     <td><%= objSport.category %> </td>
                     <td><%= objSport.typeOfParticipation %></td>
                     <td><%= objSport.gender %></td>
@@ -104,6 +106,11 @@
                   </div>
                 </section>
                 <section class="col-md-6">
+                  <div class="form-group">
+                    <label for="bio">Deporte:</label><br>
+                    <select class="form-control" type="brand" id="sport" name="sport">
+                    </select>
+                  </div>
                   <div class="form-group" id="numberOfTeams">
                     <label for="bio">numero de equipos:</label><br>
                     <input class="form-control" type="text" name="numberOfTeams">
@@ -161,7 +168,12 @@
                     <input class="form-control" type="date" name="endDate" id="mod_endDate">
                   </div>
                 </section>
+
                 <section class="col-md-6">
+                  <div class="form-group" id="sport">
+                    <label for="bio">Deporte:</label><br>
+                    <input class="form-control" type="text" name="sport" id="mod_sport" required>
+                  </div>
                   <div class="form-group" id="numberOfTeams">
                     <label for="bio">numero de equipos:</label><br>
                     <input class="form-control" type="text" name="numberOfTeams" id="mod_numberOfTeams">

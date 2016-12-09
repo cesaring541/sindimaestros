@@ -1,4 +1,56 @@
 $(document).ready(function(){
+	$.ajax({ 
+ 		type: 'GET', 
+ 		url: 'json/municipalities.json', 
+ 		dataType: 'json',
+ 		success: function (data) {
+ 			var array = data[1].municipality;
+ 			for (var i = 0; i < array.length; i++) {
+ 				$("#municipality_list, #mod_municipality_list, #mod_municipalityWorking_list, #municipalityWorking_list, #municipalitySindical_list, #mod_municipalitySindical_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+ 			};
+ 		},
+ 		error:function(msg) {
+ 			console.log(msg+" Listado de objetos fallido");
+ 		}
+ 	});
+ 	$('#typeOfParticipation').on('change', function() {
+ 		$("#sport option[value='X']").each(function() {
+    		$(this).remove();
+		});
+ 		//$("#sport option:selected").removeAttr("selected");
+ 		if ($('#typeOfParticipation').val()=="Equipo") {
+ 			$.ajax({ 
+		 		type: 'GET', 
+		 		url: 'json/equipo.json', 
+		 		dataType: 'json',
+		 		success: function (data) {
+		 			var array = data[1].EQUIPO;
+		 			for (var i = 0; i < array.length; i++) {
+		 				$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+		 			};
+		 		},
+		 		error:function(msg) {
+		 			console.log(msg+" Listado de objetos fallido");
+		 		}
+		 	});
+ 		}else if ($('#typeOfParticipation').val()=="Conjunto") {
+ 			$.ajax({ 
+		 		type: 'GET', 
+		 		url: 'json/conjunto.json', 
+		 		dataType: 'json',
+		 		success: function (data) {
+		 			var array = data[1].CONJUNTO;
+		 			for (var i = 0; i < array.length; i++) {
+		 				$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+		 			};
+		 		},
+		 		error:function(msg) {
+		 			console.log(msg+" Listado de objetos fallido");
+		 		}
+		 	});
+ 		}
+	});
+
 	// Al dar click en el boton Agregar...
 	$("#add-eventsSports").click(function(){
 		$(".table-eventsSports").hide(100);
@@ -39,6 +91,7 @@ $(document).ready(function(){
 	   			$("#button_update").attr("id", dataId);
 
 	   			$("#mod_nameEvent").val(data.nameEvent);
+	   			$("#mod_sport").val(data.sport);
 	   			$("#mod_category").val(data.category);
 	   			$("#mod_startDate").val(data.startDate);
 	   			$("#mod_endDate").val(data.endDate);

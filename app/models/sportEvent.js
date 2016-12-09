@@ -4,6 +4,7 @@ var bcrypt   = require('bcrypt-nodejs');
 
 var sportEventSchema = mongoose.Schema({    
     nameEvent			: { type: String, required: true },
+    sport 				: { type: String, required: true },
     category	 		: { type: String, enum: ['A','B','C','D'] },
     startDate 			: { type: String, required: true },
     endDate				: { type: String, required: true  },
