@@ -43,18 +43,26 @@ $(document).ready(function(){
 			$("#form-add").hide(100);
 			$("#form-modify").show(100);
 
-		   	$.ajax({
-		   		type: 'GET', 
-		   		url: '/read-team/'+dataId,
-		   		dataType: 'json',
-		   		success: function (data) {
-		   			
+	   	$.ajax({
+	   		type: 'GET', 
+	   		url: '/read-team/'+dataId,
+	   		dataType: 'json',
+	   		success: function (data) {
+
+	   			// Si en el select múltiple hay miembros previamente seleccionados, los deselecciona
+	   			//refrescando el select
+	   			$("#mod_members_list option:selected").removeAttr("selected");
+	   			
 					$("#button_update").attr("id", dataId);
 
 					$("#mod_name").val(data.name);
-					$("#mod_members_list option[value='"+data.members+"']").attr("selected","selected");
 					$("#mod_zone_list option[value='"+data.zone+"']").attr("selected","selected");
 					$("#mod_municipality_list option[value='"+data.municipality+"']").attr("selected","selected");
+
+					// Selecciona las opciones del select multiple
+					for (var i = 0; i < data.members.length; i++) {
+						$("#mod_members_list option[value='" + data.members[i] + "']").prop("selected", true);
+					}
 				},
 				error:function(msg) {
 					console.log(msg+"Peticion de datos fallida");

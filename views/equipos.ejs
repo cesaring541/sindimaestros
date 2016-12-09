@@ -87,12 +87,12 @@
 
               <div class="form-group">
                 <label for="bio">Miembros:</label><br>
-                <select class="form-control" type="brand" name="members">
+                <select multiple class="form-control" type="brand" required="true" name="members">
                   <% if (objectJoined) { %>
                     <% objectJoined.forEach(function(objJoi) { %>
                       <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
                     <% }); %>
-                  <% } %>
+                  <% } %>                  
                 </select>
               </div>
             </section>
@@ -136,12 +136,12 @@
 
                 <div class="form-group" id="members">
                   <label for="bio">Miembros:</label><br>
-                  <select class="form-control" type="brand" id="members" name="members">
+                  <select multiple class="form-control" type="brand" id="mod_members_list" required="true" name="members">                      
                     <% if (objectJoined) { %>
                       <% objectJoined.forEach(function(objJoi) { %>
                         <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
                       <% }); %>
-                    <% } %>
+                    <% } %>                  
                   </select>
                 </div>
               </section>
