@@ -45,6 +45,7 @@ require('./app/eventsRoutes.js')(app, passport);
 require('./app/joinedsRoutes.js')(app, passport);
 require('./app/laborUnionsRoutes.js')(app, passport);
 require('./app/sportEventsRoutes.js')(app, passport);
+require('./app/teamsRoutes.js')(app, passport);
 
 
 var configDB = require('./config/database.js');

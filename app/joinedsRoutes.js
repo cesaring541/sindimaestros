@@ -3,10 +3,10 @@ var Joined = require('./models/joined'); //Import database model
 module.exports = function(app, passport) {
 
   app.get('/joineds', isLoggedIn, function(req, res, next) {
-    Joined.find({},function(err, objJoined){
+    Joined.find({},function(err, objectJoined){
       res.render('afiliados.ejs', {
         user : req.user, // Logged user
-        objJoined: objJoined,
+        objectJoined: objectJoined,
         message: ""
       });
     });
