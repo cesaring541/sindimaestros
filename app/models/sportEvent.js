@@ -7,7 +7,7 @@ var sportEventSchema = mongoose.Schema({
     category	 		: { type: String, enum: ['A','B','C','D'] },
     startDate 			: { type: Date },
     endDate				: { type: Date },
-    typeOfParticipation : { type: String, enum: ['Individual','Grupal'] },
+    typeOfParticipation : { type: String, enum: ['Conjunto', 'Equipo','Individual'] },
     gender 				: { type: String, enum: ['M','F','O'] }
 });
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eventos deportivos | Sindimaestros</title>
+    <title>Eventos Deportivos| Sindimaestros</title>
+
     <% include ./partials/head.ejs %>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
-    <!-- Site wrapper -->
     <div class="wrapper">
 
       <% include ./partials/nav-header.ejs %>
@@ -16,224 +16,238 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>Gestionar Eventos Deportivos</h1>
+          <h1>
+            Gestionar Eventos Deportivos
+          </h1>
         </section>
 
-        <!-- show any messages that come back with authentication -->
-        <% if (message.length > 0) { %>
-            <div class="alert alert-danger"><%= message %></div>
-        <% } %>
-        
-        <!-- Main content -->
         <section class="content">
-            <div class="row">
-
-            <!-- Panel de Creacion de Eventos -->
-              <div class="col-md-6">
-                <div class="box box-success">
-                  <div class="box-header with-border label-success" align="center">
-                    <h3 class="box-title"><b>CREAR EVENTO DEPORTIVO</b></h3>          
-                  </div>
-                  <div class="box-body">
-                   <form role="form" action="new-sportEvent" method="POST">
-                      <div class="row">
-                        <div class="col-md-6">
-                          
-                          <div class="form-group">
-                            <label for="secondNameAffiliate">Nombre del Evento</label>
-                            <input class="form-control" type="text" placeholder="Nombre del Evento" name="nameEvent">
-                          </div>
-
-                          <div class="form-group">
-                            <label>Fecha de inicio del Evento</label>
-                            <div class="date wideForm">
-                              <input type="date" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa" name="startDate">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label>Tipo de Participacion</label>
-                            <select class="form-control select2 wideForm" name="typeOfParticipation">
-                              <option value="Individual">Individual</option>
-                              <option value="Grupal">Grupal</option>
-                            </select>
-                          </div>
-                            
-                        </div>
-
-                        <div class="col-md-6">
-                            
-                          <div class="form-group">
-                            <label>Categoría</label>
-                            <select class="form-control select2 wideForm" name="category">
-                              <option value="A">A</option>
-                              <option value="B">B</option>
-                              <option value="C">C</option>
-                              <option value="D">D</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <label>Fecha de finalización del Evento</label>
-                            <div class="date wideForm">
-                              <input type="date" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa" name="endDate">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label>Género</label>
-                            <select class="form-control select2 wideForm" name="gender">
-                              <option value="M">Masculino</option>
-                              <option value="F">Femenino</option>
-                            </select>
-                          </div>
-
-                        </div>
-                      </div>
-
-                      <div class="modal-footer label-success">
-                        <button type="button" class="btn btn-success">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Crear Evento</button>
-                      </div>
-                      <!-- /.row -->
-                   </form>   
-                  </div>                   
-                </div>      
+          <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-5">
+              <div class="contains">
+                <span class="btn bg-green" id="add-eventsSports"> <i class="fa fa-plus-circle fa-5x pull-left" href="#"></i> Agregar evento deportivo </span>
               </div>
-
-            <!-- Panel Tabla de Eventos -->
-              <div class="col-md-6">
-                <div class="box box-success">
-                  <div class="box-header with-border label-success" align="center">
-                    <h3 class="box-title"><b>LISTA DE EVENTOS DEPORTIVOS</b></h3>         
-                  </div>
-
-                  <div class="content">
-                    <table id="example2" class="table table-bordered table-hover">
-                      <thead>
-                        <tr class="label-success">
-                          <th>Nombre del Evento</th>
-                          <th>Categoría</th>
-                          <th>Fecha de Inicio</th>
-                          <th>Fecha de Finalización</th>
-                          <th>Tipo</th>
-                          <th>Género</th>
-                        </tr>
-                      </thead>
-                                
-                      <tbody>
-                        <% if (objSport) { %>
-                        <% objSport.forEach(function(obj) { %>
-                        <tr class="<%= obj._id %>" style="text-align:center;">
-                          <td><%= obj.nameEvent %></td>
-                          <td><%= obj.category %></td>
-                          <td><%= obj.startDate %> </td>
-                          <td><%= obj.endDate %></td>
-                          <td><%= obj.typeOfParticipation %></td>
-                          <td><%= obj.gender %></td>
-                          
-                          <td>
-                            <button id="<%= obj._id %>" class="show-modify-form btn btn-warning btn-block">Editar <i class="fa fa-pencil"></i></button>
-                            <input type="hidden" value="<%= obj._id %>">
-                          </td>
-
-                        </tr>
-                        <% }); %>
-                        <% } else { %>
-                        <td colspan="" rowspan="" headers="">Para crear un usuario, dé click en el boton <span class="fa fa-plus-circle"></span></td>
-                        <% } %>
-                      </tbody>
-                    </table>
-                  </div>
-                         
-                </div>      
-              </div>
-
-            <!-- Panel de Modificación de Eventos -->
-              <div class="col-md-6">
-                <div class="box box-info">
-                  <div class="box-header with-border label-info" align="center">
-                    <h3 class="box-title"><b>MODIFICAR EVENTO DEPORTIVO</b></h3>          
-                  </div>
-                  <div class="box-body">
-                     <form role="form" id="frm-modify-obj" method="POST">
-                        <div class="row">
-                          <div class="col-md-6">
-                            
-                            <div class="form-group">
-                              <label for="secondNameAffiliate">Nombre del Evento</label>
-                              <input class="form-control" type="text" placeholder="Nombre del Evento" id="mod_nameEvent" name="nameEvent">
-                            </div>
-
-                            <div class="form-group">
-                              <label>Fecha de inicio del Evento</label>
-                              <div class="date wideForm">
-                                <input type="date" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa" id="mod_startDate" name="startDate">
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Tipo de Participacion</label>
-                              <select class="form-control select2 wideForm" id="mod_typeOfParticipation" name="typeOfParticipation">
-                                <option value="Individual">Individual</option>
-                                <option value="Grupal">Grupal</option>
-                              </select>
-                            </div>
-                              
-                          </div>
-
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>Categoría</label>
-                              <select class="form-control select2 wideForm" id="mod_category" name="category">
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                              </select>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Fecha de finalización del Evento</label>
-                              <div class="date wideForm">
-                                <input type="date" class="form-control pull-right" placeholder="dd/mm/aaaa" id="mod_endDate" name="endDate">
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Género</label>
-                              <select class="form-control select2 wideForm" id="mod_gender" name="gender">
-                                <option value="M">Masculino</option>
-                                <option value="F">Femenino</option>
-                              </select>
-                            </div>
-                          </div>
-                          
-                        </div>
-
-                        <div class="modal-footer label-info">
-                          <input id="button_update" type="submit" class="modify-obj btn btn-info" value="Actualizar usuario"></input>
-                          <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
-                          <input type="button" class="list-users btn btn-info" value="Cancelar"></input>
-                        </div>
-                        <!-- /.row -->
-                     </form>   
-                  </div>                   
-                </div>      
-              </div>
-            
             </div>
+            <div class="col-md-3 col-sm-4 col-xs-5">
+              <div class="contains">
+                <span class="list-eventsSports btn btn-primary"><i class="fa fa-reorder fa-5x pull-left"></i> Listar eventos deportivos </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alertas -->
+          <% if (message.length > 0) { %>
+            <div class="alert alert-danger" style="margin-top: 10px;"><%= message %></div>
+          <% } %>
+
+          <div class="box-body">
+
+            <!-- Tabla de eventos deportivos-->
+            <div class="table-eventsSports fresh-table">
+              <div class="toolbar">
+                <!--button id="alertBtn" class="btn btn-default">Botón de Alerta</button-->
+              </div>
+
+              <table id="fresh-table" class="table">
+                <thead>
+
+                  <th data-field="nameEvent">Nombre </th>
+                  <th data-field="category">Categoria</th>
+                  <th data-field="typeOfParticipation">Tipo de participación </th>
+                  <th data-field="gender">Genero </th>
+                  <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
+                </thead>
+                <tbody>
+                  <% if (objSport != undefined) { %>
+                  <% objSport.forEach(function(objSport) { %>
+                  <tr class="<%= objSport._id %>" style="text-align:center;">
+                    <td><%= objSport.nameEvent %></td>
+                    <td><%= objSport.category %> </td>
+                    <td><%= objSport.typeOfParticipation %></td>
+                    <td><%= objSport.gender %></td>
+                  </tr>
+                  <% }); %>
+                  <% } else { %>
+                  <td colspan="" rowspan="" headers="">Para crear un evento deportivo, dé click en el boton <span class="fa fa-plus-circle"></span></td>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Formulario agregar evento -->
+            <form class="form-eventSport" id="formEventSport" action="new-sportEvent" method="POST" >
+              <div id="form-add-eventSport" class="col-md-12" style="display: none;">
+                <div>
+                  <label for=""><h2>Ingrese el nuevo evento deportivo</h2></label>
+                </div>
+                <section class="col-md-6 ">
+                  <div class="form-group" id="nameEvent">
+                    <label for="bio">Nombre evento:</label><br>
+                    <input class="form-control" type="text" name="nameEvent" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="bio">Categoria</label><br>
+                    <select class="form-control" type="brand" id="category" name="category">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="startDate">
+                    <label for="bio">Fecha de inicio del evento:</label><br>
+                    <input class="form-control" type="date"  name="startDate">
+                  </div>
+                </section>
+                <section class="col-md-6">
+                  <div class="form-group" id="endDate">
+                    <label for="bio">Fecha de finalización del evento:</label><br>
+                    <input class="form-control" type="date" name="endDate">
+                  </div>
+                  <div class="form-group">
+                    <label for="bio">Tipo de participacion</label><br>
+                    <select class="form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation">
+                      <option value="Conjunto">Conjunto</option>
+                      <option value="Equipo">Equipo</option>
+                      <option value="Individual">Individual</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="bio">Genero</label><br>
+                    <select class="form-control" type="brand" id="gender" name="gender">
+                      <option value="M">M</option>
+                      <option value="F">F</option>
+                      <option value="O">O</option>
+                    </select>
+                  </div>
+                 </section>
+
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+                <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
+                <input type="button" class="list-eventsSports btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+              </div>
+            </form>
+
+            <!-- Formulario modificar evento -->
+            <form id="frm-modify-eventSport" class="form-eventSport" method="POST">
+              <div id="form-modify-eventSport" class="col-md-12" style="display: none;" >
+                <div>
+                  <label for=""><h2>Modificar evento deportivo</h2></label>
+                </div>
+                <section class="col-md-6 ">
+                  <div class="form-group" id="nameEvent">
+                    <label for="bio">Nombre evento:</label><br>
+                    <input class="form-control" type="text" name="nameEvent" id="mod_nameEvent"required>
+                  </div>
+                  <div class="form-group">
+                    <label for="bio">Categoria</label><br>
+                    <select class="form-control" type="brand" id="mod_category" name="category">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="startDate">
+                    <label for="bio">Fecha de inicio del evento:</label><br>
+                    <input class="form-control" type="date"  name="startDate">
+                  </div>
+                </section>
+                <section class="col-md-6">
+                  <div class="form-group" id="endDate">
+                    <label for="bio">Fecha de finalización del evento:</label><br>
+                    <input class="form-control" type="date" name="endDate" id="mod_endDate">
+                  </div>
+                  <div class="form-group">
+                    <label for="bio">Tipo de participacion</label><br>
+                    <select class="form-control" type="brand" id="mod_typeOfParticipation" name="typeOfParticipation">
+                      <option value="Conjunto">Conjunto</option>
+                      <option value="Equipo">Equipo</option>
+                      <option value="Individual">Individual</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="bio">Genero</label><br>
+                    <select class="form-control" type="brand" id="mod_gender" name="gender">
+                      <option value="M">M</option>
+                      <option value="F">F</option>
+                      <option value="O">O</option>
+                    </select>
+                  </div>
+                 </section>
+                <input id="button_update" type="submit" class="modify-eventSport btn btn-primary btn-block btn-flat" value="Actualizar evento"></input>
+                <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
+                <input type="button" class="list-eventsSports btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+              </div>
+            </form>
+          </div>
         </section>
-      </div>
+
+       </div>
 
       <% include ./partials/footer.ejs %>
 
     </div>
+
     <!-- ./wrapper -->
 
     <% include ./partials/footer-scripts.ejs %>
-
-    <script src="js/jquerySportEvents.js" type="text/javascript" charset="utf-8"></script>
-
+<script type="text/javascript" src="js/bootstrap-table.js"></script>
+  <script type="text/javascript">
+    var $table = $('#fresh-table'),
+    $alertBtn = $('#alertBtn'),
+    full_screen = false;
+    $().ready(function(){
+      $table.bootstrapTable({
+        toolbar: ".toolbar",
+        showRefresh: false,
+        search: true,
+        showToggle: true,
+        showColumns: true,
+        pagination: true,
+        striped: true,
+        sortable: true,
+        pageSize: 8,
+        pageList: [8,10,25,50],
+        formatShowingRows: function(pageFrom, pageTo, totalRows){
+          //do nothing here, we don't want to show the text "showing x of y from..."
+        },
+        formatRecordsPerPage: function(pageNumber){
+          return pageNumber + " filas visibles";
+        },
+        icons: {
+          refresh: 'fa fa-refresh',
+          toggle: 'fa fa-th-list',
+          columns: 'fa fa-columns',
+          detailOpen: 'fa fa-plus-circle',
+          detailClose: 'fa fa-minus-circle'
+        }
+      });
+    });
+    $(function () {
+      $alertBtn.click(function () {
+        alert("Alerta");
+      });
+    });
+    function operateFormatter(value, row, index) {
+      return [
+        '<a id="'+row._class+'" rel="tooltip" title="Editar" class="table-action edit" href="javascript:void(0)" title="Edit">',
+          ' <i class="fa fa-edit"> Editar</i> ',
+        '</a>',
+      ].join('');
+    }
+    window.operateEvents = {
+      'click .edit': function (e, value, row, index) {
+        tableButtonEvent.edit(row._class);
+        //console.log(value, row, index);
+      },
+      'click .remove': function (e, value, row, index) {
+        //tableButtonEvent.remove(row._class);
+        //console.log(value, JSON.stringify(row, null, '\t'), index);
+      }
+    };
+  </script>
+    <!-- Script main-->
+  <script src="js/mainSportEvents.js" type="text/javascript" charset="utf-8" ></script>
   </body>
 </html>

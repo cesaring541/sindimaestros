@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var joinedSchema = mongoose.Schema({
 	identityCard			: { type: String, required: true },    
 	fullName				: { type: String, required: true },
-	birthdate				: { type: Date },
+	birthdate				: { type: String, required: true },
 	address					: { type: String, required: true },
 	email					: { type: String, required: true },
 	rh						: { type: String, enum: ['AB+','AB-','A+','A-','B+','B-','O+','O-'] },
@@ -24,7 +24,7 @@ var joinedSchema = mongoose.Schema({
 	professional			: { type: String, enum: ['Si','No'] },
 	MasterDegree			: { type: String, enum: ['Si','No'] },	
 	promotionLadder			: { type: String, required: true },
-	Teaching				: { type: String, enum: ['Si','No'] },
+	Teaching				: { type: String, enum: ['1278','2277'] },
 	level					: { type: String, enum: ['Preescolar','Primaria','Basica','Media'] },
 	municipalitySindical	: { type: String, required: true },
 	affiliationPaymentType	: { type: String, enum: ['Nomina','Ventanilla'] },

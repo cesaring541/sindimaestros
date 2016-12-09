@@ -7,7 +7,7 @@ $(document).ready(function(){
  		success: function (data) {
  			var array = data[1].municipality;
  			for (var i = 0; i < array.length; i++) {
- 				$("#municipality_list, #mod_municipality_list").append("<option value="+ array[i] +">" + array[i] + "</option>");
+ 				$("#municipality_list, #mod_municipality_list, #mod_municipalityWorking_list, #municipalityWorking_list, #municipalitySindical_list, #mod_municipalitySindical_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
  			};
  		},
  		error:function(msg) {

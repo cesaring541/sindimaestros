@@ -77,7 +77,7 @@
 
 
         <!-- Formulario agregar -->
-        <form class="form-joined" id="form-add" style="display: none;" enctype="multipart/form-data" action="new-joined" method="POST">
+        <form class="form-joined" id="form-add" style="display: none;" action="new-joined" method="POST">
           
           <div>
             <label for=""><h2>Ingrese el nuevo afiliado</h2></label>
@@ -194,7 +194,7 @@
             </div>
 
             <div class="form-group">
-              <label for="bio">typeOfAppointment:</label><br>
+              <label for="bio">Tipo de Nombramiento:</label><br>
               <select class="form-control" type="brand" name="typeOfAppointment">
                 <option value="Provisional">Provisional</option>
                 <option value="Propiedad">Propiedad</option>
@@ -217,13 +217,14 @@
               </select>
             </div>
 
-            <div class="form-group" id="municipalityWorking">
-              <label for="bio">municipalityWorking:</label><br>
-              <input class="form-control" type="text" name="municipalityWorking" required>
+            <div class="form-group">
+              <label for="bio">Municipio al que pertenece la institucion:</label><br>
+              <select class="form-control" type="brand" id="municipalityWorking_list" name="municipalityWorking">
+              <!--json-->
+              </select>
             </div>
-
             <div class="form-group" id="degree">
-              <label for="bio">degree:</label><br>
+              <label for="bio">Titulo:</label><br>
               <input class="form-control" type="text" name="degree" required>
             </div>
 
@@ -244,18 +245,16 @@
             </div>
 
             <div class="form-group" id="promotionLadder">
-              <label for="bio">promotionLadder:</label><br>
+              <label for="bio">Grado de escalafon:</label><br>
               <input class="form-control" type="text" name="promotionLadder" required>
             </div>
-
             <div class="form-group">
-              <label for="bio">Teaching:</label><br>
-              <select class="form-control" type="brand" name="Teaching">
-                <option value="Si">Si</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-
+                <label for="bio">Docente:</label><br>
+                <select class="form-control" type="brand" id="Teaching_list" name="Teaching">
+                  <option value="1278">1278</option>
+                  <option value="2277">2277</option>
+                </select>
+              </div>
             <div class="form-group">
               <label for="bio">Nivel:</label><br>
               <select class="form-control" type="brand" name="level">
@@ -265,12 +264,12 @@
                 <option value="Media">Media</option>
               </select>
             </div>
-
-            <div class="form-group" id="municipalitySindical">
-              <label for="bio">municipalitySindical:</label><br>
-              <input class="form-control" type="text" name="municipalitySindical" required>
+            <div class="form-group">
+              <label for="bio">municipio (Sindicato):</label><br>
+              <select class="form-control" type="brand" id="municipalitySindical_list" name="municipalitySindical">
+              <!--json-->
+              </select>
             </div>
-
             <div class="form-group">
               <label for="bio">Tipo de pago:</label><br>
               <select class="form-control" type="brand" name="affiliationPaymentType">
@@ -309,7 +308,7 @@
             </div>
 
             <div class="form-group">
-              <label for="bio">delegateGeneralAssembly:</label><br>
+              <label for="bio">Delegado a la asamblea general:</label><br>
               <select class="form-control" type="brand" name="delegateGeneralAssembly">
                 <option value="Si">Si</option>
                 <option value="No">No</option>
@@ -452,7 +451,7 @@
               </div>
 
               <div class="form-group" id="typeOfAppointment">
-                <label for="bio">typeOfAppointment:</label><br>
+                <label for="bio">Tipo de Nombramiento:</label><br>
                 <select class="form-control" type="brand" id="mod_typeOfAppointment_list" name="typeOfAppointment">
                   <option value="Provisional">Provisional</option>
                   <option value="Propiedad">Propiedad</option>
@@ -474,14 +473,14 @@
                   <option value="PensionadoRetirado">Pensionado Retirado</option>
                 </select>
               </div>
-
-              <div class="form-group" id="municipalityWorking">
-                <label for="bio">municipalityWorking:</label><br>
-                <input id="mod_municipalityWorking" class="form-control" type="text" name="municipalityWorking" required>
+              <div class="form-group">
+                <label for="bio">Municipio al que pertenece la institucion:</label><br>
+                <select class="form-control" type="brand" id="mod_municipalityWorking_list" name="municipalityWorking">
+                <!--json-->
+                </select>
               </div>
-
               <div class="form-group" id="degree">
-                <label for="bio">degree:</label><br>
+                <label for="bio">Titulo:</label><br>
                 <input id="mod_degree" class="form-control" type="text" name="degree" required>
               </div>
 
@@ -502,15 +501,15 @@
               </div>
 
               <div class="form-group" id="promotionLadder">
-                <label for="bio">promotionLadder:</label><br>
+                <label for="bio">Grado de escalafon:</label><br>
                 <input id="mod_promotionLadder" class="form-control" type="text" name="promotionLadder" required>
               </div>
 
               <div class="form-group" id="Teaching">
-                <label for="bio">Teaching:</label><br>
+                <label for="bio">Docente:</label><br>
                 <select class="form-control" type="brand" id="mod_Teaching_list" name="Teaching">
-                  <option value="Si">Si</option>
-                  <option value="No">No</option>
+                  <option value="1278">1278</option>
+                  <option value="2277">2277</option>
                 </select>
               </div>
 
@@ -523,11 +522,12 @@
                   <option value="Media">Media</option>
                 </select>
               </div>
-
-              <div class="form-group" id="municipalitySindical">
-                <label for="bio">municipalitySindical:</label><br>
-                <input id="mod_municipalitySindical" class="form-control" type="text" name="municipalitySindical" required>
-              </div>
+              <div class="form-group">
+                <label for="bio">municipio (Sindicato):</label><br>
+                <select class="form-control" type="brand" id="mod_municipalitySindical_list" name="municipalitySindical">
+                <!--json-->
+                </select>
+              </div>              
 
               <div class="form-group" id="affiliationPaymentType">
                 <label for="bio">Tipo de pago:</label><br>
@@ -567,7 +567,7 @@
               </div>
 
               <div class="form-group" id="delegateGeneralAssembly">
-                <label for="bio">delegateGeneralAssembly:</label><br>
+                <label for="bio">Delegado a la Asamblea General:</label><br>
                 <select class="form-control" type="brand" id="mod_delegateGeneralAssembly_list" name="delegateGeneralAssembly">
                   <option value="Si">Si</option>
                   <option value="No">No</option>
