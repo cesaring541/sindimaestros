@@ -20,7 +20,7 @@ $(document).ready(function(){
 	$("#add-object").click(function(){
 		$(".table-objects").hide(100);
 		$("#form-add").show(100);
-		$("#frm-modify").hide(100);
+		$("#form-modify").hide(100);
 	});
 
 
@@ -28,7 +28,7 @@ $(document).ready(function(){
 	$(".list-objects").click(function(){
 		$(".table-objects").show(100);
 		$("#form-add").hide(100);
-		$("#frm-modify").hide(100);
+		$("#form-modify").hide(100);
 	});
 
 	/*
@@ -41,7 +41,7 @@ $(document).ready(function(){
 
 			$(".table-objects").hide(100);
 			$("#form-add").hide(100);
-			$("#frm-modify").show(100);
+			$("#form-modify").show(100);
 
 		   	$.ajax({
 		   		type: 'GET', 
@@ -117,8 +117,8 @@ $(document).ready(function(){
 	$('.modify-object').click(function(){
 
 		var dataId = this.id;
-		$('#frm-modify').attr("action", "update-joined/"+dataId);		
-		$('#frm-modify').submit();
+		$('#form-modify').attr("action", "update-joined/"+dataId);		
+		$('#form-modify').submit();
 
 	});
 });

@@ -18,7 +18,7 @@ module.exports = function(app, passport) {
 	  	var objJoined = new Joined();
 
 		objJoined.identityCard 						= req.body.identityCard;
-		objJoined.fullname 								= req.body.fullname;
+		objJoined.fullName 								= req.body.fullName;
 		objJoined.birthdate 								= req.body.birthdate;
 		objJoined.address 									= req.body.address;
 		objJoined.email 										= req.body.email;
@@ -80,8 +80,8 @@ module.exports = function(app, passport) {
     Joined.findById(id, function(err, objJoined){
   		if (err) ;
 
-    	objJoined.fullname 								= req.body.fullname;
 		objJoined.identityCard 						= req.body.identityCard;
+    	objJoined.fullName 								= req.body.fullName;
 		objJoined.birthdate 							= req.body.birthdate;
 		objJoined.address 								= req.body.address;
 		objJoined.email 									= req.body.email;
