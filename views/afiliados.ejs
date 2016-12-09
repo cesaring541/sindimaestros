@@ -23,12 +23,12 @@
       <div class="row">
         <div class="col-md-3 col-sm-4 col-xs-5">
           <div class="contains">
-            <span class="btn bg-green" id="add-joined"> <i class="fa fa-plus-circle fa-5x pull-left" href="#"></i> Agregar Afiliado </span>
+            <span class="btn bg-green" id="add-object"> <i class="fa fa-plus-circle fa-5x pull-left" href="#"></i> Agregar Afiliado </span>
           </div>
         </div>
         <div class="col-md-3 col-sm-4 col-xs-5">
           <div class="contains">
-            <span class="list-joineds btn btn-primary"><i class="fa fa-reorder fa-5x pull-left"></i> Listar Afiliados </span>
+            <span class="list-objects btn btn-primary"><i class="fa fa-reorder fa-5x pull-left"></i> Listar Afiliados </span>
           </div>
         </div>
       </div>
@@ -40,8 +40,8 @@
 
       <div class="box-body">
 
-        <!-- Tabla de usuarios -->
-        <div class="table-users fresh-table">
+        <!-- Tabla -->
+        <div class="table-objects fresh-table">
           <div class="toolbar">
             <!--button id="alertBtn" class="btn btn-default">Botón de Alerta</button-->
           </div>
@@ -49,7 +49,7 @@
           <table id="fresh-table" class="table">
             <thead>
               <th data-field="identityCard">Documento de identidad </th>
-              <th data-field="fullname">Nombre </th>
+              <th data-field="fullName">Nombre </th>
               <th data-field="email">Email </th>
               <th data-field="state">Estado </th>
               <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
@@ -75,9 +75,10 @@
           </table>
         </div>
 
+
         <!-- Formulario agregar -->
-        <form class="form-joined" id="formJoined" enctype="multipart/form-data" action="createJoined" method="POST" >
-          <div id="form-add-joined" class="col-md-12" style="display: none;">
+        <form class="form-joined" id="form-add"  style="display: none;" enctype="multipart/form-data" action="createJoined" method="POST">
+          <div id="form-add-joined" class="col-md-12">
             <div>
               <label for=""><h2>Ingrese el nuevo afiliado</h2></label>
             </div>
@@ -88,9 +89,9 @@
                 <input class="form-control" type="text" name="identityCard" required>
               </div>
 
-              <div class="form-group" id="fullname">
+              <div class="form-group" id="fullName">
                 <label for="bio">Nombre:</label><br>
-                <input class="form-control" type="text" name="fullname" required>
+                <input class="form-control" type="text" name="fullName" required>
               </div>
 
               <div class="form-group" id="birthdate">
@@ -134,7 +135,7 @@
 
               <div class="form-group">
                 <label for="bio">Municipio:</label><br>
-                <select class="form-control" type="brand" name="municipality">
+                <select class="form-control" type="brand" id="municipality_list" name="municipality">
                 <!--json-->
                 </select>
               </div>
@@ -204,7 +205,9 @@
                   <option value="Municipal">Municipal</option>
                 </select>
               </div>
+            </section>
 
+            <section class="col-md-6 ">
               <div class="form-group">
                 <label for="bio">Estado:</label><br>
                 <select class="form-control" type="brand" name="state">
@@ -263,497 +266,332 @@
                 </select>
               </div>
 
-             
-
-              <div class="form-group" id="attendant" style="display: none;">
-                <div class="form-group" id="nameAttendant1">
-                  <label for="bio">Nombres y apellidos del acudiente 1:</label><br>
-                  <input class="form-control" type="text" name="nameAttendant1" >
-                </div>
-                <div class="form-group" id="phoneAttendant1">
-                  <label for="bio">Teléfono fijo del acudiente 1:</label><br>
-                  <input class="form-control" type="number" name="phoneAttendant1" >
-                </div>
-
-                <div class="form-group" id="nameAttendant2">
-                  <label for="bio">Nombres y apellidos del acudiente 2:</label><br>
-                  <input class="form-control" type="text" name="nameAttendant2" >
-                </div>
-                <div class="form-group" id="phoneAttendant2">
-                  <label for="bio">Teléfono fijo del acudiente 2:</label><br>
-                  <input class="form-control" type="number" name="phoneAttendant2" >
-                </div>
-                
-                
+              <div class="form-group" id="municipalitySindical">
+                <label for="bio">municipalitySindical:</label><br>
+                <input class="form-control" type="text" name="municipalitySindical" required>
               </div>
 
               <div class="form-group">
-                <label for="bio">Estado:</label><br>
-                <select class="form-control" type="brand" name="status">
-                  <option value="Activo">Activo</option>
-                  <option value="Inactivo">Inactivo</option>
+                <label for="bio">Tipo de pago:</label><br>
+                <select class="form-control" type="brand" name="affiliationPaymentType">
+                  <option value="Nomina">Nomina</option>
+                  <option value="Ventanilla">Ventanilla</option>
                 </select>
               </div>
 
-            </section>
-
-            <section class="col-md-6">
-              
-              <div class="form-group" id="code">
-                <label for="bio">Documento de identidad:</label><br>
-                <input class="form-control" type="number" name="code" required>
+              <div class="form-group">
+                <label for="bio">Comisión a la cual está integrado/a:</label><br>
+                <select class="form-control" type="brand" name="integraCommission">
+                  <option value="Electoral">Electoral</option>
+                  <option value="Financiera">Financiera</option>
+                  <option value="Etica">Ética</option>
+                  <option value="Mujer">Mujer</option>
+                  <option value="Pedagogica">Pedagógica</option>
+                </select>
               </div>
 
-              <div class="form-group" id="lastname">
-                <label for="bio">Apellido:</label><br>
-                <input class="form-control" type="text" name="lastname" required>
+              <div class="form-group">
+                <label for="bio">Zona:</label><br>
+                <select class="form-control" type="brand" name="Zone">
+                  <option value="Uno">Uno</option>
+                  <option value="Dos">Dos</option>
+                </select>
               </div>
 
-              <div class="form-group" id="password">
-                <label for="bio">Contraseña:</label><br>
-                <input class="form-control" type="password" name="password" required>
-                <div id="pswd_info" style="display: none;">
-                  <h4>La contraseña debería cumplir con los siguientes requerimientos:</h4>
-                  <p id="length">Debería tener <strong>8 carácteres</strong> como mínimo</p>
-                  <p id="letter">Al menos debería tener <strong>una letra minúscula</strong></p>
-                  <p id="capital">Al menos debería tener <strong>una letra mayúscula</strong></p>
-                  <p id="number">Al menos debería tener <strong>un número</strong></p>
-                  <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
-                </div>
+              <div class="form-group">
+                <label for="bio">Comité al cual está integrado/a:</label><br>
+                <select class="form-control" type="brand" name="integraCommittee">
+                  <option value="Ninguno">Ninguno</option>
+                  <option value="Municipal">Municipal</option>
+                  <option value="Zonal">Zonal</option>
+                  <option value="Directivo">Directivo</option>
+                </select>
               </div>
-              
-              <div class="form-group" id="attendant2" style="display: none;">
-                <div class="form-group" id="addressAttendant1">
-                  <label for="bio">Dirección del acudiente 1:</label><br>
-                  <input class="form-control" type="text" name="addressAttendant1" >
-                </div>
 
-                <div class="form-group" id="cellphoneAttendant1">
-                  <label for="bio">Teléfono celular del acudiente 1:</label><br>
-                  <input class="form-control" type="number" name="cellphoneAttendant1" >
-                </div>
-
-                <div class="form-group" id="addressAttendant2">
-                  <label for="bio">Dirección del acudiente 2:</label><br>
-                  <input class="form-control" type="text" name="addressAttendant2" >
-                </div>
-
-                <div class="form-group" id="cellphoneAttendant2">
-                  <label for="bio">Teléfono celular del acudiente 2:</label><br>
-                  <input class="form-control" type="number" name="cellphoneAttendant2" >
-                </div>
+              <div class="form-group">
+                <label for="bio">delegateGeneralAssembly:</label><br>
+                <select class="form-control" type="brand" name="delegateGeneralAssembly">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                  <option value="Municipio">Municipio</option>
+                </select>
               </div>
-              
 
-              
-
-              <!--<div>
-                <label for="bio">Descripcion del curso:</label><br>
-                <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
-              </div>-->
+              <div class="form-group">
+                <label for="bio">Tipo de empleado:</label><br>
+                <select class="form-control" type="brand" name="employeeClass">
+                  <option value="Docente">Docente</option>
+                  <option value="Directivo Docente">Directivo Docente</option>
+                  <option value="Administrativo">Administrativo</option>
+                </select>
+              </div>
             </section>
 
             <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
             <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
-            <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+            <input type="button" class="list-objects btn btn-danger btn-block btn-flat" value="Cancelar"></input>
           </div>
         </form>
 
 
-        <!-- Formulario modificar usuario -->
-        <form id="frm-modify-user" class="form-user" method="POST">
-          <div id="form-modify-user" class="col-md-12" style="display: none;" >
+        <!-- Formulario modificar -->
+        <form id="frm-modify" style="display: none;" class="form-joined" method="POST">
+          <div id="form-modify" class="col-md-12">
             <div>
-              <label for=""><h2>Modificar usuario</h2></label>
+              <label for=""><h2>Modificar afiliado</h2></label>
             </div>
 
             <section class="col-md-6 ">
-              <div class="form-group" id="role">
-                <label for="bio">Rol:</label><br>
-                <select class="form-control" type="brand" id="roles_list2" name="role" required></select>
+              <div class="form-group" id="identityCard">
+                <label for="bio">Documento de identidad:</label><br>
+                <input id="mod_identityCard" class="form-control" type="text" name="identityCard" required>
               </div>
 
-              <div class="form-group" id="firstname">
+              <div class="form-group" id="fullName">
                 <label for="bio">Nombre:</label><br>
-                <input id="mod_firstname" class="form-control" type="text" name="firstname" required>
+                <input id="mod_fullName" class="form-control" type="text" name="fullName" required>
+              </div>
+
+              <div class="form-group" id="birthdate">
+                <label for="bio">Fecha de nacimiento:</label><br>
+                <input id="mod_birthdate" class="form-control" type="date" name="birthdate">
+              </div>
+
+              <div class="form-group" id="address">
+                <label for="bio">Dirección casa:</label><br>
+                <input id="mod_address" class="form-control" type="text" name="address" required>
               </div>
 
               <div class="form-group" id="email">
                 <label for="bio">Email:</label><br>
                 <input id="mod_email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
               </div>
 
-             
-
-              <div class="form-group" id="mod_attendant" style="display: none;">
-
-                <div class="form-group" id="nameAttendant1">
-                  <label for="bio">Nombres y apellidos del acudiente 1:</label><br>
-                  <input id="mod_nameAttendant1" class="form-control" type="text" name="nameAttendant1" >
-                </div>
-                <div class="form-group" id="phoneAttendant1">
-                  <label for="bio">Teléfono fijo del acudiente 1:</label><br>
-                  <input id="mod_phoneAttendant1" class="form-control" type="number" name="phoneAttendant1" >
-                </div>
-
-                <div class="form-group" id="nameAttendant2">
-                  <label for="bio">Nombres y apellidos del acudiente 2:</label><br>
-                  <input id="mod_nameAttendant2" class="form-control" type="text" name="nameAttendant2" >
-                </div>
-                <div class="form-group" id="phoneAttendant2">
-                  <label for="bio">Teléfono fijo del acudiente 2:</label><br>
-                  <input id="mod_phoneAttendant2" class="form-control" type="number" name="phoneAttendant2" >
-                </div>
-
-              </div>
-
-              <div class="form-group">
-                <label for="bio">Estado:</label><br>
-                <select id="mod_status" class="form-control" type="brand" name="status">
-                  <option value="Activo">Activo</option>
-                  <option value="Inactivo">Inactivo</option>
+              <div class="form-group" id="rh">
+                <label for="bio">RH:</label><br>
+                <select class="form-control" type="brand" id="mod_rh_list" name="rh">
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
                 </select>
               </div>
 
+              <div class="form-group" id="gender">
+                <label for="bio">Género:</label><br>
+                <select class="form-control" type="brand" id="mod_gender_list" name="gender">
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
+                  <option value="O">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="municipality">
+                <label for="bio">Municipio:</label><br>
+                <select class="form-control" type="brand" id="mod_municipality_list" name="municipality">
+                <!--json-->
+                </select>
+              </div>
+
+              <div class="form-group" id="cellPhoneNumber">
+                <label for="bio">Número celular:</label><br>
+                <input id="mod_cellPhoneNumber" class="form-control" type="text" name="cellPhoneNumber" required>
+              </div>
+
+              <div class="form-group" id="educationalInstitution">
+                <label for="bio">Institución Educativa:</label><br>
+                <input id="mod_educationalInstitution" class="form-control" type="text" name="educationalInstitution" required>
+              </div>
+
+              <div class="form-group" id="areaPerformance">
+                <label for="bio">Área de desempeño:</label><br>
+                <select class="form-control" type="brand" id="mod_areaPerformance_list" name="areaPerformance">
+                  <option value="Primaria">Primaria</option>
+                  <option value="Bachillerato">Bachillerato</option>
+                  <option value="DirectivoDocente">Directivo Docente</option>
+                  <option value="Provisional">Provisional</option>
+                  <option value="Administrativo">Administrativo</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="university">
+                <label for="bio">Universidad:</label><br>
+                <select class="form-control" type="brand" id="mod_university_list" name="university">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="normalista">
+                <label for="bio">Normalista:</label><br>
+                <select class="form-control" type="brand" id="mod_normalista_list" name="normalista">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="specialist">
+                <label for="bio">Especialista:</label><br>
+                <select class="form-control" type="brand" id="mod_specialist_list" name="specialist">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="doctorate">
+                <label for="bio">Doctorado:</label><br>
+                <select class="form-control" type="brand" id="mod_doctorate_list" name="doctorate">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="typeOfAppointment">
+                <label for="bio">typeOfAppointment:</label><br>
+                <select class="form-control" type="brand" id="mod_typeOfAppointment_list" name="typeOfAppointment">
+                  <option value="Provisional">Provisional</option>
+                  <option value="Propiedad">Propiedad</option>
+                  <option value="Administrativo">Administrativo</option>
+                  <option value="Nacional">Nacional</option>
+                  <option value="Departamental">Departamental</option>
+                  <option value="Nacionalizado">Nacionalizado</option>
+                  <option value="Municipal">Municipal</option>
+                </select>
+              </div>
             </section>
 
-            <section class="col-md-6">
-              
-              <div class="form-group" id="code">
-                <label for="bio">Documento de identidad:</label><br>
-                <input class="form-control" type="number" name="code" id="mod_code" required>
+            <section class="col-md-6 ">
+              <div class="form-group" id="state">
+                <label for="bio">Estado:</label><br>
+                <select class="form-control" type="brand" id="mod_state_list" name="state">
+                  <option value="Activo">Activo</option>
+                  <option value="ActivoPensionado">Activo Pensionado</option>
+                  <option value="PensionadoRetirado">Pensionado Retirado</option>
+                </select>
               </div>
 
-              <div class="form-group" id="lastname">
-                <label for="bio">Apellido:</label><br>
-                <input id="mod_lastname" class="form-control" type="text" name="lastname" required>
+              <div class="form-group" id="municipalityWorking">
+                <label for="bio">municipalityWorking:</label><br>
+                <input id="mod_municipalityWorking" class="form-control" type="text" name="municipalityWorking" required>
               </div>
 
-              <div class="form-group" id="password">
-                <label for="bio">Contraseña:</label><br>
-                <input id="mod_password" class="form-control" type="password" name="password" required>
-                <div id="pswd_info" style="display: none;">
-                  <h4>La contraseña debería cumplir con los siguientes requerimientos:</h4>
-                  <p id="length">Debería tener <strong>8 carácteres</strong> como mínimo</p>
-                  <p id="letter">Al menos debería tener <strong>una letra minúscula</strong></p>
-                  <p id="capital">Al menos debería tener <strong>una letra mayúscula</strong></p>
-                  <p id="number">Al menos debería tener <strong>un número</strong></p>
-                  <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
-                </div>
-              </div>
-              
-              <div class="form-group" id="mod_attendant2" style="display: none;">
-                <div class="form-group" id="addressAttendant1">
-                  <label for="bio">Dirección del acudiente 1:</label><br>
-                  <input id="mod_addressAttendant1" class="form-control" type="text" name="addressAttendant1" >
-                  <input id="idAttendant1" class="form-control" type="text" name="idAttendant1" style="display: none;">
-                </div>
-
-                <div class="form-group" id="cellphoneAttendant1">
-                  <label for="bio">Teléfono celular del acudiente 1:</label><br>
-                  <input id="mod_cellphoneAttendant1" class="form-control" type="number" name="cellphoneAttendant1" >
-                </div>
-
-                <div class="form-group" id="addressAttendant2">
-                  <label for="bio">Dirección del acudiente 2:</label><br>
-                  <input id="mod_addressAttendant2" class="form-control" type="text" name="addressAttendant2" >
-                  <input id="idAttendant2" class="form-control" type="text" name="idAttendant2" style="display: none;">
-                </div>
-
-                <div class="form-group" id="cellphoneAttendant2">
-                  <label for="bio">Teléfono celular del acudiente 2:</label><br>
-                  <input id="mod_cellphoneAttendant2" class="form-control" type="number" name="cellphoneAttendant2" >
-                </div>
+              <div class="form-group" id="degree">
+                <label for="bio">degree:</label><br>
+                <input id="mod_degree" class="form-control" type="text" name="degree" required>
               </div>
 
-              <!--<div>
-                <label for="bio">Descripcion del curso:</label><br>
-                <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
-              </div>-->
+              <div class="form-group" id="professional">
+                <label for="bio">Profesional:</label><br>
+                <select class="form-control" type="brand" id="mod_professional_list" name="professional">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="MasterDegree">
+                <label for="bio">Magister:</label><br>
+                <select class="form-control" type="brand" id="mod_MasterDegree_list" name="MasterDegree">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="promotionLadder">
+                <label for="bio">promotionLadder:</label><br>
+                <input id="mod_promotionLadder" class="form-control" type="text" name="promotionLadder" required>
+              </div>
+
+              <div class="form-group" id="Teaching">
+                <label for="bio">Teaching:</label><br>
+                <select class="form-control" type="brand" id="mod_Teaching_list" name="Teaching">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="level">
+                <label for="bio">Nivel:</label><br>
+                <select class="form-control" type="brand" id="mod_level_list" name="level">
+                  <option value="Preescolar">Preescolar</option>
+                  <option value="Primaria">Primaria</option>
+                  <option value="Basica">Basica</option>
+                  <option value="Media">Media</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="municipalitySindical">
+                <label for="bio">municipalitySindical:</label><br>
+                <input id="mod_municipalitySindical" class="form-control" type="text" name="municipalitySindical" required>
+              </div>
+
+              <div class="form-group" id="affiliationPaymentType">
+                <label for="bio">Tipo de pago:</label><br>
+                <select class="form-control" type="brand" id="mod_affiliationPaymentType_list" name="affiliationPaymentType">
+                  <option value="Nomina">Nomina</option>
+                  <option value="Ventanilla">Ventanilla</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="integraCommission">
+                <label for="bio">Comisión a la cual está integrado/a:</label><br>
+                <select class="form-control" type="brand" id="mod_integraCommission_list" name="integraCommission">
+                  <option value="Electoral">Electoral</option>
+                  <option value="Financiera">Financiera</option>
+                  <option value="Etica">Ética</option>
+                  <option value="Mujer">Mujer</option>
+                  <option value="Pedagogica">Pedagógica</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="Zone">
+                <label for="bio">Zona:</label><br>
+                <select class="form-control" type="brand" id="mod_Zone_list" name="Zone">
+                  <option value="Uno">Uno</option>
+                  <option value="Dos">Dos</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="integraCommittee">
+                <label for="bio">Comité al cual está integrado/a:</label><br>
+                <select class="form-control" type="brand" id="mod_integraCommittee_list" name="integraCommittee">
+                  <option value="Ninguno">Ninguno</option>
+                  <option value="Municipal">Municipal</option>
+                  <option value="Zonal">Zonal</option>
+                  <option value="Directivo">Directivo</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="delegateGeneralAssembly">
+                <label for="bio">delegateGeneralAssembly:</label><br>
+                <select class="form-control" type="brand" id="mod_delegateGeneralAssembly_list" name="delegateGeneralAssembly">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                  <option value="Municipio">Municipio</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="employeeClass">
+                <label for="bio">Tipo de empleado:</label><br>
+                <select class="form-control" type="brand" id="mod_employeeClass_list" name="employeeClass">
+                  <option value="Docente">Docente</option>
+                  <option value="Directivo Docente">Directivo Docente</option>
+                  <option value="Administrativo">Administrativo</option>
+                </select>
+              </div>
             </section>
 
-            <input id="button_update" type="submit" class="modify-user btn btn-primary btn-block btn-flat" value="Actualizar usuario"></input>
+            <input id="button_update" type="submit" class="modify-object btn btn-primary btn-block btn-flat" value="Actualizar"></input>
             <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
-            <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
+            <input type="button" class="list-objects btn btn-danger btn-block btn-flat" value="Cancelar"></input>
           </div>
         </form>
       </div>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <section>
-      <div class=" modal-success" id="myModalCreateAffiliates">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" align="center"><b>Crear Afiliado</b></h4>
-            </div>
-            <div class="modal-body">
-
-              <!-- Forma interna de la ventana modal -->
-              <form role="form">
-
-                <div class="box-body">
-                  <div class="row">
-                    <div class="col-md-6">
-
-                      <div class="form-group">
-                        <label for="idAffiliate">Cédula Afiliado</label>
-                        <input class="form-control" type="text" placeholder="Cédula de ciudadania">
-                      </div>     
-
-                      <div class="form-group">
-                        <label for="firstNameAffiliate">Primer Nombre</label>
-                        <input class="form-control" type="text" placeholder="Primer Nombre">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="firstNameAffiliate">Licencia Educativa</label>
-                        <input class="form-control" type="text" placeholder="Licencia Educativa">
-                      </div>        
-                  
-                      <div class="form-group">
-                        <label>Clase Empleado</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Docente</option>
-                          <option>Directivo Docente</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Fecha de nacimiento</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="datepicker" placeholder="dd/mm/aaaa">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-
-                      <div class="form-group">
-                        <label>Área de desempeño</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Primaria</option>
-                          <option>Bachillerato</option>
-                          <option>Directivo Docente</option>
-                          <option>Provisional</option>
-                          <option>Adminsitrativo</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Título</label>
-                        <input class="form-control" type="text" id="exampleInputFile" placeholder="Título">
-                      </div>
-
-                      <div class="form-group">
-                        <label>Docente</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Activo</option>
-                          <option>Activo Pensionado</option>
-                          <option>Pensionado Retirado</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Integra comité</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Ninguno</option>
-                          <option>Municipal</option>
-                          <option>Zonal</option>
-                          <option>Junta Directiva</option>
-                        </select>
-                      </div>               
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-6">
-
-                      <div class="form-group">
-                          <label for="exampleInputFile">Fotocopia cédula</label>
-                          <input class="form-control" type="file" id="exampleInputFile">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="secondNameAffiliate">Segundo Nombre</label>
-                        <input class="form-control" type="text" placeholder="Segundo Nombre">
-                      </div>
-                    
-                      <div class="form-group">
-                        <label>Genero</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Femenino</option>
-                          <option>Masculino</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="idAffiliate">Dirección de Residencia</label>
-                        <input class="form-control" type="text" placeholder="Dirección de residencia">
-                      </div> 
-                    
-                      <!-- /.form-group -->
-                      <div class="form-group">
-                        <label>Municipio</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Tunja</option>
-                          <option>Paipa</option>
-                          <option disabled="disabled">Duitama (disabled)</option>
-                          <option>Sogamoso</option>                  
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Decreto Docente</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">2277</option>
-                          <option>1278</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Zona</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Zona 1</option>
-                          <option>Zona 2</option>
-                        </select>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Deporte Favorito</label>
-                        <select class="form-control select2" style="width: 100%;">
-                          <option selected="selected">Ala Delta</option>
-                          <option>Baloncesto</option>
-                          <option>Caza</option>
-                          <option>Danza</option>
-                          <option>Fútbol</option>
-                          <option>Golf</option>
-                        </select>
-                      </div>
-                      <!-- /.form-group -->
-                    </div>
-                    <!-- /.col -->
-                  </div>
-                  <!-- /.row -->
-                </div>
-
-              </form>
-
-            </div>
-        
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-outline">Crear Afiliado</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-    </section>
-
-    <section>
-      <div class=" modal-warning" id="myModalEditAffiliates">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" align="center"><b>Editar Afiliados</b></h4>
-            </div>
-            <div class="modal-body">
-              <!-- TABLA DE AFILIADOS -->
-              <div class="box-body">
-
-                <form action="#" method="get" class="modal-warning">
-                  <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                          </button>
-                        </span>
-                  </div>
-                </form>
-
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>Cédula</th>
-                      <th>Primer Nombre</th>
-                      <th>Segundo nombre</th>
-                      <th>Engine version</th>
-                      <th>CSS grade</th>
-                      <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
-                      <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button></th>
-                    </tr>
-                  </thead>
-                  
-                  <tbody>
-                    <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 4.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td> 4</td>
-                      <td>X</td>
-                      <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
-                      <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
-                    </tr>
-                    <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 5.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td>5</td>
-                      <td>C</td>
-                      <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
-                      <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
-                    </tr>
-                    <tr>
-                      <td>Other browsers</td>
-                      <td>All others</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>U</td>
-                      <th><button type="button" class="btn btn-outline"><i class="ion-edit"></i></button></th>
-                      <th><button type="button" class="btn btn-outline"><i class="fa ion-close-circled"></i></button>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-outline">Save changes</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-    </section>
-
   </div>
 
   <% include ./partials/footer.ejs %>
@@ -805,19 +643,19 @@
       return [
         '<a id="'+row._class+'" rel="tooltip" title="Editar" class="table-action edit" href="javascript:void(0)" title="Edit">',
           ' <i class="fa fa-edit"> Editar</i> ',
-        '</a>',
+        '</a>'/*,
         '<a id="'+row._class+'" rel="tooltip" title="Eliminar" class="table-action remove" href="javascript:void(0)" title="Remove" style="color:red; padding-left:1em;">',
           ' <i class="fa fa-remove"> Eliminar</i> ',
-        '</a>'
+        '</a>'*/
       ].join('');
     }
     window.operateEvents = {
       'click .edit': function (e, value, row, index) {
-        //tableButtonEvent.edit(row._class);
+        tableButtonEvent.edit(row._class);
         //console.log(value, row, index);
       },
       'click .remove': function (e, value, row, index) {
-        //tableButtonEvent.remove(row._class);
+        tableButtonEvent.remove(row._class);
         //console.log(value, JSON.stringify(row, null, '\t'), index);
       }
     };
