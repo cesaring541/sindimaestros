@@ -72,31 +72,39 @@
             </div>
 
             <!-- Formulario agregar usuario -->
-            <form class="form-user" id="formUser" enctype="multipart/form-data" action="createUser" method="POST" >
+            <form class="form-user" id="formUser" action="new-user" method="POST" >
               <div id="form-add-user" class="col-md-12" style="display: none;">
                 <div>
                   <label for=""><h2>Ingrese el nuevo usuario</h2></label>
                 </div>
                 <section class="col-md-6 ">
                   <div class="form-group">
-                    <label for="bio">Afiliado</label><br>
-                    <select class="form-control" type="brand" id="joined" name="joined">
-                      <option value="Si">Sí+</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-                  <div class="form-group" id="fullname">
-                    <label for="bio">Nombre:</label><br>
-                    <input class="form-control" type="text" name="Fullname" required>
-                  </div>
-                  <div class="form-group" id="email">
-                    <label for="bio">Email:</label><br>
-                    <input id="email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
-                    <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
+                    <div class="form-group" id="fullname">
+                      <label for="bio">Nombre:</label><br>
+                      <input class="form-control" type="text" name="fullname" required>
+                    </div>
+                    <div class="form-group" id="email">
+                      <label for="bio">Email:</label><br>
+                      <input id="email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                      <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
+                    </div>
+                    <label for="bio">Rol:</label><br>
+                      <select class="form-control" type="brand" name="role">
+                        <option value="Administrador">Administrador</option>
+                        <option value="Presidente">Presidente</option>
+                        <option value="Fiscal">Fiscal</option>
+                        <option value="Tesorero">Tesorero</option>
+                      </select>
                   </div>
                 </section>
                 <section class="col-md-6">
-                  
+                  <div>
+                    <label for="bio">Afiliado</label><br>
+                    <select class="form-control" type="brand" id="joined" name="joined">
+                      <option value="Si">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>                                     
                   <div class="form-group" id="password">
                     <label for="bio">Contraseña:</label><br>
                     <input class="form-control" type="password" name="password" required>
@@ -108,15 +116,6 @@
                       <p id="number">Al menos debería tener <strong>un número</strong></p>
                       <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="bio">Rol:</label><br>
-                    <select class="form-control" type="brand" name="role">
-                      <option value="Administrador">Administrador</option>
-                      <option value="Presidente">Presidente</option>
-                      <option value="Fiscal">Fiscal</option>
-                      <option value="Tesorero">Tesorero</option>
-                    </select>
                   </div>
                 </section>
 
@@ -136,13 +135,13 @@
                   <div class="form-group">
                     <label for="bio">Afiliado</label><br>
                     <select class="form-control" type="brand" id="mod_joined" name="joined">
-                      <option value="Si">Sí+</option>
+                      <option value="Si">Sí</option>
                       <option value="No">No</option>
                     </select>
                   </div>
                   <div class="form-group" id="fullname">
                     <label for="bio">Nombre:</label><br>
-                    <input class="form-control" type="text" name="mod_Fullname" required>
+                    <input class="form-control" type="text" name="fullname" id="mod_fullname" required>
                   </div>
                   <div class="form-group" id="email">
                     <label for="bio">Email:</label><br>
@@ -166,7 +165,7 @@
                   </div>
                   <div class="form-group">
                     <label for="bio">Rol:</label><br>
-                    <select class="form-control" type="brand" name="role">
+                    <select class="form-control" type="brand" name="role" id="mod_role">
                       <option value="Administrador">Administrador</option>
                       <option value="Presidente">Presidente</option>
                       <option value="Fiscal">Fiscal</option>
@@ -174,18 +173,6 @@
                     </select>
                   </div>
                 </section>
-
-                <section class="col-md-6 ">
-                  <div class="form-group" id="role">
-                    <label for="bio">Rol:</label><br>
-                    <select  id="roles_list2" class="form-control" type="brand" id="roles_list2" name="role" required></select>
-                  </div>
-                  <!--<div>
-                    <label for="bio">Descripcion del curso:</label><br>
-                    <input class="form-date btn btn-success btn-block"  value="cargar archivo"></input>
-                  </div>-->
-                </section>
-
                 <input id="button_update" type="submit" class="modify-user btn btn-primary btn-block btn-flat" value="Actualizar usuario"></input>
                 <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
                 <input type="button" class="list-users btn btn-danger btn-block btn-flat" value="Cancelar"></input>
@@ -193,162 +180,10 @@
             </form>
           </div>
         </section>
-
-        <!--section>
-          <div class="modal" id="myModalSaveUsers">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header label-success" >
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" align="center"><b>Crear Usuario</b></h4>
-                </div>
-
-                <div class="modal-body">
-                  <form role="form">
-                    <div class="box-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <label for="exampleInputEmail1">Afiliado</label>                
-                          <select name="rol" class="form-control">
-                            <option value="administrador">Si</option>
-                            <option value="presidente">No</option>                  
-                          </select>
-
-                          <div class="form-group">
-                            <div>
-                              <label for=""></label>
-                            </div>
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                          </div>
-
-                          <label for="exampleInputEmail1">Rol</label>                
-                          <select name="rol" class="form-control">
-                            <option value="administrador">Administrador</option>
-                            <option value="presidente">Presidente</option>
-                            <option value="fiscal">Fiscal</option>
-                            <option value="tesorero">Tesorero</option>
-                          </select>
-                        </div>  
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Nombres y Apellidos</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombres y apellidos" disabled="true">
-                          </div>
-
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Confirmar Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                          </div>
-
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-
-                <div class="modal-footer label-success">
-                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-outline">Guardar Usuario</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div class="modal" id="myModalEditUsers">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header btn-warning">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" align="center"><b>Editar Usuarios</b></h4>
-                </div>
-                <div class="modal-body">
-                  <div class="box-body">
-                    <form action="#" method="get" class="modal-warning">
-                      <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                          </button>
-                        </span>
-                      </div>
-                    </form>
-
-                    <table id="example2" class="table table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <th bgcolor="#f39c12">Rendering engineS</th>
-                          <th bgcolor="#f39c12">Browser</th>
-                          <th bgcolor="#f39c12">Platform(s)</th>
-                          <th bgcolor="#f39c12">Engine version</th>
-                          <th bgcolor="#f39c12">CSS grade</th>
-                          <th bgcolor="#f39c12">Editar</th>
-                          <th bgcolor="#f39c12"></th>
-                        </tr>
-                      </thead>
-                      
-                      <tbody>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 4.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td> 4</td>
-                          <td>X</td>
-                          <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
-                          <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button></th>
-                        </tr>
-                        <tr>
-                          <td>Trident</td>
-                          <td>Internet
-                            Explorer 5.0
-                          </td>
-                          <td>Win 95+</td>
-                          <td>5</td>
-                          <td>C</td>
-                          <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
-                          <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button>
-                        </tr>
-                        <tr>
-                          <td>Other browsers</td>
-                          <td>All others</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>U</td>
-                          <th><button type="button" class="btn btn-warning"><i class="ion-edit"></i></button></th>
-                          <th><button type="button" class="btn btn-warning"><i class="ion ion-close-circled"></i></button>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div class="modal-footer label-warning">
-                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-outline">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section-->
-
       </div>
-
       <% include ./partials/footer.ejs %>
-
     </div>
-
     <!-- ./wrapper -->
-
     <% include ./partials/footer-scripts.ejs %>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
   <script type="text/javascript">
@@ -392,14 +227,11 @@
         '<a id="'+row._class+'" rel="tooltip" title="Editar" class="table-action edit" href="javascript:void(0)" title="Edit">',
           ' <i class="fa fa-edit"> Editar</i> ',
         '</a>',
-        '<a id="'+row._class+'" rel="tooltip" title="Eliminar" class="table-action remove" href="javascript:void(0)" title="Remove" style="color:red; padding-left:1em;">',
-          ' <i class="fa fa-remove"> Eliminar</i> ',
-        '</a>'
       ].join('');
     }
     window.operateEvents = {
       'click .edit': function (e, value, row, index) {
-        //tableButtonEvent.edit(row._class);
+        tableButtonEvent.edit(row._class);
         //console.log(value, row, index);
       },
       'click .remove': function (e, value, row, index) {

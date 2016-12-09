@@ -64,9 +64,11 @@ module.exports = function(app, passport) {
 
       objEvent.save({_id:id}, function(err){
         if (err) {
+          console.log("error" + err)
           res.redirect("/events");
         }
         else{
+          console.log(req.body)
           res.redirect("/events");
         }
       });        

@@ -22,12 +22,14 @@ module.exports = function(app, passport) {
     user.password = req.body.password;
     user.role     = req.body.role;
 
+    console.log(req.body)
+
     user.save(function (err) {
       if (err){
         console.log('err: '+err);
       } else {
         console.log('Objeto almacenado');
-        res.redirect('/sportEvents');
+        res.redirect('/users');
       }
     });
   });
@@ -50,16 +52,17 @@ module.exports = function(app, passport) {
     var id = req.param("id");
 
     User.findById(id, function(err, objUser){
-      if (err) ;
+      if (err) throw err;
 
       objUser.joined   = req.body.joined;  
-      objUser.fullname     = req.body.fullname;
+      objUser.fullname = req.body.fullname;
       objUser.email    = req.body.email;
       objUser.password = req.body.password;
       objUser.role     = req.body.role;
 
       objUser.save({_id:id}, function(err){
         if (err) {
+          console.log("Error arrojado: "+err) 
           res.redirect("/users");
         }
         else{

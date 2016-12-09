@@ -1,37 +1,6 @@
 $(document).ready(function(){
 
-	$.ajax({ 
- 		type: 'GET', 
- 		url: 'json/roles.json', 
- 		dataType: 'json',
- 		success: function (data) {
- 			var array =data[1].rol;
- 			for (var i = 0; i < array.length; i++) {
- 				$("#roles_list, #roles_list2").append("<option value="+ array[i] +">" + array[i] + "</option>");
- 			}; 
- 		},
- 		error:function(msg) {
- 			// body...
- 			console.log(msg+" Listado de roles fallido");
- 		}
- 	}); 	
 	
-	$("select[name=role]").change(function(){
-    if( $('select[name=role]').val() === 'Estudiante' ){
-    	$('#attendant, #attendant2').show();
-    	$('input[name=nameAttendant1]').prop('required',true);
-    	$('input[name=phoneAttendant1]').prop('required',true);
-    	$('input[name=addressAttendant1]').prop('required',true);
-    	$('input[name=cellphoneAttendant1]').prop('required',true);
-    } else {
-    	$('#attendant, #attendant2').hide();
-    	$('input[name=nameAttendant1]').prop('required',false);
-    	$('input[name=phoneAttendant1]').prop('required',false);
-    	$('input[name=addressAttendant1]').prop('required',false);
-    	$('input[name=cellphoneAttendant1]').prop('required',false);
-    }
-  });
-
 
 	$('input[type=password]').keyup(function() {
 		// declaramos la variable
@@ -152,40 +121,16 @@ $(document).ready(function(){
 
 	   	$.ajax({ 
 	   		type: 'GET', 
-	   		url: '/get-user/'+dataId,
+	   		url: '/read-user/'+dataId,
 	   		dataType: 'json',
-	   		success: function (data) {
-	   			user = data.local;
-	   			
+	   		success: function (data) {	   			
 	   			$("#button_update").attr("id", dataId);
 
-	   			$("#mod_code").val(user.code);
-	   			$("#mod_email").val(user.email);
-	   			$("#mod_firstname").val(user.firstname);
-	   			$("#mod_lastname").val(user.lastname);
-	   			$("#roles_list2 option[value='"+user.role+"']").attr("selected","selected");
-	   			$("#mod_status option[value='"+user.status+"']").attr("selected","selected");
-	   			if(user.role==="Estudiante"){
-	   				$('#mod_attendant, #mod_attendant2').show();
-	   				$.ajax({ 
-				   		type: 'GET', 
-				   		url: 'getAttendants/'+dataId, 
-				   		dataType: 'json',
-				   		success: function (data) {
-				   			data.forEach(function(item,key) {
-				   				$("#mod_nameAttendant"+(key+1)).val(item.name);
-				   				$("#mod_phoneAttendant"+(key+1)).val(item.phone);
-				   				$("#mod_addressAttendant"+(key+1)).val(item.address);
-				   				$("#mod_cellphoneAttendant"+(key+1)).val(item.cellphone);
-				   				$("#idAttendant"+(key+1)).val(item._id);
-				   			});
-				   		},
-				   		error:function(msg) {
-				   			// body...
-				   			console.log(msg);
-				   		}
-				   	}); 
-	   			}
+	   			$("#mod_joined").val(data.joined);
+	   			$("#mod_fullname").val(data.fullname);
+	   			$("#mod_email").val(data.email);
+	   			$("#mod_password").val(data.password);
+	   			$("#mod_role option[value='"+data.role+"']").attr("selected","selected");
 	   		},
 	   		error:function(msg) {
 	   			// body...
@@ -229,7 +174,7 @@ $(document).ready(function(){
 	$('.modify-user').click(function(){
 
 		var dataId = this.id;
-		$('#frm-modify-user').attr("action", "modifyUser/"+dataId);		
+		$('#frm-modify-user').attr("action", "update-user/"+dataId);		
 
 		$('#frm-modify-user').submit();
 	});

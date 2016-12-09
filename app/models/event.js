@@ -5,8 +5,8 @@ var bcrypt   = require('bcrypt-nodejs');
 var eventSchema = mongoose.Schema({
   nameEvent						: { type: String, required: true },
   eventType						: { type: String, enum: ['Seminario','Capacitacion', 'Asambleas', 'Marchas','Cultural','Academico'] },
-  startDate 					: { type: Date },
-  endDate						: { type: Date },
+  startDate 					: { type: String, required: true },
+  endDate						: { type: String, required: true },
   typeOfParticipation 			: { type: String, enum: ['Individual','Grupal'] },
   numberOfTeams					: { type: String, required: true },
   teamMembers 					: { type: String, required: true }
