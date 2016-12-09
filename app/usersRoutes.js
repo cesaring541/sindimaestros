@@ -19,7 +19,7 @@ module.exports = function(app, passport) {
     user.joined   = req.body.joined;
     user.fullname = req.body.fullname;
     user.email    = req.body.email;
-    user.password = req.body.password;
+    user.password = user.generateHash(req.body.password);
     user.role     = req.body.role;
 
     console.log(req.body)
@@ -57,7 +57,7 @@ module.exports = function(app, passport) {
       objUser.joined   = req.body.joined;  
       objUser.fullname = req.body.fullname;
       objUser.email    = req.body.email;
-      objUser.password = req.body.password;
+      //objUser.password = req.body.password;
       objUser.role     = req.body.role;
 
       objUser.save({_id:id}, function(err){
