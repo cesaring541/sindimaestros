@@ -17,6 +17,7 @@ module.exports = function(app, passport) {
 
     var sport = new Sports();
     sport.nameEvent           = req.body.nameEvent;
+    sport.sport               = req.body.sport;
     sport.category            = req.body.category;
     sport.startDate           = req.body.startDate;
     sport.endDate             = req.body.endDate;
@@ -55,11 +56,12 @@ module.exports = function(app, passport) {
       if (err) ;
 
       objSport.nameEvent           = req.body.nameEvent;
+      objSport.sport               = req.body.sport;
       objSport.category            = req.body.category;
       objSport.startDate           = req.body.startDate;
       objSport.endDate             = req.body.endDate;
       objSport.typeOfParticipation = req.body.typeOfParticipation;
-      objSport.numberOfTeams        = req.body.numberOfTeams;      
+      objSport.numberOfTeams       = req.body.numberOfTeams;      
       objSport.gender              = req.body.gender;
 
       objSport.save({_id:id}, function(err){
