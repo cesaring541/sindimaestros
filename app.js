@@ -94,6 +94,8 @@ app.use(function(err, req, res, next) {
 });*/
 
 app.set('port', process.env.PORT || 80);
+//app.set('port', process.env.PORT || 3000);
+
 var server = app.listen(app.get('port'), function() {
   console.log('Servidor ejecutándose en el puerto ' + server.address().port);
   server = livereload.createServer();
