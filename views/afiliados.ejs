@@ -61,7 +61,7 @@
                     <td><%= objJoi.identityCard %></td>
                     <td><%= objJoi.fullName %></td>
                     <td><%= objJoi.email %></td>
-                    <% if (objJoi.state === "Activo") { %>
+                    <% if (objJoi.state === "Activo" || objJoi.state === "ActivoPensionado") { %>
                       <td><i class="fa fa-circle text-success"></i>  <%= objJoi.state %></td>
                     <% } else { %>
                       <td><i class="fa fa-circle text-danger"></i>  <%= objJoi.state %></td>
@@ -132,7 +132,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="bio">Municipio:</label><br>
+                  <label for="bio">Municipio de Nacimiento:</label><br>
                   <select class="form-control" type="brand" id="municipality_list" name="municipality">
                   <!--json-->
                   </select>
@@ -267,7 +267,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="bio">Municipio (Sindicato):</label><br>
+                  <label for="bio">Municipio del Sindicato:</label><br>
                   <select class="form-control" type="brand" id="mod_municipalitySindical_list" name="municipalitySindical">
                   <!--json-->
                   </select>
@@ -392,7 +392,7 @@
                   </div>
 
                   <div class="form-group" id="municipality">
-                    <label for="bio">Municipio:</label><br>
+                    <label for="bio">Municipio de Nacimiento:</label><br>
                     <select class="form-control" type="brand" id="mod_municipality_list" name="municipality">
                     <!--json-->
                     </select>
