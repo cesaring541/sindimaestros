@@ -25,6 +25,9 @@ module.exports = function(app, passport) {
 		objTeam.members 			= req.body.members;
 		objTeam.zone 					= req.body.zone;
 		objTeam.municipality 	= req.body.municipality;
+		objTeam.sport 	= req.body.sport;
+		objTeam.category 	= req.body.category;
+		
     
     objTeam.save(function (err) {
       if (err){
@@ -61,6 +64,8 @@ module.exports = function(app, passport) {
 			objTeam.members 			= req.body.members;
 			objTeam.zone 					= req.body.zone;
 			objTeam.municipality 	= req.body.municipality;
+			objTeam.sport 	= req.body.sport;
+			objTeam.category 	= req.body.category;
 		
 			objTeam.save({_id:id}, function(err){
 				if (err) {

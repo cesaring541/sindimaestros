@@ -1,10 +1,10 @@
 {
   "1": {
-    "ZONA ": [      
+    "ZONA": [      
 		"CENTRO",
 		"GUATEQUE",
-		"RICAURTE BAJO",
-		"RICAURTE ALTO",
+		"RICAURTE-BAJO",
+		"RICAURTE-ALTO",
 		"TUNDAMA",
 		"DUITAMA",
 		"VALDERRAMA",
@@ -13,11 +13,12 @@
 		"NORTE",
 		"SUGAMUXI",
 		"SOGAMOSO",
-		"LENGUPÁ",
+		"LENGUPA",
 		"OCCIDENTE",
-		"MÁRQUEZ",
-		"PUERTO BOYACÁ"
+		"MARQUEZ",
+		"PUERTO-BOYACÁ",
+		"TUNJA",
+		"CHIQUINQUIRA"
     ]
   }
 }
-
