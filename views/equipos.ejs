@@ -84,7 +84,11 @@
                 <label for="bio">Nombre:</label><br>
                 <input class="form-control" type="text" name="name" required>
               </div>
-
+              <div class="form-group">
+                <label for="bio">Deporte:</label><br>
+                <select class="form-control" type="brand" id="sport" name="sport">
+                </select>
+              </div>              
               <div class="form-group">
                 <label for="bio">Miembros:</label><br>
                 <select multiple class="form-control" type="brand" required="true" name="members">
@@ -96,22 +100,36 @@
                 </select>
               </div>
             </section>
-
             <section class="col-md-6 ">
               <div class="form-group">
-                <label for="bio">Zona:</label><br>
-                <select class="form-control" type="brand" name="zone">
-                  <option value="Uno">Uno</option>
-                  <option value="Dos">Dos</option>
+                <label for="bio">Tipo de participacion</label><br>
+                <select class="form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation">
+                  <option value="Conjunto">Conjunto</option>
+                  <option value="Equipo">Equipo</option>
+                  <option value="Individual">Individual</option>
                 </select>
               </div>
-
+              <div class="form-group">
+                <label for="bio">Categoria</label><br>
+                <select class="form-control" type="brand" id="category" name="category">
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+              </div>  
+              <div class="form-group">
+                <label for="bio">Zona:</label><br>          
+                <select class="form-control" type="brand" name="zone" id="zone_list">
+                </select>
+              </div>
               <div class="form-group">
                 <label for="bio">Municipio:</label><br>
                 <select class="form-control" type="brand" id="municipality_list" name="municipality">
                 <!--json-->
-                </select>
+                </select>                
               </div>
+                          
             </section>
 
             <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
@@ -127,41 +145,58 @@
               <div>
                 <label for=""><h2>Modificar equipo</h2></label>
               </div>
-
               <section class="col-md-6 ">
-                <div class="form-group" id="name">
-                  <label for="bio">Nombre:</label><br>
-                  <input id="mod_name" class="form-control" type="text" name="name" required>
-                </div>
-
-                <div class="form-group" id="members">
-                  <label for="bio">Miembros:</label><br>
-                  <select multiple class="form-control" type="brand" id="mod_members_list" required="true" name="members">                      
-                    <% if (objectJoined) { %>
-                      <% objectJoined.forEach(function(objJoi) { %>
-                        <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
-                      <% }); %>
-                    <% } %>                  
-                  </select>
-                </div>
-              </section>
-
-              <section class="col-md-6 ">
-                <div class="form-group" id="Zone">
-                  <label for="bio">Zona:</label><br>
-                  <select class="form-control" type="brand" id="mod_zone_list" name="zone">
-                    <option value="Uno">Uno</option>
-                    <option value="Dos">Dos</option>
-                  </select>
-                </div>
-
-                <div class="form-group" id="municipality">
-                  <label for="bio">Municipio:</label><br>
-                  <select class="form-control" type="brand" id="mod_municipality_list" name="municipality">
-                  <!--json-->
-                  </select>
-                </div>
-              </section>
+              <div class="form-group" id="name">
+                <label for="bio">Nombre:</label><br>
+                <input id="mod_name" class="form-control" type="text" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="bio">Deporte:</label><br>
+                <select class="form-control" type="brand" id="mod_sport" name="sport">
+                </select>
+              </div>              
+              <div class="form-group">
+                <label for="bio">Miembros:</label><br>
+                <select multiple class="form-control" type="brand" id="mod_members" required="true" name="members">
+                  <% if (objectJoined) { %>
+                    <% objectJoined.forEach(function(objJoi) { %>
+                      <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+                    <% }); %>
+                  <% } %>                  
+                </select>
+              </div>
+            </section>
+            <section class="col-md-6 ">
+              <div class="form-group">
+                <label for="bio">Tipo de participacion</label><br>
+                <select class="form-control" type="brand" id="typeOfParticipation" id="mod_typeOfParticipation" name="typeOfParticipation">
+                  <option value="Conjunto">Conjunto</option>
+                  <option value="Equipo">Equipo</option>
+                  <option value="Individual">Individual</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="bio">Categoria</label><br>
+                <select class="form-control" type="brand" id="mod_category" name="category">
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+              </div>  
+              <div class="form-group">
+                <label for="bio">Zona:</label><br>          
+                <select class="form-control" type="brand" name="zone" id="mod_zone_list">
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="bio">Municipio:</label><br>
+                <select class="form-control" type="brand" id="mod_municipality_list" name="municipality">
+                <!--json-->
+                </select>                
+              </div>
+                          
+            </section>
 
               <input id="button_update" type="submit" class="modify-object btn btn-primary btn-block btn-flat" value="Actualizar"></input>
               <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
