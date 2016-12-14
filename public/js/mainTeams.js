@@ -51,7 +51,7 @@ $(document).ready(function(){
  		}
 	});
 
-$.ajax({ 
+	$.ajax({ 
  		type: 'GET', 
  		url: 'json/zones.json', 
  		dataType: 'json',
@@ -65,6 +65,7 @@ $.ajax({
  			console.log(msg+" Listado de objetos fallido");
  		}
  	});
+
  	$('#zone_list').on('change', function() { 
 		$("#municipality_list").empty();	
  		//$("#sport option:selected").removeAttr("selected");
@@ -386,8 +387,12 @@ $.ajax({
 	   			$("#mod_members_list option:selected").removeAttr("selected");
 	   			
 					$("#button_update").attr("id", dataId);
+					mod_sport_list
 
 					$("#mod_name").val(data.name);
+					$("#mod_sport_list option[value='"+data.sport+"']").attr("selected","selected");
+					$("#mod_typeOfParticipation_list option[value='"+data.typeOfParticipation+"']").attr("selected","selected");
+					$("#mod_category_list option[value='"+data.sport+"']").attr("selected","selected");
 					$("#mod_zone_list option[value='"+data.zone+"']").attr("selected","selected");
 					$("#mod_municipality_list option[value='"+data.municipality+"']").attr("selected","selected");
 
@@ -395,8 +400,6 @@ $.ajax({
 					for (var i = 0; i < data.members.length; i++) {
 						$("#mod_members_list option[value='" + data.members[i] + "']").prop("selected", true);
 					}
-					$("#mod_sport").val(data.sport);
-					$("#mod_category").val(data.category);
 				},
 				error:function(msg) {
 					console.log(msg+"Peticion de datos fallida");

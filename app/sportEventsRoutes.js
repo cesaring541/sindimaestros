@@ -1,13 +1,17 @@
-var Sports = require('./models/sportEvent'); //Import database model
+var SportsEvent = require('./models/sportEvent'); //Import database model
+var Teams = require('./models/team');
 
 module.exports = function(app, passport) {
 
   app.get('/sportEvents', isLoggedIn, function(req, res, next) {
-    Sports.find({},function(err, objSport){
-      res.render('eventos_deportivos.ejs', {
-        user : req.user, // Logged user
-        objSport :objSport,
-        message: ""
+    SportsEvent.find({},function(err, objectSportEvent){
+      Teams.find({},function(err, objectTeam){
+        res.render('eventos_deportivos.ejs', {
+          user : req.user, // Logged user
+          objectSportEvent :objectSportEvent,
+          objectTeam : objectTeam,
+          message: ""
+        });
       });
     });
   });
@@ -15,25 +19,21 @@ module.exports = function(app, passport) {
   // Add new register
   app.post('/new-sportEvent',function(req,res,next){
 
-    var sport = new Sports();
-    sport.nameEvent           = req.body.nameEvent;
-    sport.sport               = req.body.sport;
-    sport.category            = req.body.category;
-    sport.startDate           = req.body.startDate;
-    sport.endDate             = req.body.endDate;
-    sport.typeOfParticipation = req.body.typeOfParticipation;
-    sport.numberOfTeams       = req.body.numberOfTeams;
-    sport.gender              = req.body.gender;
-    sport.typeOfEvent         = req.body.typeOfEvent;
-    sport.teams               = req.body.teams;
-    sport.winer               = req.body.winer;
+    var objectSportEvent = new SportsEvent();
 
+    objectSportEvent.nameEvent           = req.body.nameEvent;
+    objectSportEvent.sport               = req.body.sport;
+    objectSportEvent.category            = req.body.category;
+    objectSportEvent.startDate           = req.body.startDate;
+    objectSportEvent.endDate             = req.body.endDate;
+    objectSportEvent.typeOfParticipation = req.body.typeOfParticipation;
+    objectSportEvent.numberOfTeams       = req.body.numberOfTeams;
+    objectSportEvent.gender              = req.body.gender;
+    objectSportEvent.typeOfEvent         = req.body.typeOfEvent;
+    objectSportEvent.teams               = req.body.teams;
+    objectSportEvent.winer               = req.body.winer;
 
-
-
-
-
-    sport.save(function (err) {
+    objectSportEvent.save(function (err) {
       if (err){
         console.log('err: '+err);
       } else {
@@ -46,12 +46,12 @@ module.exports = function(app, passport) {
   // Read object data
   app.get('/read-sportEvent/:id',function(req, res){
     var id = req.param("id");
-    Sports.findById(id, function(err, objSport){
+    SportsEvent.findById(id, function(err, objSportEvent){
       if (err) {
         res.send('error');
       }
       else{
-        res.send(objSport);
+        res.send(objSportEvent);
       }
     });
   });
@@ -60,22 +60,22 @@ module.exports = function(app, passport) {
   app.post('/update-sportEvent/:id', function(req, res, next){
     var id = req.param("id");
 
-    Sports.findById(id, function(err, objSport){
+    SportsEvent.findById(id, function(err, objectSportEvent){
       if (err) ;
 
-      objSport.nameEvent           = req.body.nameEvent;
-      objSport.sport               = req.body.sport;
-      objSport.category            = req.body.category;
-      objSport.startDate           = req.body.startDate;
-      objSport.endDate             = req.body.endDate;
-      objSport.typeOfParticipation = req.body.typeOfParticipation;
-      objSport.numberOfTeams       = req.body.numberOfTeams;      
-      objSport.gender              = req.body.gender;
-      objSport.typeOfEvent         = req.body.typeOfEvent;
-      objSport.teams               = req.body.teams;
-      objSport.winer               = req.body.winer;
+      objectSportEvent.nameEvent           = req.body.nameEvent;
+      objectSportEvent.sport               = req.body.sport;
+      objectSportEvent.category            = req.body.category;
+      objectSportEvent.startDate           = req.body.startDate;
+      objectSportEvent.endDate             = req.body.endDate;
+      objectSportEvent.typeOfParticipation = req.body.typeOfParticipation;
+      objectSportEvent.numberOfTeams       = req.body.numberOfTeams;      
+      objectSportEvent.gender              = req.body.gender;
+      objectSportEvent.typeOfEvent         = req.body.typeOfEvent;
+      objectSportEvent.teams               = req.body.teams;
+      objectSportEvent.winer               = req.body.winer;
 
-      objSport.save({_id:id}, function(err){
+      objectSportEvent.save({_id:id}, function(err){
         if (err) {
           res.redirect("/sportEvents");
         }

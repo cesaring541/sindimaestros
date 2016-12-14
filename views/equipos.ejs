@@ -84,11 +84,13 @@
                 <label for="bio">Nombre:</label><br>
                 <input class="form-control" type="text" name="name" required>
               </div>
+
               <div class="form-group">
                 <label for="bio">Deporte:</label><br>
                 <select class="form-control" type="brand" id="sport" name="sport">
                 </select>
-              </div>              
+              </div>
+
               <div class="form-group">
                 <label for="bio">Miembros:</label><br>
                 <select multiple class="form-control" type="brand" required="true" name="members">
@@ -152,12 +154,12 @@
               </div>
               <div class="form-group">
                 <label for="bio">Deporte:</label><br>
-                <select class="form-control" type="brand" id="mod_sport" name="sport">
+                <select class="form-control" type="brand" id="mod_sport_list" name="sport">
                 </select>
               </div>              
               <div class="form-group">
                 <label for="bio">Miembros:</label><br>
-                <select multiple class="form-control" type="brand" id="mod_members" required="true" name="members">
+                <select multiple class="form-control" type="brand" id="mod_members_list" required="true" name="members">
                   <% if (objectJoined) { %>
                     <% objectJoined.forEach(function(objJoi) { %>
                       <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
@@ -169,7 +171,7 @@
             <section class="col-md-6 ">
               <div class="form-group">
                 <label for="bio">Tipo de participacion</label><br>
-                <select class="form-control" type="brand" id="typeOfParticipation" id="mod_typeOfParticipation" name="typeOfParticipation">
+                <select class="form-control" type="brand" id="mod_typeOfParticipation_list" name="typeOfParticipation">
                   <option value="Conjunto">Conjunto</option>
                   <option value="Equipo">Equipo</option>
                   <option value="Individual">Individual</option>
@@ -177,7 +179,7 @@
               </div>
               <div class="form-group">
                 <label for="bio">Categoria</label><br>
-                <select class="form-control" type="brand" id="mod_category" name="category">
+                <select class="form-control" type="brand" id="mod_category_list" name="category">
                   <option value="A">A</option>
                   <option value="B">B</option>
                   <option value="C">C</option>

@@ -59,14 +59,14 @@
                   <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
                 </thead>
                 <tbody>
-                  <% if (objSport != undefined) { %>
-                  <% objSport.forEach(function(objSport) { %>
-                  <tr class="<%= objSport._id %>" style="text-align:center;">
-                    <td><%= objSport.nameEvent %></td>
-                    <td><%= objSport.sport %></td>
-                    <td><%= objSport.category %> </td>
-                    <td><%= objSport.typeOfParticipation %></td>
-                    <td><%= objSport.gender %></td>
+                  <% if (objectSportEvent != undefined) { %>
+                  <% objectSportEvent.forEach(function(objSportEv) { %>
+                  <tr class="<%= objSportEv._id %>" style="text-align:center;">
+                    <td><%= objSportEv.nameEvent %></td>
+                    <td><%= objSportEv.sport %></td>
+                    <td><%= objSportEv.category %> </td>
+                    <td><%= objSportEv.typeOfParticipation %></td>
+                    <td><%= objSportEv.gender %></td>
                   </tr>
                   <% }); %>
                   <% } else { %>
