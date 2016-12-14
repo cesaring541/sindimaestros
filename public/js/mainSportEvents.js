@@ -13,12 +13,26 @@ $(document).ready(function(){
  			console.log(msg+" Listado de objetos fallido");
  		}
  	});
- 	$('#typeOfParticipation').on('change', function() {
- 		$("#sport option[value='X']").each(function() {
-    		$(this).remove();
-		});
+
+ 	$('#typeOfParticipation').on('change', function() { 
+ 		$("#sport").empty();	
  		//$("#sport option:selected").removeAttr("selected");
- 		if ($('#typeOfParticipation').val()=="Equipo") {
+ 		if ($('#typeOfParticipation').val()=="Conjunto") {
+ 			$.ajax({ 
+		 		type: 'GET', 
+		 		url: 'json/conjunto.json', 
+		 		dataType: 'json',
+		 		success: function (data) {
+		 			var array = data[1].CONJUNTO;
+		 			for (var i = 0; i < array.length; i++) {
+		 				$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+		 			};
+		 		},
+		 		error:function(msg) {
+		 			console.log(msg+" Listado de objetos fallido");
+		 		}
+		 	});
+ 		}else if ($('#typeOfParticipation').val()=="Equipo") {
  			$.ajax({ 
 		 		type: 'GET', 
 		 		url: 'json/equipo.json', 
@@ -33,13 +47,13 @@ $(document).ready(function(){
 		 			console.log(msg+" Listado de objetos fallido");
 		 		}
 		 	});
- 		}else if ($('#typeOfParticipation').val()=="Conjunto") {
+ 		}else if($('#typeOfParticipation').val()=="Individual") {
  			$.ajax({ 
 		 		type: 'GET', 
-		 		url: 'json/conjunto.json', 
+		 		url: 'json/individual.json', 
 		 		dataType: 'json',
 		 		success: function (data) {
-		 			var array = data[1].CONJUNTO;
+		 			var array = data[1].INDIVIDUAL;
 		 			for (var i = 0; i < array.length; i++) {
 		 				$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 		 			};

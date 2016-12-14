@@ -23,12 +23,12 @@
 
         <section class="content">
           <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-5">
+            <div class="col-md-4 col-sm-4 col-xs-5">
               <div class="contains">
                 <span class="btn bg-green" id="add-eventsSports"> <i class="fa fa-plus-circle fa-5x pull-left" href="#"></i> Agregar evento deportivo </span>
               </div>
             </div>
-            <div class="col-md-3 col-sm-4 col-xs-5">
+            <div class="col-md-4 col-sm-4 col-xs-5">
               <div class="contains">
                 <span class="list-eventsSports btn btn-primary"><i class="fa fa-reorder fa-5x pull-left"></i> Listar eventos deportivos </span>
               </div>
@@ -87,40 +87,9 @@
                     <label for="bio">Nombre evento:</label><br>
                     <input class="form-control" type="text" name="nameEvent" required>
                   </div>
-                  <div class="form-group">
-                    <label for="bio">Categoria</label><br>
-                    <select class="form-control" type="brand" id="category" name="category">
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                    </select>
-                  </div>
-                  <div class="form-group" id="startDate">
-                    <label for="bio">Fecha de inicio del evento:</label><br>
-                    <input class="form-control" type="date"  name="startDate">
-                  </div>
-                  <div class="form-group" id="endDate">
-                    <label for="bio">Fecha de finalización del evento:</label><br>
-                    <input class="form-control" type="date" name="endDate">
-                  </div>
-                </section>
-                <section class="col-md-6">
-                  <div class="form-group">
+                   <div class="form-group">
                     <label for="bio">Deporte:</label><br>
                     <select class="form-control" type="brand" id="sport" name="sport">
-                    </select>
-                  </div>
-                  <div class="form-group" id="numberOfTeams">
-                    <label for="bio">numero de equipos:</label><br>
-                    <input class="form-control" type="text" name="numberOfTeams">
-                  </div>
-                  <div class="form-group">
-                    <label for="bio">Tipo de participacion</label><br>
-                    <select class="form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation">
-                      <option value="Conjunto">Conjunto</option>
-                      <option value="Equipo">Equipo</option>
-                      <option value="Individual">Individual</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -130,7 +99,38 @@
                       <option value="F">F</option>
                       <option value="O">O</option>
                     </select>
-                  </div>
+                  </div>                  
+                  <div class="form-group" id="startDate">
+                    <label for="bio">Fecha de inicio del evento:</label><br>
+                    <input class="form-control" type="date"  name="startDate">
+                  </div>                
+                </section>
+                <section class="col-md-6">
+                  <div class="form-group">
+                      <label for="bio">Tipo de participacion</label><br>
+                      <select class="form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation">
+                        <option value="Conjunto">Conjunto</option>
+                        <option value="Equipo">Equipo</option>
+                        <option value="Individual">Individual</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="bio">Categoria</label><br>
+                      <select class="form-control" type="brand" id="category" name="category">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                      </select>
+                    </div>                 
+                    <div class="form-group" id="numberOfTeams">
+                      <label for="bio">numero de equipos:</label><br>
+                      <input class="form-control" type="text" name="numberOfTeams">
+                    </div>
+                    <div class="form-group" id="endDate">
+                    <label for="bio">Fecha de finalización del evento:</label><br>
+                    <input class="form-control" type="date" name="endDate">
+                  </div>                    
                  </section>
 
                 <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
