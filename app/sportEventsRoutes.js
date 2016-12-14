@@ -24,6 +24,14 @@ module.exports = function(app, passport) {
     sport.typeOfParticipation = req.body.typeOfParticipation;
     sport.numberOfTeams       = req.body.numberOfTeams;
     sport.gender              = req.body.gender;
+    sport.typeOfEvent         = req.body.typeOfEvent;
+    sport.teams               = req.body.teams;
+    sport.winer               = req.body.winer;
+
+
+
+
+
 
     sport.save(function (err) {
       if (err){
@@ -63,6 +71,9 @@ module.exports = function(app, passport) {
       objSport.typeOfParticipation = req.body.typeOfParticipation;
       objSport.numberOfTeams       = req.body.numberOfTeams;      
       objSport.gender              = req.body.gender;
+      objSport.typeOfEvent         = req.body.typeOfEvent;
+      objSport.teams               = req.body.teams;
+      objSport.winer               = req.body.winer;
 
       objSport.save({_id:id}, function(err){
         if (err) {

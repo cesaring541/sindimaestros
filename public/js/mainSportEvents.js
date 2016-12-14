@@ -112,7 +112,9 @@ $(document).ready(function(){
 	   			$("#mod_numberOfTeams").val(data.numberOfTeams);
 	   			$("#mod_typeOfParticipation").val(data.typeOfParticipation);
 	   			$("#mod_gender").val(data.gender);
-	   			
+	   			$("#mod_typeOfEvent").val(data.typeOfEvent);
+	   			$("#mod_teams").val(data.teams);
+	   			$("#mod_winer").val(data.winer);	   			
 	   		},
 	   		error:function(msg) {
 	   			// body...
