@@ -80,9 +80,18 @@
             </div>
 
             <section class="col-md-6 ">
-              <div class="form-group" id="name">
+              <!--div class="form-group" id="name">
                 <label for="bio">Nombre:</label><br>
                 <input class="form-control" type="text" name="name" required>
+              </div-->
+              <div class="form-group">
+                <label for="bio">Tipo de participacion</label><br>
+                <select class="form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation">
+                  <option selected="true" disabled="true">Seleccione una opción</option>
+                  <option value="Conjunto">Conjunto</option>
+                  <option value="Equipo">Equipo</option>
+                  <option value="Individual">Individual</option>
+                </select>
               </div>
 
               <div class="form-group">
@@ -92,26 +101,6 @@
               </div>
 
               <div class="form-group">
-                <label for="bio">Miembros:</label><br>
-                <select multiple class="form-control" type="brand" required="true" name="members">
-                  <% if (objectJoined) { %>
-                    <% objectJoined.forEach(function(objJoi) { %>
-                      <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
-                    <% }); %>
-                  <% } %>                  
-                </select>
-              </div>
-            </section>
-            <section class="col-md-6 ">
-              <div class="form-group">
-                <label for="bio">Tipo de participacion</label><br>
-                <select class="form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation">
-                  <option value="Conjunto">Conjunto</option>
-                  <option value="Equipo">Equipo</option>
-                  <option value="Individual">Individual</option>
-                </select>
-              </div>
-              <div class="form-group">
                 <label for="bio">Categoria</label><br>
                 <select class="form-control" type="brand" id="category" name="category">
                   <option value="A">A</option>
@@ -119,19 +108,34 @@
                   <option value="C">C</option>
                   <option value="D">D</option>
                 </select>
-              </div>  
+              </div>
+            </section>
+            <section class="col-md-6 ">
               <div class="form-group">
                 <label for="bio">Zona:</label><br>          
                 <select class="form-control" type="brand" name="zone" id="zone_list">
+                  <option selected="true" disabled="true">Seleccione una opción</option>
                 </select>
               </div>
+
               <div class="form-group">
                 <label for="bio">Municipio:</label><br>
                 <select class="form-control" type="brand" id="municipality_list" name="municipality">
                 <!--json-->
                 </select>                
               </div>
-                          
+
+              <div class="form-group">
+                <label for="bio">Miembros:</label><br>
+                <input type="text">
+                <select multiple class="form-control" type="brand" required="true" name="members">
+                  <% if (objectJoined) { %>
+                    <% objectJoined.forEach(function(objJoi) { %>
+                      <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+                    <% }); %>
+                  <% } %>        
+                </select>
+              </div>    
             </section>
 
             <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
@@ -218,7 +222,9 @@
 
     <!-- Javascript fresh bootstrap table -->
     <script type="text/javascript" src="js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="js/zelect.js"></script>
     <script type="text/javascript">
+
       var $table = $('#fresh-table'),
       $alertBtn = $('#alertBtn'),
       full_screen = false;

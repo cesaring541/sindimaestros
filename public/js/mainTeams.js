@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+	// ===================================================================================
+	// TIPO DE PARTICIPACIÓN =============================================================
+	// ===================================================================================
  	$('#typeOfParticipation').on('change', function() { 
  		$("#sport").empty();	
  		//$("#sport option:selected").removeAttr("selected");
@@ -18,7 +21,7 @@ $(document).ready(function(){
 		 			console.log(msg+" Listado de objetos fallido");
 		 		}
 		 	});
- 		}else if ($('#typeOfParticipation').val()=="Equipo") {
+ 		} else if ($('#typeOfParticipation').val()=="Equipo") {
  			$.ajax({ 
 		 		type: 'GET', 
 		 		url: 'json/equipo.json', 
@@ -33,7 +36,7 @@ $(document).ready(function(){
 		 			console.log(msg+" Listado de objetos fallido");
 		 		}
 		 	});
- 		}else if($('#typeOfParticipation').val()=="Individual") {
+ 		} else if($('#typeOfParticipation').val()=="Individual") {
  			$.ajax({ 
 		 		type: 'GET', 
 		 		url: 'json/individual.json', 
@@ -51,6 +54,9 @@ $(document).ready(function(){
  		}
 	});
 
+	// ===================================================================================
+	// ZONAS =============================================================================
+	// ===================================================================================
 	$.ajax({ 
  		type: 'GET', 
  		url: 'json/zones.json', 

@@ -1,24 +1,24 @@
 {
   "1": {
     "ZONA": [      
-		"CENTRO",
-		"GUATEQUE",
-		"RICAURTE-BAJO",
-		"RICAURTE-ALTO",
-		"TUNDAMA",
-		"DUITAMA",
-		"VALDERRAMA",
-		"GARAGOA",
-		"GUTIERREZ",
-		"NORTE",
-		"SUGAMUXI",
-		"SOGAMOSO",
-		"LENGUPA",
-		"OCCIDENTE",
-		"MARQUEZ",
-		"PUERTO-BOYACÁ",
-		"TUNJA",
-		"CHIQUINQUIRA"
+			"CENTRO",
+			"CHIQUINQUIRA",
+			"DUITAMA",
+			"GARAGOA",
+			"GUATEQUE",
+			"GUTIERREZ",
+			"LENGUPA",
+			"MARQUEZ",
+			"NORTE",
+			"OCCIDENTE",
+			"PUERTO-BOYACÁ",
+			"RICAURTE-BAJO",
+			"RICAURTE-ALTO",
+			"SOGAMOSO",
+			"SUGAMUXI",
+			"TUNDAMA",
+			"TUNJA",
+			"VALDERRAMA"
     ]
   }
 }
