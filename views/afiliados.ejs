@@ -143,6 +143,61 @@
                   <input class="form-control" type="text" name="cellPhoneNumber" required>
                 </div>
 
+                <div class="form-group" id="degree">
+                  <label for="bio">Titulo:</label><br>
+                  <input id="mod_degree" class="form-control" type="text" name="degree" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="bio">Normalista:</label><br>
+                  <select class="form-control" type="brand" name="normalista">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bio">Profesional:</label><br>
+                  <select class="form-control" type="brand" name="professional">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bio">Universidad:</label><br>
+                  <select class="form-control" type="brand" name="university">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bio">Especialista:</label><br>
+                  <select class="form-control" type="brand" name="specialist">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bio">Magister:</label><br>
+                  <select class="form-control" type="brand" name="MasterDegree">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bio">Doctorado:</label><br>
+                  <select class="form-control" type="brand" name="doctorate">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+              </section>
+
+              <section class="col-md-6 ">
                 <div class="form-group" id="educationalInstitution">
                   <label for="bio">Institución Educativa:</label><br>
                   <input class="form-control" type="text" name="educationalInstitution" required>
@@ -159,38 +214,6 @@
                   </select>
                 </div>
 
-                <div class="form-group">
-                  <label for="bio">Universidad:</label><br>
-                  <select class="form-control" type="brand" name="university">
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="bio">Normalista:</label><br>
-                  <select class="form-control" type="brand" name="normalista">
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="bio">Especialista:</label><br>
-                  <select class="form-control" type="brand" name="specialist">
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="bio">Doctorado:</label><br>
-                  <select class="form-control" type="brand" name="doctorate">
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-
                 <div class="form-group" id="typeOfAppointment">
                   <label for="bio">Tipo de Nombramiento:</label><br>
                   <select class="form-control" type="brand" id="mod_typeOfAppointment_list" name="typeOfAppointment">
@@ -203,9 +226,7 @@
                     <option value="Municipal">Municipal</option>
                   </select>
                 </div>
-              </section>
 
-              <section class="col-md-6 ">
                 <div class="form-group">
                   <label for="bio">Estado:</label><br>
                   <select class="form-control" type="brand" name="state">
@@ -219,27 +240,6 @@
                   <label for="bio">Municipio al que pertenece la institucion:</label><br>
                   <select class="form-control" type="brand" id="mod_municipalityWorking_list" name="municipalityWorking">
                   <!--json-->
-                  </select>
-                </div>
-
-                <div class="form-group" id="degree">
-                  <label for="bio">Titulo:</label><br>
-                  <input id="mod_degree" class="form-control" type="text" name="degree" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="bio">Profesional:</label><br>
-                  <select class="form-control" type="brand" name="professional">
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="bio">Magister:</label><br>
-                  <select class="form-control" type="brand" name="MasterDegree">
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
                   </select>
                 </div>
 
@@ -334,7 +334,6 @@
               <input type="button" class="list-objects btn btn-danger btn-block btn-flat" value="Cancelar"></input>
             </form>
 
-
             <!-- Formulario modificar -->
             <form id="form-modify" style="display: none;" class="form-joined" method="POST">        
                 <div>
@@ -403,6 +402,61 @@
                     <input id="mod_cellPhoneNumber" class="form-control" type="text" name="cellPhoneNumber" required>
                   </div>
 
+                  <div class="form-group" id="degree">
+                    <label for="bio">Título:</label><br>
+                    <input id="mod_degree" class="form-control" type="text" name="degree" required>
+                  </div>
+
+                  <div class="form-group" id="normalista">
+                    <label for="bio">Normalista:</label><br>
+                    <select class="form-control" type="brand" id="mod_normalista_list" name="normalista">
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="professional">
+                    <label for="bio">Profesional:</label><br>
+                    <select class="form-control" type="brand" id="mod_professional_list" name="professional">
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="university">
+                    <label for="bio">Universidad:</label><br>
+                    <select class="form-control" type="brand" id="mod_university_list" name="university">
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="specialist">
+                    <label for="bio">Especialista:</label><br>
+                    <select class="form-control" type="brand" id="mod_specialist_list" name="specialist">
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group" id="MasterDegree">
+                    <label for="bio">Magister:</label><br>
+                    <select class="form-control" type="brand" id="mod_MasterDegree_list" name="MasterDegree">
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="doctorate">
+                    <label for="bio">Doctorado:</label><br>
+                    <select class="form-control" type="brand" id="mod_doctorate_list" name="doctorate">
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </section>
+
+                <section class="col-md-6 ">
                   <div class="form-group" id="educationalInstitution">
                     <label for="bio">Institución Educativa:</label><br>
                     <input id="mod_educationalInstitution" class="form-control" type="text" name="educationalInstitution" required>
@@ -419,38 +473,6 @@
                     </select>
                   </div>
 
-                  <div class="form-group" id="university">
-                    <label for="bio">Universidad:</label><br>
-                    <select class="form-control" type="brand" id="mod_university_list" name="university">
-                      <option value="Si">Si</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group" id="normalista">
-                    <label for="bio">Normalista:</label><br>
-                    <select class="form-control" type="brand" id="mod_normalista_list" name="normalista">
-                      <option value="Si">Si</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group" id="specialist">
-                    <label for="bio">Especialista:</label><br>
-                    <select class="form-control" type="brand" id="mod_specialist_list" name="specialist">
-                      <option value="Si">Si</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group" id="doctorate">
-                    <label for="bio">Doctorado:</label><br>
-                    <select class="form-control" type="brand" id="mod_doctorate_list" name="doctorate">
-                      <option value="Si">Si</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-
                   <div class="form-group" id="typeOfAppointment">
                     <label for="bio">Tipo de Nombramiento:</label><br>
                     <select class="form-control" type="brand" id="mod_typeOfAppointment_list" name="typeOfAppointment">
@@ -463,9 +485,7 @@
                       <option value="Municipal">Municipal</option>
                     </select>
                   </div>
-                </section>
 
-                <section class="col-md-6 ">
                   <div class="form-group" id="state">
                     <label for="bio">Estado:</label><br>
                     <select class="form-control" type="brand" id="mod_state_list" name="state">
@@ -479,27 +499,6 @@
                     <label for="bio">Municipio al que pertenece la institucion:</label><br>
                     <select class="form-control" type="brand" id="mod_municipalityWorking_list" name="municipalityWorking">
                       <!--json-->
-                    </select>
-                  </div>
-
-                  <div class="form-group" id="degree">
-                    <label for="bio">Título:</label><br>
-                    <input id="mod_degree" class="form-control" type="text" name="degree" required>
-                  </div>
-
-                  <div class="form-group" id="professional">
-                    <label for="bio">Profesional:</label><br>
-                    <select class="form-control" type="brand" id="mod_professional_list" name="professional">
-                      <option value="Si">Si</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group" id="MasterDegree">
-                    <label for="bio">Magister:</label><br>
-                    <select class="form-control" type="brand" id="mod_MasterDegree_list" name="MasterDegree">
-                      <option value="Si">Si</option>
-                      <option value="No">No</option>
                     </select>
                   </div>
 
@@ -527,7 +526,7 @@
                   </div>
 
                   <div class="form-group" id="municipalitySindical">
-                    <label for="bio">Municipio (Sindicato):</label><br>
+                    <label for="bio">Municipio del Sindicato:</label><br>
                     <input id="mod_municipalitySindical" class="form-control" type="text" name="municipalitySindical" required>
                   </div>
 

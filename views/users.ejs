@@ -50,7 +50,7 @@
 
               <table id="fresh-table" class="table">
                 <thead>
-                  <th data-field="fullname">Nombre </th>
+                  <th data-field="fullname">Nombre completo </th>
                   <th data-field="email">Email </th>
                   <th data-field="role">Rol </th>
                   <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
@@ -78,33 +78,37 @@
                   <label for=""><h2>Ingrese el nuevo usuario</h2></label>
                 </div>
                 <section class="col-md-6 ">
-                  <div class="form-group">
-                    <div class="form-group" id="fullname">
-                      <label for="bio">Nombre:</label><br>
-                      <input class="form-control" type="text" name="fullname" required>
-                    </div>
-                    <div class="form-group" id="email">
-                      <label for="bio">Email:</label><br>
-                      <input id="email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
-                      <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
-                    </div>
-                    <label for="bio">Rol:</label><br>
-                      <select class="form-control" type="brand" name="role">
-                        <option value="Administrador">Administrador</option>
-                        <option value="Presidente">Presidente</option>
-                        <option value="Fiscal">Fiscal</option>
-                        <option value="Tesorero">Tesorero</option>
-                      </select>
+                  <div class="form-group" id="fullname">
+                    <label for="bio">Nombre completo:</label><br>
+                    <input class="form-control" type="text" name="fullname" required>
                   </div>
-                </section>
-                <section class="col-md-6">
-                  <div>
+
+                  <div class="form-group">
                     <label for="bio">Afiliado</label><br>
                     <select class="form-control" type="brand" id="joined" name="joined">
                       <option value="Si">Sí</option>
                       <option value="No">No</option>
                     </select>
-                  </div>                                     
+                  </div>
+
+                  <div class="form-group">
+                    <label for="bio">Rol:</label><br>
+                    <select class="form-control" type="brand" name="role">
+                      <option value="Administrador">Administrador</option>
+                      <option value="Presidente">Presidente</option>
+                      <option value="Fiscal">Fiscal</option>
+                      <option value="Tesorero">Tesorero</option>
+                    </select>
+                  </div>
+                </section>
+
+                <section class="col-md-6">
+                  <div class="form-group" id="email">
+                    <label for="bio">Email:</label><br>
+                    <input id="email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                    <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
+                  </div>
+
                   <div class="form-group" id="password">
                     <label for="bio">Contraseña:</label><br>
                     <input class="form-control" type="password" name="password" required>
@@ -131,7 +135,13 @@
                 <div>
                   <label for=""><h2>Modificar usuario</h2></label>
                 </div>
+                
                 <section class="col-md-6 ">
+                  <div class="form-group" id="fullname">
+                    <label for="bio">Nombre completo:</label><br>
+                    <input class="form-control" type="text" name="fullname" id="mod_fullname" required>
+                  </div>
+
                   <div class="form-group">
                     <label for="bio">Afiliado</label><br>
                     <select class="form-control" type="brand" id="mod_joined" name="joined">
@@ -139,10 +149,15 @@
                       <option value="No">No</option>
                     </select>
                   </div>
-                  
-                  <div class="form-group" id="fullname">
-                    <label for="bio">Nombre:</label><br>
-                    <input class="form-control" type="text" name="fullname" id="mod_fullname" required>
+
+                  <div class="form-group">
+                    <label for="bio">Rol:</label><br>
+                    <select class="form-control" type="brand" name="role" id="mod_role">
+                      <option value="Administrador">Administrador</option>
+                      <option value="Presidente">Presidente</option>
+                      <option value="Fiscal">Fiscal</option>
+                      <option value="Tesorero">Tesorero</option>
+                    </select>
                   </div>
                 </section>
                 
@@ -165,16 +180,6 @@
                       <p id="symbol">Al menos debería tener <strong>un símbolo</strong></p>
                     </div>
                   </div-->
-
-                  <div class="form-group">
-                    <label for="bio">Rol:</label><br>
-                    <select class="form-control" type="brand" name="role" id="mod_role">
-                      <option value="Administrador">Administrador</option>
-                      <option value="Presidente">Presidente</option>
-                      <option value="Fiscal">Fiscal</option>
-                      <option value="Tesorero">Tesorero</option>
-                    </select>
-                  </div>
                 </section>
                 <input id="button_update" type="submit" class="modify-user btn btn-primary btn-block btn-flat" value="Actualizar usuario"></input>
                 <!-- El botón cancelar se deja como input para que no haga efecto sobre el formulario -->
