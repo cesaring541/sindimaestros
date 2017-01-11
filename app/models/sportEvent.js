@@ -1,18 +1,17 @@
 var mongoosePaginate=require('mongoose-paginate');
 var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
+var Schema = mongoose.Schema;
 
 var sportEventSchema = mongoose.Schema({    
     nameEvent			: { type: String, required: true },
-    sport 				: { type: String, required: true },
+    sport 				: { type: String },
     category	 		: { type: String, enum: ['A','B','C','D'] },
-    startDate 			: { type: String, required: true },
-    endDate				: { type: String, required: true  },
+    startDate 			: { type: Date, required: true },
+    endDate				: { type: Date, required: true },
     typeOfParticipation : { type: String, enum: ['Conjunto', 'Equipo','Individual'] },
-    numberOfTeams		: { type: String, required: true },
     gender 				: { type: String, enum: ['M','F','O'] },
-    typeOfEvent 		: { type: String, enum: ['Municipal','Zonal','Interzonal', 'final'] },
-    teams               : { type: String }, 
+    phase 		        : { type: String, enum: ['Municipal','Zonal','Interzonal','final'] },
+    teams               : [{ type: Schema.Types.ObjectId, ref: 'Team' }], 
     winer 				: { type: String }
 });
 

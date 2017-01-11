@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var livereload = require('livereload')
 var mongoose = require('mongoose');
+var moment = require('moment');
 var passport = require('passport');
 var flash    = require('connect-flash');
 var morgan = require('morgan');
