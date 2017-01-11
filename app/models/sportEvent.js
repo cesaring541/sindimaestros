@@ -11,7 +11,9 @@ var sportEventSchema = mongoose.Schema({
     typeOfParticipation : { type: String, enum: ['Conjunto', 'Equipo','Individual'] },
     gender 				: { type: String, enum: ['M','F','O'] },
     phase 		        : { type: String, enum: ['Municipal','Zonal','Interzonal','final'] },
-    teams               : [{ type: Schema.Types.ObjectId, ref: 'Team' }], 
+    teams               : [{ type: Schema.Types.ObjectId, ref: 'Team' }],
+    participantsJoineds : [{ type: Schema.Types.ObjectId, ref: 'Joined' }],
+    numberOfTeams       : { type: Number }, 
     winer 				: { type: String }
 });
 

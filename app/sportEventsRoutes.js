@@ -1,5 +1,6 @@
 var SportsEvent = require('./models/sportEvent'); //Import database model
 var Teams = require('./models/team');
+var Joined = require('./models/joined');
 var moment = require('moment');
 
 module.exports = function(app, passport) {
@@ -7,11 +8,14 @@ module.exports = function(app, passport) {
   app.get('/sportEvents', isLoggedIn, function(req, res, next) {
     SportsEvent.find({},function(err, objectSportEvent){
       Teams.find({},function(err, objectTeam){
-        res.render('eventos_deportivos.ejs', {
-          user : req.user, // Logged user
-          objectSportEvent :objectSportEvent,
-          objectTeam : objectTeam,
-          message: ""
+        Joined.find({}, function(err, objectJoined){
+          res.render('eventos_deportivos.ejs', {
+            user : req.user, // Logged user
+            objectSportEvent :objectSportEvent,
+            objectTeam : objectTeam,
+            objectJoined: objectJoined,
+            message: ""
+          });
         });
       });
     });
@@ -24,8 +28,7 @@ module.exports = function(app, passport) {
     var edition = moment(req.body.startDate).format('YYYY');
 
     romanEdition = setEdition(edition);
-    console.log("romanEdition "+romanEdition);
-    console.log(req.body.phase);
+    console.log("req.body.teams.length "+req.body.teams.length);
 
     objectSportEvent.nameEvent            = romanEdition+" Juegos de la Confraternidad Docente, fase "+req.body.phase;
     objectSportEvent.sport                = req.body.sport;
@@ -36,7 +39,9 @@ module.exports = function(app, passport) {
     objectSportEvent.gender               = req.body.gender;
     objectSportEvent.phase                = req.body.phase;
     objectSportEvent.teams                = req.body.teams;
+    objectSportEvent.participantsJoineds  = req.body.participantsJoineds;
     objectSportEvent.winer                = req.body.winer;
+    objectSportEvent.numberOfTeams        = req.body.teams.length;
 
     objectSportEvent.save(function (err) {
       if (err){
@@ -68,7 +73,11 @@ module.exports = function(app, passport) {
     SportsEvent.findById(id, function(err, objectSportEvent){
       if (err) ;
 
-      objectSportEvent.nameEvent            = romanEdition+" Juegos de la Confraternidad Docente, fase "+phase;
+      var edition = moment(req.body.startDate).format('YYYY');
+
+      romanEdition = setEdition(edition);
+
+      objectSportEvent.nameEvent            = romanEdition+" Juegos de la Confraternidad Docente, fase "+req.body.phase;
       objectSportEvent.sport                = req.body.sport;
       objectSportEvent.category             = req.body.category;
       objectSportEvent.startDate            = req.body.startDate;
@@ -77,7 +86,9 @@ module.exports = function(app, passport) {
       objectSportEvent.gender               = req.body.gender;
       objectSportEvent.phase                = req.body.phase;
       objectSportEvent.teams                = req.body.teams;
+      objectSportEvent.participantsJoineds  = req.body.participantsJoineds;
       objectSportEvent.winer                = req.body.winer;
+      objectSportEvent.numberOfTeams        = req.body.teams.length;
 
       objectSportEvent.save({_id:id}, function(err){
         if (err) {

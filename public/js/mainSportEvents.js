@@ -67,10 +67,12 @@ $(document).ready(function(){
 
 	// Al dar click en el boton Agregar...
 	$("#add-eventsSports").click(function(){
+		
 		$(".table-eventsSports").hide(100);
 		$(".form-eventSport").show(100);
 		$("#form-add-eventSport").show(100);
 		$("#form-modify-eventSport").hide(100);
+
 	});
 
 
@@ -111,8 +113,9 @@ $(document).ready(function(){
 					$("#mod_endDate").val(moment(data.endDate).format('YYYY-MM-DD'));
 					$("#mod_typeOfParticipation").val(data.typeOfParticipation);
 					$("#mod_gender").val(data.gender);
-					$("#mod_phase").val(data.phase);
+					$("#mod_phase").append($('<option>', {value: data.phase, text: data.phase}));
 					$('#mod_teams').selectpicker('val', data.teams); // Selecciona las opciones del select multiple
+					$('#mod_participantsJoineds').selectpicker('val', data.participantsJoineds); // Selecciona las opciones del select multiple
 					$("#mod_winer").val(data.winer);
 				},
 				error:function(msg) {
