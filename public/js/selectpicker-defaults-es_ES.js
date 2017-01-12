@@ -5,7 +5,7 @@
  */
 (function ($) {
   $.fn.selectpicker.defaults = {
-    noneSelectedText: 'No hay selección',
+    noneSelectedText: 'Seleccione...',
     noneResultsText: 'No hay resultados {0}',
     countSelectedText: 'Seleccionados {0} de {1}',
     maxOptionsText: ['Límite alcanzado ({n} {var} max)', 'Límite del grupo alcanzado({n} {var} max)', ['elementos', 'element']],
