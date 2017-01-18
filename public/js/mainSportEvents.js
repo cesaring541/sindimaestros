@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	// OBTENCIÓN LISTADO DE MUNICIPIOS ==============================================================
+	//===============================================================================================
 	$.ajax({ 
 		type: 'GET', 
 		url: 'json/municipalities.json', 
@@ -14,6 +16,18 @@ $(document).ready(function(){
 		}
 	});
 
+	// CAMPOS VISIBLES DEPENDIENDO DE LA FASE SELECCIONADA ==========================================
+	//===============================================================================================
+	$('#phase, #mod_phase').on('change', function(){
+		if ($(this).val()=='Municipal') {
+			$('#participantsJoinedsField, #mod_participantsJoineds').show();
+		} else if ($(this).val()=='Interzonal') {
+			$('#participantsJoinedsField, #mod_participantsJoineds').hide();
+		}
+	})
+
+	// LISTADO DE DEPORTES DEPENDIENDO EL TIPO DE PARTICIPACIÓN SELECCIONADO ========================
+	//===============================================================================================
 	$('#typeOfParticipation').on('change', function() { 
 		$("#sport").empty();	
 		//$("#sport option:selected").removeAttr("selected");
@@ -47,7 +61,7 @@ $(document).ready(function(){
 					console.log(msg+" Listado de objetos fallido");
 				}
 			});
-		}else if($('#typeOfParticipation').val()=="Individual") {
+		} else if ($('#typeOfParticipation').val()=="Individual") {
 			$.ajax({ 
 				type: 'GET', 
 				url: 'json/individual.json', 
@@ -64,6 +78,9 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+	// EVENTOS BOTONES CRUD =========================================================================
+	//===============================================================================================
 
 	// Al dar click en el boton Agregar...
 	$("#add-eventsSports").click(function(){

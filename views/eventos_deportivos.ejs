@@ -77,9 +77,9 @@
                   <label for=""><h2>Ingrese el nuevo evento deportivo</h2></label>
                 </div>
 
-                <section class="col-md-6 ">
-                  <div class="form-group"> 
-                   <label for="bio">Fase del evento</label><br>
+                <section class="col-md-12">
+                  <div class="form-group">
+                    <label for="bio">Fase del evento</label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="phase" name="phase" title="Seleccione...">
                       <option value="Municipal">Municipal</option>
                       <!--option value="Zonal">Zonal</option-->
@@ -88,17 +88,30 @@
                     </select>
                   </div>
 
-                  <div class="form-group" id="startDate">
+                  <div class="form-group" style="display: none;" id="participantsJoinedsField">
+                    <label for="bio">Afiliados participantes:</label><br>
+                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds">
+                      <% if (objectJoined) { %>
+                        <% objectJoined.forEach(function(objJoi) { %>
+                          <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+                        <% }); %>
+                      <% } %>
+                    </select>
+                  </div>
+                </section>
+
+                <section class="col-md-6">
+                  <div class="form-group" id="startDate" style="display: none;">
                     <label for="bio">Fecha de inicio del evento:</label><br>
                     <input class="form-control" type="date" name="startDate" required="true">
                   </div>
 
-                  <div class="form-group" id="endDate">
+                  <div class="form-group" id="endDate" style="display: none;">
                     <label for="bio">Fecha de finalización del evento:</label><br>
                     <input class="form-control" type="date" name="endDate" required="true">
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" style="display: none;">
                     <label for="bio">Tipo de participacion</label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="typeOfParticipation" name="typeOfParticipation" title="Seleccione...">
                       <option value="Conjunto">Conjunto</option>
@@ -107,7 +120,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" style="display: none;">
                     <label for="bio">Deporte:</label><br>
                     <select class="form-control" type="brand" id="sport" name="sport">
                     </select>
@@ -115,7 +128,7 @@
                 </section>
 
                 <section class="col-md-6">
-                  <div class="form-group">
+                  <div class="form-group" style="display: none;">
                     <label for="bio">Genero</label><br>
                     <select class="form-control" type="brand" id="gender" name="gender">
                       <option value="M">Masculino</option>
@@ -124,7 +137,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" style="display: none;">
                     <label for="bio">Categoria</label><br>
                     <select class="form-control" type="brand" id="category" name="category">
                       <option value="A">A</option>
@@ -134,7 +147,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" style="display: none;">
                     <label for="bio">Equipos participantes:</label><br>
                     <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="teams">
                       <% if (objectTeam) { %>
@@ -145,18 +158,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
-                    <label for="bio">Afiliados participantes:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds">
-                      <% if (objectJoined) { %>
-                        <% objectJoined.forEach(function(objJoi) { %>
-                          <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
-                        <% }); %>
-                      <% } %>
-                    </select>
-                  </div>
-
-                  <div class="form-group" id="winer">
+                  <div class="form-group" id="winer" style="display: none;">
                     <label for="bio">Ganador (opcional):</label><br>
                     <input class="form-control" type="text" name="winer">
                   </div>
@@ -240,7 +242,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" id="participantsJoinedsField">
                     <label for="bio">Afiliados participantes:</label><br>
                     <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds" id="mod_participantsJoineds">
                       <% if (objectJoined) { %>
