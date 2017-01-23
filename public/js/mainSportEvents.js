@@ -18,19 +18,35 @@ $(document).ready(function(){
 
 	// CAMPOS VISIBLES DEPENDIENDO DE LA FASE SELECCIONADA ==========================================
 	//===============================================================================================
-	$('#phase, #mod_phase').on('change', function(){
-		if ($(this).val()=='Municipal') {
-			$('#participantsJoinedsField, #mod_participantsJoineds').show();
-		} else if ($(this).val()=='Interzonal') {
-			$('#participantsJoinedsField, #mod_participantsJoineds').hide();
+	function visualizeFields(phaseVal){
+		if (phaseVal == "Municipal") {
+			$('.participantsJoinedsField').show();
+			$('.sportField').hide();
+			$('.typeOfParticipationField').hide();
+			$('.genderField').hide();
+			$('.categoryField').hide();
+			$('.teamsField').hide();
+			$('.winnerField').hide();
+		} else if (phaseVal == "Interzonal") {
+			$('.participantsJoinedsField').hide();
+			$('.typeOfParticipationField').show();
+			$('.sportField').show();
+			$('.genderField').show();
+			$('.categoryField').show();
+			$('.teamsField').show();
+			$('.winnerField').show();
 		}
+	}
+
+	$('#phase').on('change', function(){
+		visualizeFields($('#phase').val());
 	})
 
 	// LISTADO DE DEPORTES DEPENDIENDO EL TIPO DE PARTICIPACIÓN SELECCIONADO ========================
 	//===============================================================================================
 	$('#typeOfParticipation').on('change', function() { 
-		$("#sport").empty();	
-		//$("#sport option:selected").removeAttr("selected");
+		$("#sport").empty();
+
 		if ($('#typeOfParticipation').val()=="Conjunto") {
 			$.ajax({ 
 				type: 'GET', 
@@ -79,11 +95,21 @@ $(document).ready(function(){
 		}
 	});
 
+	// LISTADO DE EQUIPOS PARTICIPANTES DEPENDIENDO EL DEPORTE, GÉNERO O CATEGORÍA SELECCIONADOS ====
+	//===============================================================================================
+	
+	
+	$('#typeOfParticipation').on('change', function(){
+		console.log("cambió");
+	});
+
 	// EVENTOS BOTONES CRUD =========================================================================
 	//===============================================================================================
 
 	// Al dar click en el boton Agregar...
 	$("#add-eventsSports").click(function(){
+
+		visualizeFields($('#phase').val())
 		
 		$(".table-eventsSports").hide(100);
 		$(".form-eventSport").show(100);
@@ -123,6 +149,8 @@ $(document).ready(function(){
 				success: function (data) {	   			
 					$("#button_update").attr("id", dataId);
 
+					$("#mod_phase").append($('<option>', {value: data.phase, text: data.phase}));
+					$('#mod_participantsJoineds').selectpicker('val', data.participantsJoineds); // Selecciona las opciones del select multiple
 					$("#mod_nameEvent").val(data.nameEvent);
 					$("#mod_sport").append($('<option>', {value: data.sport, text: data.sport}));
 					$("#mod_category").val(data.category);
@@ -130,16 +158,19 @@ $(document).ready(function(){
 					$("#mod_endDate").val(moment(data.endDate).format('YYYY-MM-DD'));
 					$("#mod_typeOfParticipation").val(data.typeOfParticipation);
 					$("#mod_gender").val(data.gender);
-					$("#mod_phase").append($('<option>', {value: data.phase, text: data.phase}));
 					$('#mod_teams').selectpicker('val', data.teams); // Selecciona las opciones del select multiple
-					$('#mod_participantsJoineds').selectpicker('val', data.participantsJoineds); // Selecciona las opciones del select multiple
-					$("#mod_winer").val(data.winer);
+					$("#mod_winner").val(data.winner);
 				},
 				error:function(msg) {
 					// body...
 					console.log(msg+"Peticion de datos fallida");
 				}
 			});
+
+			// El timeout asegura que se cargue el dato correctamente
+			setTimeout(function(){
+				visualizeFields($("#mod_phase").val());
+			}, 1000);
 		},
 
 		// Al dar click en el boton Eliminar...

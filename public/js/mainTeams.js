@@ -1,15 +1,13 @@
 $(document).ready(function(){
-
-	// ===================================================================================
-	// TIPO DE PARTICIPACIÓN =============================================================
-	// ===================================================================================
+	// LISTADO DE DEPORTES DEPENDIENDO EL TIPO DE PARTICIPACIÓN SELECCIONADO ========================
+	//===============================================================================================
 	$('#typeOfParticipation').on('change', function() { 
-		$("#sport").empty();	
-		//$("#sport option:selected").removeAttr("selected");
+		$("#sport").empty();
+
 		if ($('#typeOfParticipation').val()=="Conjunto") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/conjunto.json', 
+			$.ajax({
+				type: 'GET',
+				url: 'json/conjunto.json',
 				dataType: 'json',
 				success: function (data) {
 					var array = data[1].CONJUNTO;
@@ -22,9 +20,9 @@ $(document).ready(function(){
 				}
 			});
 		} else if ($('#typeOfParticipation').val()=="Equipo") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/equipo.json', 
+			$.ajax({
+				type: 'GET',
+				url: 'json/equipo.json',
 				dataType: 'json',
 				success: function (data) {
 					var array = data[1].EQUIPO;
@@ -37,9 +35,9 @@ $(document).ready(function(){
 				}
 			});
 		} else if ($('#typeOfParticipation').val()=="Individual") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/individual.json', 
+			$.ajax({
+				type: 'GET',
+				url: 'json/individual.json',
 				dataType: 'json',
 				success: function (data) {
 					var array = data[1].INDIVIDUAL;
@@ -54,9 +52,8 @@ $(document).ready(function(){
 		}
 	});
 
-	// ===================================================================================
-	// ZONAS =============================================================================
-	// ===================================================================================
+	// LISTADO DE ZONAS =============================================================================
+	//===============================================================================================
 	$.ajax({ 
 		type: 'GET', 
 		url: 'json/zones.json', 
@@ -73,8 +70,8 @@ $(document).ready(function(){
 	});
 
 	$('#zone_list').on('change', function() { 
-		$("#municipality_list").empty();	
-		//$("#sport option:selected").removeAttr("selected");
+		$("#municipality_list").empty();
+		
 		if ($('#zone_list').val()=="CENTRO") {
 			$.ajax({ 
 				type: 'GET', 
@@ -390,11 +387,12 @@ $(document).ready(function(){
 
 					$("#button_update").attr("id", dataId);
 
-					$("#mod_sport_list option[value='"+data.sport+"']").attr("selected","selected");
-					$("#mod_typeOfParticipation_list option[value='"+data.typeOfParticipation+"']").attr("selected","selected");
-					$("#mod_category_list option[value='"+data.sport+"']").attr("selected","selected");
-					$("#mod_zone_list option[value='"+data.zone+"']").attr("selected","selected");
-					$("#mod_municipality_list option[value='"+data.municipality+"']").attr("selected","selected");
+					$("#mod_gender_list").append($('<option>', {value: data.gender, text: data.gender}));
+					$("#mod_typeOfParticipation_list").append($('<option>', {value: data.typeOfParticipation, text: data.typeOfParticipation}));
+					$("#mod_sport_list").append($('<option>', {value: data.sport, text: data.sport}));
+					$("#mod_category_list").append($('<option>', {value: data.category, text: data.category}));
+					$("#mod_zone_list").append($('<option>', {value: data.zone, text: data.zone}));
+					$("#mod_municipality_list").append($('<option>', {value: data.municipality, text: data.municipality}));
 
 					// Selecciona las opciones del select multiple
 					$('#mod_members_list').selectpicker('val', data.members);

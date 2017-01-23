@@ -27,21 +27,28 @@ module.exports = function(app, passport) {
     var objectSportEvent = new SportsEvent();
     var edition = moment(req.body.startDate).format('YYYY');
 
-    romanEdition = setEdition(edition);
-    console.log("req.body.teams.length "+req.body.teams.length);
+    romanNumberEdition = setEdition(edition);
 
-    objectSportEvent.nameEvent            = romanEdition+" Juegos de la Confraternidad Docente, fase "+req.body.phase;
+    objectSportEvent.nameEvent            = romanNumberEdition+" Juegos de la Confraternidad Docente, fase "+req.body.phase;
+    objectSportEvent.phase                = req.body.phase;
     objectSportEvent.sport                = req.body.sport;
-    objectSportEvent.category             = req.body.category;
     objectSportEvent.startDate            = req.body.startDate;
     objectSportEvent.endDate              = req.body.endDate;
-    objectSportEvent.typeOfParticipation  = req.body.typeOfParticipation;
-    objectSportEvent.gender               = req.body.gender;
-    objectSportEvent.phase                = req.body.phase;
+    objectSportEvent.year                 = edition;
     objectSportEvent.teams                = req.body.teams;
     objectSportEvent.participantsJoineds  = req.body.participantsJoineds;
-    objectSportEvent.winer                = req.body.winer;
-    objectSportEvent.numberOfTeams        = req.body.teams.length;
+    objectSportEvent.winner               = req.body.winner;
+    if (req.body.phase == "Interzonal") {
+      objectSportEvent.numberOfTeams        = req.body.teams.length;
+      objectSportEvent.category             = req.body.category;
+      objectSportEvent.typeOfParticipation  = req.body.typeOfParticipation;
+      objectSportEvent.gender               = req.body.gender;
+    } else {
+      objectSportEvent.numberOfTeams        = 0;
+      objectSportEvent.category             = "Ninguno";
+      objectSportEvent.typeOfParticipation  = "Ninguno";
+      objectSportEvent.gender               = "Ninguno";
+    }
 
     objectSportEvent.save(function (err) {
       if (err){
@@ -75,20 +82,28 @@ module.exports = function(app, passport) {
 
       var edition = moment(req.body.startDate).format('YYYY');
 
-      romanEdition = setEdition(edition);
+      romanNumberEdition = setEdition(edition);
 
-      objectSportEvent.nameEvent            = romanEdition+" Juegos de la Confraternidad Docente, fase "+req.body.phase;
+      objectSportEvent.nameEvent            = romanNumberEdition+" Juegos de la Confraternidad Docente, fase "+req.body.phase;
+      objectSportEvent.phase                = req.body.phase;
       objectSportEvent.sport                = req.body.sport;
-      objectSportEvent.category             = req.body.category;
       objectSportEvent.startDate            = req.body.startDate;
       objectSportEvent.endDate              = req.body.endDate;
-      objectSportEvent.typeOfParticipation  = req.body.typeOfParticipation;    
-      objectSportEvent.gender               = req.body.gender;
-      objectSportEvent.phase                = req.body.phase;
+      objectSportEvent.year                 = edition;
       objectSportEvent.teams                = req.body.teams;
       objectSportEvent.participantsJoineds  = req.body.participantsJoineds;
-      objectSportEvent.winer                = req.body.winer;
-      objectSportEvent.numberOfTeams        = req.body.teams.length;
+      objectSportEvent.winner               = req.body.winner;
+      if (req.body.phase == "Interzonal") {
+        objectSportEvent.numberOfTeams        = req.body.teams.length;
+        objectSportEvent.category             = req.body.category;
+        objectSportEvent.typeOfParticipation  = req.body.typeOfParticipation;
+        objectSportEvent.gender               = req.body.gender;
+      } else {
+        objectSportEvent.numberOfTeams        = 0;
+        objectSportEvent.category             = "Ninguno";
+        objectSportEvent.typeOfParticipation  = "Ninguno";
+        objectSportEvent.gender               = "Ninguno";
+      }
 
       objectSportEvent.save({_id:id}, function(err){
         if (err) {
@@ -104,6 +119,7 @@ module.exports = function(app, passport) {
 
 var setEdition = function(year){
   var edition;
+
   if (year == 2014) {
     edition = "XV";
   } else if (year == 2015){

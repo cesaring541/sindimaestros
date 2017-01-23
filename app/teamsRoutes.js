@@ -21,13 +21,14 @@ module.exports = function(app, passport) {
 
 		var objTeam = new Team();
 
-		objTeam.name 					= req.body.sport+" "+req.body.municipality;
-		objTeam.members 			= req.body.members;
-		objTeam.zone 					= req.body.zone;
-		objTeam.municipality 	= req.body.municipality;
-		objTeam.sport 				= req.body.sport;
-		objTeam.category 			= req.body.category;
-		
+		objTeam.name 									= req.body.sport+" "+req.body.municipality;
+		objTeam.gender								= req.body.gender;
+		objTeam.typeOfParticipation		= req.body.typeOfParticipation;
+		objTeam.members 							= req.body.members;
+		objTeam.zone 									= req.body.zone;
+		objTeam.municipality 					= req.body.municipality;
+		objTeam.sport 								= req.body.sport;
+		objTeam.category 							= req.body.category;
 		
 		objTeam.save(function (err) {
 			if (err){
@@ -60,12 +61,14 @@ module.exports = function(app, passport) {
 		Team.findById(id, function(err, objTeam){
 			if (err) ;
 
-			objTeam.name 					= req.body.sport+" "+req.body.municipality;
-			objTeam.members 			= req.body.members;
-			objTeam.zone 					= req.body.zone;
-			objTeam.municipality 	= req.body.municipality;
-			objTeam.sport 				= req.body.sport;
-			objTeam.category 			= req.body.category;
+			objTeam.name 									= req.body.sport+" "+req.body.municipality;
+			objTeam.gender								= req.body.gender;
+			objTeam.typeOfParticipation		= req.body.typeOfParticipation;
+			objTeam.members 							= req.body.members;
+			objTeam.zone 									= req.body.zone;
+			objTeam.municipality 					= req.body.municipality;
+			objTeam.sport 								= req.body.sport;
+			objTeam.category 							= req.body.category;
 		
 			objTeam.save({_id:id}, function(err){
 				if (err) {
