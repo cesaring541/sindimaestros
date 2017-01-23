@@ -14,8 +14,7 @@ var sportEventSchema = mongoose.Schema({
 	gender              : { type: String, enum: ['Masculino', 'Femenino', 'Mixto', 'Ninguno'] },
 	teams               : [{ type: Schema.Types.ObjectId, ref: 'Team' }],
 	participantsJoineds : [{ type: Schema.Types.ObjectId, ref: 'Joined' }],
-	numberOfTeams       : { type: Number },
-	winner 							: { type: String }
+	numberOfTeams       : { type: Number }
 });
 
 sportEventSchema.plugin(mongoosePaginate);

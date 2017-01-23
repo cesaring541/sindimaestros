@@ -26,7 +26,6 @@ $(document).ready(function(){
 			$('.genderField').hide();
 			$('.categoryField').hide();
 			$('.teamsField').hide();
-			$('.winnerField').hide();
 		} else if (phaseVal == "Interzonal") {
 			$('.participantsJoinedsField').hide();
 			$('.typeOfParticipationField').show();
@@ -34,7 +33,6 @@ $(document).ready(function(){
 			$('.genderField').show();
 			$('.categoryField').show();
 			$('.teamsField').show();
-			$('.winnerField').show();
 		}
 	}
 
@@ -97,10 +95,35 @@ $(document).ready(function(){
 
 	// LISTADO DE EQUIPOS PARTICIPANTES DEPENDIENDO EL DEPORTE, GÉNERO O CATEGORÍA SELECCIONADOS ====
 	//===============================================================================================
-	
-	
+	function filterTeams(){
+		$("#teams option").each(function(){
+			$(this).show(); // Hace visibles todas las opciones, refrescando la lista
+			if (
+				$(this).data('sport') != $('#sport').val() ||
+				$(this).data('gender') != $('#gender').val() ||
+				$(this).data('category') != $('#category').val()
+				) 
+			{
+				$(this).hide();
+			}
+			$("#teams").selectpicker("refresh");
+		});
+	}
+
 	$('#typeOfParticipation').on('change', function(){
-		console.log("cambió");
+		filterTeams();
+	});
+
+	$('#sport').on('change', function(){
+		filterTeams();
+	});
+
+	$('#gender').on('change', function(){
+		filterTeams();
+	});
+
+	$('#category').on('change', function(){
+		filterTeams();
 	});
 
 	// EVENTOS BOTONES CRUD =========================================================================
@@ -159,7 +182,6 @@ $(document).ready(function(){
 					$("#mod_typeOfParticipation").val(data.typeOfParticipation);
 					$("#mod_gender").val(data.gender);
 					$('#mod_teams').selectpicker('val', data.teams); // Selecciona las opciones del select multiple
-					$("#mod_winner").val(data.winner);
 				},
 				error:function(msg) {
 					// body...

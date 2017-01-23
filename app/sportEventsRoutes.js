@@ -37,7 +37,6 @@ module.exports = function(app, passport) {
     objectSportEvent.year                 = edition;
     objectSportEvent.teams                = req.body.teams;
     objectSportEvent.participantsJoineds  = req.body.participantsJoineds;
-    objectSportEvent.winner               = req.body.winner;
     if (req.body.phase == "Interzonal") {
       objectSportEvent.numberOfTeams        = req.body.teams.length;
       objectSportEvent.category             = req.body.category;
@@ -92,7 +91,6 @@ module.exports = function(app, passport) {
       objectSportEvent.year                 = edition;
       objectSportEvent.teams                = req.body.teams;
       objectSportEvent.participantsJoineds  = req.body.participantsJoineds;
-      objectSportEvent.winner               = req.body.winner;
       if (req.body.phase == "Interzonal") {
         objectSportEvent.numberOfTeams        = req.body.teams.length;
         objectSportEvent.category             = req.body.category;
