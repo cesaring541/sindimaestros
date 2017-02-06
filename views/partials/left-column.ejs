@@ -26,7 +26,11 @@
 
         <li class="active"><a href="/events"><i class="fa fa-calendar"></i>Eventos Varios</a></li>
 
-        <li class="active"><a href="/sportEvents"><i class="fa fa-futbol-o"></i>Eventos Deportivos</a></li>
+        <% if (user.role === "Administrador") { %>
+          <li class="active"><a href="/sportEvents"><i class="fa fa-futbol-o"></i>Eventos Deportivos</a></li>
+        <% } else if (user.role === "Presidente Municipal" || user.role === "Presidente Zonal") { %>
+          <li class="active"><a href="/sportEventsInscriptions"><i class="fa fa-futbol-o"></i>Eventos Deportivos</a></li>
+        <% } %>
 
         <li class="active"><a href="/teams"><i class="fa fa-users"></i>Equipos</a></li>
 

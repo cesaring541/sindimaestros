@@ -113,6 +113,23 @@ module.exports = function(app, passport) {
       });        
     });
   });
+
+
+  app.get('/sportEventsInscriptions', isLoggedIn, function(req, res, next) {
+    SportsEvent.find({},function(err, objectSportEvent){
+      Teams.find({},function(err, objectTeam){
+        Joined.find({}, function(err, objectJoined){
+          res.render('eventos_deportivos_inscripciones.ejs', {
+            user : req.user, // Logged user
+            objectSportEvent :objectSportEvent,
+            objectTeam : objectTeam,
+            objectJoined: objectJoined,
+            message: ""
+          });
+        });
+      });
+    });
+  });
 };
 
 var setEdition = function(year){
