@@ -1,5 +1,18 @@
 $(document).ready(function(){
-
+	$.ajax({
+		type: 'GET',
+		url: 'json/municipalities.json',
+		dataType: 'json',
+		success: function (data) {
+			var array = data[1].municipality;
+			for (var i = 0; i < array.length; i++) {
+				$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+			};
+		},
+		error:function(msg) {
+			console.log(msg+" Listado de objetos fallido");
+		}
+	});
 	
 
 	$('input[type=password]').keyup(function() {

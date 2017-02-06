@@ -116,14 +116,14 @@ module.exports = function(app, passport) {
 
 
   app.get('/sportEventsInscriptions', isLoggedIn, function(req, res, next) {
-    SportsEvent.find({},function(err, objectSportEvent){
-      Teams.find({},function(err, objectTeam){
-        Joined.find({}, function(err, objectJoined){
+    SportsEvent.find({},function(err, sportEvents){
+      Teams.find({},function(err, teams){
+        Joined.find({}, function(err, joineds){
           res.render('eventos_deportivos_inscripciones.ejs', {
             user : req.user, // Logged user
-            objectSportEvent :objectSportEvent,
-            objectTeam : objectTeam,
-            objectJoined: objectJoined,
+            sportEvents :sportEvents,
+            teams : teams,
+            joineds: joineds,
             message: ""
           });
         });

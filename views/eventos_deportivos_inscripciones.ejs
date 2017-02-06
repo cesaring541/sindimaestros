@@ -17,7 +17,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Gestionar Eventos Deportivos
+            Inscripciones para Eventos Deportivos
           </h1>
         </section>
 
@@ -39,15 +39,29 @@
               <table id="fresh-table" class="table">
                 <thead>
                   <th data-field="nameEvent">Nombre </th>
+                  <th data-field="sport">Deporte </th>
+                  <th data-field="category">Categoría </th>
                   <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
                 </thead>
                 <tbody>
-                  <% if (objectSportEvent != undefined) { %>
-                  <% objectSportEvent.forEach(function(objSportEv) { %>
-                  <tr class="<%= objSportEv._id %>" style="text-align:center;">
-                    <td><%= objSportEv.nameEvent %></td>
-                  </tr>
+                  <% if (sportEvents != undefined) { %>
+
+                  <% sportEvents.forEach(function(spoEv) { %>
+                    <% if (user.role == "Presidente Municipal" && spoEv.phase == "Municipal") { %>
+                    <tr class="<%= spoEv._id %>" style="text-align:center;">
+                      <td><%= spoEv.nameEvent %></td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <% } else if (user.role == "Presidente Zonal" && spoEv.phase == "Interzonal") { %>
+                    <tr class="<%= spoEv._id %>" style="text-align:center;">
+                      <td><%= spoEv.nameEvent %></td>
+                      <td><%= spoEv.sport %></td>
+                      <td><%= spoEv.category %></td>
+                    </tr>
+                    <% } %>
                   <% }); %>
+
                   <% } else { %>
                   <td colspan="" rowspan="" headers="">Para crear un evento deportivo, dé click en el boton <span class="fa fa-plus-circle"></span></td>
                   <% } %>
@@ -64,81 +78,30 @@
                 </div>
 
                 <section class="col-md-12">
-                  <div class="form-group"> 
-                   <label for="bio">Fase del evento</label><br>
-                    <select class="form-control" type="brand" id="mod_phase" name="phase" required="true">
-                    </select>
-                  </div>
-                  
-                  <div class="form-group participantsJoinedsField" style="display: none;">
-                    <label for="bio">Afiliados participantes:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds" id="mod_participantsJoineds">
-                      <% if (objectJoined) { %>
-                        <% objectJoined.forEach(function(objJoi) { %>
-                          <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
-                        <% }); %>
-                      <% } %>
-                    </select>
-                  </div>
-                </section>
+                  <% if (user.role == "Presidente Municipal") { %>
+                    <div class="form-group participantsJoinedsField">
+                      <label for="bio">Afiliados participantes:</label><br>
+                      <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds" id="mod_participantsJoineds">
+                        <% if (joineds) { %>
+                          <% joineds.forEach(function(objJoi) { %>
+                            <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+                          <% }); %>
+                        <% } %>
+                      </select>
+                    </div>
+                  <% } else if (user.role == "Presidente Zonal") { %>
 
-                <section class="col-md-6">
-                  <div class="form-group startDateField">
-                    <label for="bio">Fecha de inicio del evento:</label><br>
-                    <input class="form-control" type="date" name="startDate" id="mod_startDate" required="true">
-                  </div>
-
-                  <div class="form-group endDateField">
-                    <label for="bio">Fecha de finalización del evento:</label><br>
-                    <input class="form-control" type="date" name="endDate" id="mod_endDate" required="true">
-                  </div>
-
-                  <div class="form-group typeOfParticipationField" style="display: none;">
-                    <label for="bio">Tipo de participacion</label><br>
-                    <select class="form-control" type="brand" id="mod_typeOfParticipation" name="typeOfParticipation">
-                      <option value="Conjunto">Conjunto</option>
-                      <option value="Equipo">Equipo</option>
-                      <option value="Individual">Individual</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group sportField" style="display: none;">
-                    <label for="bio">Deporte:</label><br>
-                    <select class="form-control" type="brand" id="mod_sport" name="sport">
-                    </select>
-                  </div>
-                </section>
-
-                <section class="col-md-6">
-                  <div class="form-group genderField" style="display: none;">
-                    <label for="bio">Género</label><br>
-                    <select class="form-control" type="brand" id="mod_gender" name="gender">
-                      <option value="Masculino">Masculino</option>
-                      <option value="Femenino">Femenino</option>
-                      <option value="Mixto">Mixto</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group categoryField" style="display: none;">
-                    <label for="bio">Categoria</label><br>
-                    <select class="form-control" type="brand" id="mod_category" name="category">
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group teamsField" style="display: none;">
-                    <label for="bio">Equipos participantes:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="teams" id="mod_teams">
-                      <% if (objectTeam) { %>
-                        <% objectTeam.forEach(function(objTea) { %>
-                          <option value="<%= objTea._id %>"><%= objTea.name %></option>
-                        <% }); %>
-                      <% } %>
-                    </select>
-                  </div>
+                    <div class="form-group teamsField">
+                      <label for="bio">Equipos participantes:</label><br>
+                      <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="teams" id="mod_teams">
+                        <% if (teams) { %>
+                          <% teams.forEach(function(objTea) { %>
+                            <option value="<%= objTea._id %>"><%= objTea.name %></option>
+                          <% }); %>
+                        <% } %>
+                      </select>
+                    </div>
+                  <% } %>
                 </section>
 
                 <input id="button_update" type="submit" class="modify-eventSport btn btn-primary btn-block btn-flat" value="Actualizar evento"></input>
@@ -214,6 +177,6 @@
     };
   </script>
     <!-- Script main-->
-  <script src="js/mainSportEvents.js" type="text/javascript" charset="utf-8" ></script>
+  <script src="js/mainSportEventsInscriptions.js" type="text/javascript" charset="utf-8" ></script>
   </body>
 </html>

@@ -9,7 +9,8 @@ var userSchema = mongoose.Schema({
     fullname  : { type: String, required: true },
     email			: { type: String },
     password 	: { type: String },
-    role 			: { type: String, required: true,  enum: ['Administrador', 'Presidente', 'Fiscal', 'Tesorero'] }
+    role 			: { type: String, required: true,  enum: ['Administrador', 'Presidente', 'Presidente Municipal', 'Presidente Zonal', 'Fiscal', 'Tesorero'] },
+    municipality : { type: String }
 });
 
 // generating a hash

@@ -3,24 +3,29 @@ var User = require('./models/user'); //Import database model
 module.exports = function(app, passport) {
 
   app.get('/users', isLoggedIn, function(req, res, next) {
-    User.find({},function(err, objUser){
-      res.render('users.ejs', {
-        user : req.user, // Logged user
-        objUser:objUser,
-        message: ""
+    if (req.user.role == "Administrador") {
+      User.find({},function(err, objUser){
+        res.render('users.ejs', {
+          user : req.user, // Logged user
+          objUser:objUser,
+          message: ""
+        });
       });
-    });
+    } else {
+      res.redirect('/joineds')
+    }
   });
 
   // Add new register
   app.post('/new-user',function(req,res,next){
 
     var user = new User();
-    user.joined   = req.body.joined;
-    user.fullname = req.body.fullname;
-    user.email    = req.body.email;
-    user.password = user.generateHash(req.body.password);
-    user.role     = req.body.role;
+    user.joined       = req.body.joined;
+    user.fullname     = req.body.fullname;
+    user.email        = req.body.email;
+    user.password     = user.generateHash(req.body.password);
+    user.role         = req.body.role;
+    user.municipality = req.body.municipality;
 
     console.log(req.body)
 
@@ -54,11 +59,12 @@ module.exports = function(app, passport) {
     User.findById(id, function(err, objUser){
       if (err) throw err;
 
-      objUser.joined   = req.body.joined;  
-      objUser.fullname = req.body.fullname;
-      objUser.email    = req.body.email;
+      objUser.joined        = req.body.joined;  
+      objUser.fullname      = req.body.fullname;
+      objUser.email         = req.body.email;
       //objUser.password = req.body.password;
-      objUser.role     = req.body.role;
+      objUser.role          = req.body.role;
+      objUser.municipality  = req.body.municipality;
 
       objUser.save({_id:id}, function(err){
         if (err) {

@@ -51,6 +51,7 @@
               <table id="fresh-table" class="table">
                 <thead>
                   <th data-field="nameEvent">Nombre </th>
+                  <th data-field="category">Categoría </th>
                   <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
                 </thead>
                 <tbody>
@@ -58,6 +59,7 @@
                   <% objectSportEvent.forEach(function(objSportEv) { %>
                   <tr class="<%= objSportEv._id %>" style="text-align:center;">
                     <td><%= objSportEv.nameEvent %></td>
+                    <td><%= objSportEv.category %></td>
                   </tr>
                   <% }); %>
                   <% } else { %>
