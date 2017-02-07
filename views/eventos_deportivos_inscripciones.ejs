@@ -41,6 +41,7 @@
                   <th data-field="nameEvent">Nombre </th>
                   <th data-field="sport">Deporte </th>
                   <th data-field="category">Categoría </th>
+                  <th data-field="gender">Género </th>
                   <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
                 </thead>
                 <tbody>
@@ -52,12 +53,14 @@
                       <td><%= spoEv.nameEvent %></td>
                       <td>-</td>
                       <td>-</td>
+                      <td>-</td>
                     </tr>
                     <% } else if (user.role == "Presidente Zonal" && spoEv.phase == "Interzonal") { %>
                     <tr class="<%= spoEv._id %>" style="text-align:center;">
                       <td><%= spoEv.nameEvent %></td>
                       <td><%= spoEv.sport %></td>
                       <td><%= spoEv.category %></td>
+                      <td><%= spoEv.gender %></td>
                     </tr>
                     <% } %>
                   <% }); %>
@@ -83,8 +86,10 @@
                       <label for="bio">Afiliados participantes:</label><br>
                       <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds" id="mod_participantsJoineds">
                         <% if (joineds) { %>
-                          <% joineds.forEach(function(objJoi) { %>
-                            <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+                          <% joineds.forEach(function(joi) { %>
+                            <% if (joi.municipalitySindical == user.municipality) { %>
+                            <option value="<%= joi._id %>"><%= joi.identityCard %> - <%= joi.fullName %></option>
+                            <% } %>
                           <% }); %>
                         <% } %>
                       </select>

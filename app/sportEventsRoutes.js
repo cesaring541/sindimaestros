@@ -115,6 +115,7 @@ module.exports = function(app, passport) {
   });
 
 
+  // Ruta designada para inscripciones por parte de Presidente Municipales y Zonales
   app.get('/sportEventsInscriptions', isLoggedIn, function(req, res, next) {
     SportsEvent.find({},function(err, sportEvents){
       Teams.find({},function(err, teams){
