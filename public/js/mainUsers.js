@@ -6,8 +6,9 @@ $(document).ready(function(){
 		success: function (data) {
 			var array = data[1].municipality;
 			for (var i = 0; i < array.length; i++) {
-				$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+				$("#municipality_list, #mod_municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 			};
+			$("#municipality_list, #mod_municipality_list").selectpicker("refresh");
 		},
 		error:function(msg) {
 			console.log(msg+" Listado de objetos fallido");
@@ -144,6 +145,7 @@ $(document).ready(function(){
 	   			$("#mod_email").val(data.email);
 	   			$("#mod_password").val(data.password);
 	   			$("#mod_role option[value='"+data.role+"']").attr("selected","selected");
+	   			$('#mod_municipality_list').selectpicker('val', data.municipality);
 	   		},
 	   		error:function(msg) {
 	   			// body...

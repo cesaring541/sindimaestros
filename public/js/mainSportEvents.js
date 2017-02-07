@@ -8,7 +8,7 @@ $(document).ready(function(){
 		success: function (data) {
 			var array = data[1].municipality;
 			for (var i = 0; i < array.length; i++) {
-				$("#municipality_list, #mod_municipality_list, #mod_municipalityWorking_list, #municipalityWorking_list, #municipalitySindical_list, #mod_municipalitySindical_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+				$("#municipalitySindical_list, #mod_municipalitySindical_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 			};
 		},
 		error:function(msg) {
@@ -55,6 +55,7 @@ $(document).ready(function(){
 					for (var i = 0; i < array.length; i++) {
 						$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 					};
+					$("#sport").selectpicker("refresh");
 				},
 				error:function(msg) {
 					console.log(msg+" Listado de objetos fallido");
@@ -70,6 +71,7 @@ $(document).ready(function(){
 					for (var i = 0; i < array.length; i++) {
 						$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 					};
+					$("#sport").selectpicker("refresh");
 				},
 				error:function(msg) {
 					console.log(msg+" Listado de objetos fallido");
@@ -85,6 +87,61 @@ $(document).ready(function(){
 					for (var i = 0; i < array.length; i++) {
 						$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 					};
+					$("#sport").selectpicker("refresh");
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+		}
+	});
+
+	$('#mod_typeOfParticipation').on('change', function() { 
+		$("#mod_sport").empty();
+
+		if ($('#mod_typeOfParticipation').val()=="Conjunto") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/conjunto.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].CONJUNTO;
+					for (var i = 0; i < array.length; i++) {
+						$("#mod_sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#mod_sport").selectpicker("refresh");
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+		} else if ($('#mod_typeOfParticipation').val()=="Equipo") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/equipo.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].EQUIPO;
+					for (var i = 0; i < array.length; i++) {
+						$("#mod_sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#mod_sport").selectpicker("refresh");
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+		} else if ($('#mod_typeOfParticipation').val()=="Individual") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/individual.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].INDIVIDUAL;
+					for (var i = 0; i < array.length; i++) {
+						$("#mod_sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#mod_sport").selectpicker("refresh");
 				},
 				error:function(msg) {
 					console.log(msg+" Listado de objetos fallido");
@@ -126,6 +183,22 @@ $(document).ready(function(){
 		filterTeams();
 	});
 
+	// Recorre el select de equipos en el formulario Modificar
+	function filterModTeams(){
+		$("#mod_teams option").each(function(){
+			$(this).show(); // Hace visibles todas las opciones, refrescando la lista
+			if (
+				$(this).data('sport') != $('#mod_sport').val() ||
+				$(this).data('gender') != $('#mod_gender').val() ||
+				$(this).data('category') != $('#mod_category').val()
+				) 
+			{
+				$(this).hide();
+			}
+			$("#mod_teams").selectpicker("refresh");
+		});
+	}
+
 	// EVENTOS BOTONES CRUD =========================================================================
 	//===============================================================================================
 
@@ -165,6 +238,19 @@ $(document).ready(function(){
 			$("#form-add-eventSport").hide(100);
 			$("#form-modify-eventSport").show(100);
 
+			$("#mod_phase option").each(function(){
+				$(this).remove();
+			});
+			$("#mod_typeOfParticipation option").each(function(){
+				$(this).remove();
+			});
+			$("#mod_gender option").each(function(){
+				$(this).remove();
+			});
+			$("#mod_category option").each(function(){
+				$(this).remove();
+			});
+
 			$.ajax({ 
 				type: 'GET', 
 				url: '/read-sportEvent/'+dataId,
@@ -176,12 +262,16 @@ $(document).ready(function(){
 					$('#mod_participantsJoineds').selectpicker('val', data.participantsJoineds); // Selecciona las opciones del select multiple
 					$("#mod_nameEvent").val(data.nameEvent);
 					$("#mod_sport").append($('<option>', {value: data.sport, text: data.sport}));
-					$("#mod_category").val(data.category);
+					$("#mod_category").append($('<option>', {value: data.category, text: data.category}));
 					$("#mod_startDate").val(moment(data.startDate).format('YYYY-MM-DD'));
 					$("#mod_endDate").val(moment(data.endDate).format('YYYY-MM-DD'));
-					$("#mod_typeOfParticipation").val(data.typeOfParticipation);
-					$("#mod_gender").val(data.gender);
+					$("#mod_typeOfParticipation").append($('<option>', {value: data.typeOfParticipation, text: data.typeOfParticipation}));
+					$("#mod_gender").append($('<option>', {value: data.gender, text: data.gender}));
 					$('#mod_teams').selectpicker('val', data.teams); // Selecciona las opciones del select multiple
+
+					$("#mod_phase, #mod_sport, #mod_typeOfParticipation, #mod_category, #mod_gender").selectpicker("refresh");
+					
+					filterModTeams();
 				},
 				error:function(msg) {
 					// body...
