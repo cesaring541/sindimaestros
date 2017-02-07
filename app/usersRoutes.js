@@ -20,14 +20,13 @@ module.exports = function(app, passport) {
   app.post('/new-user',function(req,res,next){
 
     var user = new User();
+
     user.joined       = req.body.joined;
     user.fullname     = req.body.fullname;
     user.email        = req.body.email;
     user.password     = user.generateHash(req.body.password);
     user.role         = req.body.role;
     user.municipality = req.body.municipality;
-
-    console.log(req.body)
 
     user.save(function (err) {
       if (err){
@@ -68,10 +67,11 @@ module.exports = function(app, passport) {
 
       objUser.save({_id:id}, function(err){
         if (err) {
-          console.log("Error arrojado: "+err) 
+          console.log("Error arrojado: "+err);
           res.redirect("/users");
         }
         else{
+          console.log("Objeto modificado exitosamente");
           res.redirect("/users");
         }
       });        

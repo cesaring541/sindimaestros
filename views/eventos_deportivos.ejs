@@ -52,15 +52,30 @@
                 <thead>
                   <th data-field="nameEvent">Nombre </th>
                   <th data-field="category">Categoría </th>
+                  <th data-field="sport">Deporte </th>
+                  <th data-field="gender">Género </th>
                   <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Acciones </th>
                 </thead>
                 <tbody>
                   <% if (objectSportEvent != undefined) { %>
                   <% objectSportEvent.forEach(function(objSportEv) { %>
-                  <tr class="<%= objSportEv._id %>" style="text-align:center;">
-                    <td><%= objSportEv.nameEvent %></td>
-                    <td><%= objSportEv.category %></td>
-                  </tr>
+                    
+                    <% if (objSportEv.phase == "Municipal") { %>
+                    <tr class="<%= objSportEv._id %>" style="text-align:center;">
+                      <td><%= objSportEv.nameEvent %></td>
+                      <td> - </td>
+                      <td> - </td>
+                      <td> - </td>
+                    </tr>
+                    <% } else if (objSportEv.phase == "Interzonal") { %>
+                    <tr class="<%= objSportEv._id %>" style="text-align:center;">
+                      <td><%= objSportEv.nameEvent %></td>
+                      <td><%= objSportEv.category %></td>
+                      <td><%= objSportEv.sport %></td>
+                      <td><%= objSportEv.gender %></td>
+                    </tr>
+                    <% } %>
+
                   <% }); %>
                   <% } else { %>
                   <td colspan="" rowspan="" headers="">Para crear un evento deportivo, dé click en el boton <span class="fa fa-plus-circle"></span></td>
