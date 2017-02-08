@@ -26,6 +26,7 @@ module.exports = function(app, passport) {
     user.email        = req.body.email;
     user.password     = user.generateHash(req.body.password);
     user.role         = req.body.role;
+    user.zone         = req.body.zone;
     user.municipality = req.body.municipality;
 
     user.save(function (err) {
@@ -63,6 +64,7 @@ module.exports = function(app, passport) {
       objUser.email         = req.body.email;
       //objUser.password = req.body.password;
       objUser.role          = req.body.role;
+      objUser.zone          = req.body.zone;
       objUser.municipality  = req.body.municipality;
 
       objUser.save({_id:id}, function(err){

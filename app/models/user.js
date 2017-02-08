@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
     email			: { type: String },
     password 	: { type: String },
     role 			: { type: String, required: true,  enum: ['Administrador', 'Presidente', 'Presidente Municipal', 'Presidente Zonal', 'Fiscal', 'Tesorero'] },
+    zone			: { type: String },
     municipality : { type: String }
 });
 

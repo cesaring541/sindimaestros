@@ -18,18 +18,10 @@ $(document).ready(function(){
 				type: 'GET', 
 				url: '/read-sportEvent/'+dataId,
 				dataType: 'json',
-				success: function (data) {	   			
+				success: function (data) {
 					$("#button_update").attr("id", dataId);
 
-					$("#mod_phase").append($('<option>', {value: data.phase, text: data.phase}));
 					$('#mod_participantsJoineds').selectpicker('val', data.participantsJoineds); // Selecciona las opciones del select multiple
-					$("#mod_nameEvent").val(data.nameEvent);
-					$("#mod_sport").append($('<option>', {value: data.sport, text: data.sport}));
-					$("#mod_category").val(data.category);
-					$("#mod_startDate").val(moment(data.startDate).format('YYYY-MM-DD'));
-					$("#mod_endDate").val(moment(data.endDate).format('YYYY-MM-DD'));
-					$("#mod_typeOfParticipation").val(data.typeOfParticipation);
-					$("#mod_gender").val(data.gender);
 					$('#mod_teams').selectpicker('val', data.teams); // Selecciona las opciones del select multiple
 				},
 				error:function(msg) {
@@ -37,11 +29,6 @@ $(document).ready(function(){
 					console.log(msg+"Peticion de datos fallida");
 				}
 			});
-
-			// El timeout asegura que se cargue el dato correctamente
-			setTimeout(function(){
-				visualizeFields($("#mod_phase").val());
-			}, 1000);
 		}
 	}
 
