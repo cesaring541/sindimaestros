@@ -37,7 +37,7 @@ $(document).ready(function(){
 	$('.modify-eventSport').click(function(){
 
 		var dataId = this.id;
-		$('#frm-modify-eventSport').attr("action", "update-sportEventInscription/"+dataId);
+		$('#frm-modify-eventSport').attr("action", "update-sportEventInscriptions/"+dataId);
 		$('#frm-modify-eventSport').submit();
 	});
 

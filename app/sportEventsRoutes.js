@@ -131,6 +131,34 @@ module.exports = function(app, passport) {
       });
     });
   });
+
+  // Ruta designada para inscripciones por parte de Presidente Municipales y Zonales
+  app.post('/update-sportEventInscriptions/:id', function(req, res, next){
+    var id = req.param("id");
+
+    SportsEvent.findById(id, function(err, sportEvent){
+      if (err) ;
+
+      if (req.body.teams != undefined) {
+        //auxList = objectSportEvent.teams;
+        // = req.body.teams;
+      } else if (req.body.participantsJoineds != undefined) {
+        sportEvent.participantsJoineds = aggregateNewAffiliates(sportEvent.participantsJoineds, req.body.participantsJoineds);
+        sportEvent.participantsJoineds = removeDuplicated(sportEvent.participantsJoineds);
+      } else {
+        console.log("No se han recibido datos de equipos y/o afiliados");
+      }
+
+      sportEvent.save({_id:id}, function(err){
+        if (err) {
+          res.redirect("/sportEventsInscriptions");
+        }
+        else{
+          res.redirect("/sportEventsInscriptions");
+        }
+      });     
+    });
+  });
 };
 
 var setEdition = function(year){
@@ -160,6 +188,30 @@ var setEdition = function(year){
 
   return edition;
 }
+
+var aggregateNewAffiliates = function(oldList, newList){
+  if (typeof newList == "string") { // Si sólo se agregó un afiliado
+    oldList.push(newList);
+  } else if (typeof newList == "object") { // Si se agregaron dos o más afiliados
+    for (var i = 0; i < newList.length; i++) {
+      oldList.push(newList[i]);
+    }
+  }
+
+  return oldList;
+}
+
+var removeDuplicated = function(list){
+  var cleanList = [];
+  $.each(list, function(i, el){
+    if($.inArray(el, cleanList) === -1){
+      cleanList.push(el);
+    } 
+  });
+
+  return cleanList;
+}
+
 
 // Route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
