@@ -1,21 +1,21 @@
 {
-  "1": {
-    "OCCIDENTE": [
-		"BORBUR",
-		"BRICEÑO",
-		"BUENAVISTA",
-		"CALDAS",
-		"COPER",
-    	"LA VICTORIA",
-		"MARIPI",
-		"MUZO",
-		"OTANCHE",
-		"PAUNA",
-		"QUIPAMA",
-		"SAN MIGUEL DE SEMA",
-		"TUNUNGUA"
-    ]
-  }
+	"1": {
+		"OCCIDENTE": [
+			"BORBUR",
+			"BRICEÑO",
+			"BUENAVISTA",
+			"CALDAS",
+			"COPER",
+			"LA VICTORIA",
+			"MARIPI",
+			"MUZO",
+			"OTANCHE",
+			"PAUNA",
+			"QUIPAMA",
+			"SAN MIGUEL DE SEMA",
+			"TUNUNGUA"
+		]
+	}
 }
 
 
