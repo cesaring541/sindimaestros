@@ -202,14 +202,11 @@ var aggregateNewAffiliates = function(oldList, newList){
 }
 
 var removeDuplicated = function(list){
-  var cleanList = [];
-  $.each(list, function(i, el){
-    if($.inArray(el, cleanList) === -1){
-      cleanList.push(el);
-    } 
+  var cleanedList = list.filter(function(elem, index, self) {
+    return index == self.indexOf(elem);
   });
 
-  return cleanList;
+  return cleanedList;
 }
 
 
