@@ -115,7 +115,9 @@ module.exports = function(app, passport) {
   });
 
 
-  // Ruta designada para inscripciones por parte de Presidente Municipales y Zonales
+  // =============================================================================================
+  // SPORT EVENTS INSCRIPTIONS FOR MUNICIPAL AND ZONAL PRESIDENTS  ===============================
+
   app.get('/sportEventsInscriptions', isLoggedIn, function(req, res, next) {
     SportsEvent.find({},function(err, sportEvents){
       Teams.find({},function(err, teams){
@@ -132,7 +134,6 @@ module.exports = function(app, passport) {
     });
   });
 
-  // Ruta designada para inscripciones por parte de Presidente Municipales y Zonales
   app.post('/update-sportEventInscriptions/:id', function(req, res, next){
     var id = req.param("id");
 
@@ -140,8 +141,8 @@ module.exports = function(app, passport) {
       if (err) ;
 
       if (req.body.teams != undefined) {
-        //auxList = objectSportEvent.teams;
-        // = req.body.teams;
+        sportEvent.teams = aggregateNewTeams(sportEvent.teams, req.body.teams);
+        sportEvent.teams = removeDuplicated(sportEvent.teams)
       } else if (req.body.participantsJoineds != undefined) {
         sportEvent.participantsJoineds = aggregateNewAffiliates(sportEvent.participantsJoineds, req.body.participantsJoineds);
         sportEvent.participantsJoineds = removeDuplicated(sportEvent.participantsJoineds);
@@ -197,7 +198,17 @@ var aggregateNewAffiliates = function(oldList, newList){
       oldList.push(newList[i]);
     }
   }
+  return oldList;
+}
 
+var aggregateNewTeams = function(oldList, newList){
+  if (typeof newList == "string") { // Si sólo se agregó un equipo
+    oldList.push(newList);
+  } else if (typeof newList == "object") { // Si se agregaron dos o más equipos
+    for (var i = 0; i < newList.length; i++) {
+      oldList.push(newList[i]);
+    }
+  }
   return oldList;
 }
 
@@ -205,7 +216,6 @@ var removeDuplicated = function(list){
   var cleanedList = list.filter(function(elem, index, self) {
     return index == self.indexOf(elem);
   });
-
   return cleanedList;
 }
 

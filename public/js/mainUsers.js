@@ -730,7 +730,7 @@ $(document).ready(function(){
 	});
 
 
-	// Al dar click en el boton Listar...
+	// Al dar click en el boton Listar, o en el botón Cancelar...
 	$(".list-users").click(function(){
 		
 		$(".form-user").hide(100);
@@ -813,17 +813,6 @@ $(document).ready(function(){
 		$('#frm-modify-user').attr("action", "update-user/"+dataId);		
 
 		$('#frm-modify-user').submit();
-	});
-
-
-	// Al dar click en el boton Cancelar...
-	$("#cancel-modify").click(function(){
-		
-		$(".form-user").hide(100);
-		$("#form-add-user").hide(100);
-		$("#form-modify-user").hide(100);
-		$(".table-users").show(100);
-
 	});
 
 

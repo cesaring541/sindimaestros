@@ -215,7 +215,7 @@ $(document).ready(function(){
 	});
 
 
-	// Al dar click en el boton Listar...
+	// Al dar click en el boton Listar, o en el botón Cancelar...
 	$(".list-eventsSports").click(function(){
 		
 		$(".form-eventSport").hide(100);
@@ -315,17 +315,6 @@ $(document).ready(function(){
 		var dataId = this.id;
 		$('#frm-modify-eventSport').attr("action", "update-sportEvent/"+dataId);
 		$('#frm-modify-eventSport').submit();
-	});
-
-
-	// Al dar click en el boton Cancelar...
-	$("#cancel-modify").click(function(){
-		
-		$(".form-eventSport").hide(100);
-		$("#form-add-eventSport").hide(100);
-		$("#form-modify-eventSport").hide(100);
-		$(".table-eventsSports").show(100);
-
 	});
 
 

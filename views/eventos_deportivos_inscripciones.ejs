@@ -94,14 +94,19 @@
                         <% } %>
                       </select>
                     </div>
-                  <% } else if (user.role == "Presidente Zonal") { %>
 
+                  <% } else if (user.role == "Presidente Zonal") { %>
                     <div class="form-group teamsField">
+                      <label>Genero:</label><p id="genderField"></p>
+                      <label>Categoría:</label><p id="categoryField"></p>
+                      <label>Deporte:</label><p id="sportField"></p>
                       <label for="bio">Equipos participantes:</label><br>
                       <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="teams" id="mod_teams">
                         <% if (teams) { %>
-                          <% teams.forEach(function(objTea) { %>
-                            <option value="<%= objTea._id %>"><%= objTea.name %></option>
+                          <% teams.forEach(function(tea) { %>
+                            <% if (tea.zone == user.zone) { %>
+                            <option value="<%= tea._id %>"><%= tea.name %></option>
+                            <% } %>
                           <% }); %>
                         <% } %>
                       </select>

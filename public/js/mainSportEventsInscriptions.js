@@ -2,6 +2,16 @@ $(document).ready(function(){
 	// EVENTOS BOTONES CRUD =========================================================================
 	//===============================================================================================
 
+	// Al dar click en el boton Listar, o en el botón Cancelar...
+	$(".list-eventsSports").click(function(){
+		
+		$(".form-eventSport").hide(100);
+		$("#form-add-eventSport").hide(100);
+		$("#form-modify-eventSport").hide(100);
+		$(".table-eventsSports").show(100);
+
+	});
+
 	/*
 	* Los eventos de los botones Editar y Eliminar se deben declarar diferente debido a que el uso
 	* de los scripts de fresh-table causaban un efecto inesperado en el jquery usado antiguamente
@@ -21,6 +31,8 @@ $(document).ready(function(){
 				success: function (data) {
 					$("#button_update").attr("id", dataId);
 
+					$("#genderField").text(data.gender);
+
 					$('#mod_participantsJoineds').selectpicker('val', data.participantsJoineds); // Selecciona las opciones del select multiple
 					$('#mod_teams').selectpicker('val', data.teams); // Selecciona las opciones del select multiple
 				},
@@ -39,17 +51,6 @@ $(document).ready(function(){
 		var dataId = this.id;
 		$('#frm-modify-eventSport').attr("action", "update-sportEventInscriptions/"+dataId);
 		$('#frm-modify-eventSport').submit();
-	});
-
-
-	// Al dar click en el boton Cancelar...
-	$("#cancel-modify").click(function(){
-		
-		$(".form-eventSport").hide(100);
-		$("#form-add-eventSport").hide(100);
-		$("#form-modify-eventSport").hide(100);
-		$(".table-eventsSports").show(100);
-
 	});
 });
 
