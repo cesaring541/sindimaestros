@@ -98,7 +98,7 @@
                 </div>
                  <div class="form-group">
                   <label for="bio">RH:</label><br>
-                  <select class="form-control" type="brand" name="rh">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand"  name="rh">
                     <option value="AB+">AB+</option>
                     <option value="AB-">AB-</option>
                     <option value="A+">A+</option>
@@ -112,7 +112,7 @@
 
                 <div class="form-group">
                   <label for="bio">Género:</label><br>
-                  <select class="form-control" type="brand" name="gender">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="gender">
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
                     <option value="O">Otro</option>
@@ -132,7 +132,7 @@
 
                 <div class="form-group">
                   <label for="bio">Municipio de Nacimiento:</label><br>
-                  <select class="form-control" type="brand" id="municipality_list" name="municipality">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" id="municipality_list" name="municipality">
                   <!--json-->
                   </select>
                 </div>
@@ -143,7 +143,7 @@
                 </div>
                 <div class="form-group" id="professional">
                   <label for="bio">Profesional:</label><br>
-                  <select class="form-control" type="brand" name="professional">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="professional">
                     <option value="Si">Si</option>
                     <option value="No">No</option>
                   </select>
@@ -151,16 +151,16 @@
 
                 <div class="form-group" id="normalista">
                   <label for="bio">Normalista:</label><br>
-                  <select class="form-control" type="brand" name="normalista" id="sel_normalista">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="normalista" id="sel_normalista">
                     <option value="Si">Si</option>
                     <option value="No" selected>No</option>
                   </select>
                 </div>
 
 
-                <div class="form-group" id="university" style="display :none">
+                <div class="form-group" id="university" style="display:none">
                   <label for="bio">Universidad:</label><br>
-                  <select class="form-control" type="brand" name="university" id="sel_university">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="university" id="sel_university">
                     <option value="Si">Si</option>
                     <option value="No" selected>No</option>
                   </select>
@@ -169,7 +169,7 @@
 
                 <div class="form-group" id ="specialist" style="display :none">
                   <label for="bio">Especialista:</label><br>
-                  <select class="form-control" type="brand" name="specialist" id="sel_specialist">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="specialist" id="sel_specialist">
                     <option value="Si">Si</option>
                     <option value="No" selected>No</option>
                   </select>
@@ -177,7 +177,7 @@
 
                 <div class="form-group" id="masterDegree" style="display :none">
                   <label for="bio">Magister:</label><br>
-                  <select class="form-control" type="brand" name="masterDegree" id="sel_masterDegree">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="masterDegree" id="sel_masterDegree">
                     <option value="Si">Si</option>
                     <option value="No" selected>No</option>
                   </select>
@@ -185,7 +185,7 @@
 
                 <div class="form-group" id="doctorate" style="display :none">
                   <label for="bio">Doctorado:</label><br>
-                  <select class="form-control" type="brand" name="doctorate" id="sel_doctorate">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="doctorate" id="sel_doctorate">
                     <option value="Si">Si</option>
                     <option value="No" selected>No</option>
                   </select>
@@ -202,7 +202,7 @@
               <section class="col-md-6 ">
                 <div class="form-group">
                   <label for="bio">Nivel:</label><br>
-                  <select class="form-control" type="brand" name="level">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="level">
                     <option value="Preescolar">Preescolar</option>
                     <option value="Primaria">Primaria</option>
                     <option value="Basica">Basica</option>
@@ -212,15 +212,49 @@
 
                 <div class="form-group" id="Teaching">
                   <label for="bio">Decreto docente:</label><br>
-                  <select class="form-control" type="brand" name="Teaching">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="Teaching" id="sel_Teaching">
                     <option value="1278">1278</option>
                     <option value="2277">2277</option>
                   </select>
                 </div>
 
-                <div class="form-group" id="promotionLadder">
+                <div class="form-group" id="promotionLadder2277" style="display :none">
                   <label for="bio">Grado de escalafón:</label><br>
-                  <input class="form-control" type="text" name="promotionLadder" required>
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="promotionLadder">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                  </select>
+                </div>
+                <div class="form-group" id="promotionLadder1278" style="display :none">
+                  <label for="bio">Grado de escalafón:</label><br>
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="promotionLadder">
+                    <option value="A">1A</option>
+                    <option value="B">1B</option>
+                    <option value="1">1C</option>
+                    <option value="2">1D</option>
+                    <option value="3">2A</option>
+                    <option value="4">2B</option>
+                    <option value="5">2C</option>
+                    <option value="6">2D</option>
+                    <option value="7">3A</option>
+                    <option value="8">3B</option>
+                    <option value="9">3C</option>
+                    <option value="10">3D</option>
+                  </select>
                 </div>
 
                 <div class="form-group" id="educationalInstitution">
@@ -230,14 +264,14 @@
 
                 <div class="form-group">
                   <label for="bio">Municipio al que pertenece la institución:</label><br>
-                  <select class="form-control" type="brand" id="municipality_list"  name="municipalityWorking">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" id="municipality_list"  name="municipalityWorking">
                   <!--json-->
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label for="bio">Típo de empleado:</label><br>
-                  <select class="form-control" type="brand" name="employeeClass">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="employeeClass">
                     <option value="Docente">Docente</option>
                     <option value="Directivo Docente">Directivo Docente</option>
                     <option value="Administrativo">Administrativo</option>
@@ -246,7 +280,7 @@
 
                 <div class="form-group">
                   <label for="bio">Área de desempeño:</label><br>
-                  <select class="form-control" type="brand" name="areaPerformance">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="areaPerformance">
                     <option value="Primaria">Primaria</option>
                     <option value="Bachillerato">Bachillerato</option>
                     <option value="DirectivoDocente">Directivo Docente</option>
@@ -257,7 +291,7 @@
 
                 <div class="form-group" id="typeOfAppointment">
                   <label for="bio">Típo de Nombramiento:</label><br>
-                  <select class="form-control" type="brand"  name="typeOfAppointment">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand"  name="typeOfAppointment">
                     <option value="Provisional">Provisional</option>
                     <option value="Propiedad">Propiedad</option>
                     <option value="Administrativo">Administrativo</option>
@@ -270,7 +304,7 @@
 
                 <div class="form-group">
                   <label for="bio">Estado:</label><br>
-                  <select class="form-control" type="brand" name="state">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="state">
                     <option value="Activo">Activo</option>
                     <option value="ActivoPensionado">Activo Pensionado</option>
                     <option value="PensionadoRetirado">Pensionado Retirado</option>
@@ -279,7 +313,7 @@
 
                 <div class="form-group">
                   <label for="bio">Zona:</label><br>
-                  <select class="form-control" type="brand" name="Zone">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="Zone">
                     <option value="Uno">Uno</option>
                     <option value="Dos">Dos</option>
                   </select>
@@ -287,14 +321,14 @@
 
                 <div class="form-group">
                   <label for="bio">Municipio del Sindicato:</label><br>
-                  <select class="form-control" type="brand" name="municipalitySindical" id="municipality_list" >
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="municipalitySindical" id="municipality_list" >
                   <!--json-->
                   </select>
                 </div>        
 
                 <div class="form-group">
                   <label for="bio">Típo de pago:</label><br>
-                  <select class="form-control" type="brand" name="affiliationPaymentType">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="affiliationPaymentType">
                     <option value="Nomina">Nómina</option>
                     <option value="Ventanilla">Ventanilla</option>
                   </select>
@@ -302,7 +336,8 @@
 
                 <div class="form-group">
                   <label for="bio">Comisión a la cual está integrado/a:</label><br>
-                  <select class="form-control" type="brand" name="integraCommission">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="integraCommission">
+                    <option value="Ninguno">Ninguno</option>
                     <option value="Electoral">Electoral</option>
                     <option value="Financiera">Financiera</option>
                     <option value="Etica">Ética</option>
@@ -315,7 +350,7 @@
 
                 <div class="form-group">
                   <label for="bio">Comité al cual está integrado/a:</label><br>
-                  <select class="form-control" type="brand" name="integraCommittee">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="integraCommittee">
                     <option value="Ninguno">Ninguno</option>
                     <option value="Municipal">Municipal</option>
                     <option value="Zonal">Zonal</option>
@@ -325,7 +360,7 @@
 
                 <div class="form-group" id="delegateGeneralAssembly">
                   <label for="bio">Delegado a la Asamblea General:</label><br>
-                  <select class="form-control" type="brand" id="mod_delegateGeneralAssembly_list" name="delegateGeneralAssembly">
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" id="mod_delegateGeneralAssembly_list" name="delegateGeneralAssembly">
                     <option value="Si">Si</option>
                     <option value="No">No</option>
                     <option value="Municipio">Municipio</option>
@@ -365,7 +400,7 @@
 
                   <div class="form-group" id="rh">
                     <label for="bio">RH:</label><br>
-                    <select class="form-control" type="brand" id="mod_rh_list" name="rh">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_rh_list" name="rh">
                       <option value="AB+">AB+</option>
                       <option value="AB-">AB-</option>
                       <option value="A+">A+</option>
@@ -379,7 +414,7 @@
 
                   <div class="form-group" id="gender">
                     <label for="bio">Género:</label><br>
-                    <select class="form-control" type="brand" id="mod_gender_list" name="gender">
+                    <select class="selectpicker form-control" data-live-search="true" id="mod_gender_list" name="gender">
                       <option value="M">Masculino</option>
                       <option value="F">Femenino</option>
                       <option value="O">Otro</option>
@@ -399,7 +434,7 @@
 
                   <div class="form-group" id="municipality">
                     <label for="bio">Municipio de Nacimiento:</label><br>
-                    <select class="form-control" type="brand" id="mod_municipality_list" name="municipality">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_municipality_list" name="municipality">
                     <!--json-->
                     </select>
                   </div>
@@ -411,7 +446,7 @@
                   
                   <div class="form-group" id="professional">
                     <label for="bio">Profesional:</label><br>
-                    <select class="form-control" type="brand" id="mod_professional_list" name="professional">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_professional_list" name="professional">
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -419,7 +454,7 @@
 
                    <div class="form-group" id="Normalista">
                     <label for="bio">Normalista:</label><br>
-                    <select class="form-control" type="brand" id="mod_Normalista_list" >
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Normalista_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -427,7 +462,7 @@
 
                   <div class="form-group" id="University">
                     <label for="bio">Universidad:</label><br>
-                    <select class="form-control" type="brand" id="mod_University_list" >
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_University_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -436,7 +471,7 @@
 
                   <div class="form-group" id="Specialist">
                     <label for="bio">Especialista:</label><br>
-                    <select class="form-control" type="brand" id="mod_Specialist_list" >
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Specialist_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -444,7 +479,7 @@
 
                   <div class="form-group" id="MasterDegree">
                     <label for="bio">Magister:</label><br>
-                    <select class="form-control" type="brand" id="mod_MasterDegree_list" >
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_MasterDegree_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -452,7 +487,7 @@
 
                   <div class="form-group" id="Doctorate">
                     <label for="bio">Doctorado:</label><br>
-                    <select class="form-control" type="brand" id="mod_Doctorate_list" >
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Doctorate_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -466,7 +501,7 @@
                 <section class="col-md-6 ">
                 <div class="form-group" id="level">
                     <label for="bio">Nivel:</label><br>
-                    <select class="form-control" type="brand" id="mod_level_list" name="level">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_level_list" name="level">
                       <option value="Preescolar">Preescolar</option>
                       <option value="Primaria">Primaria</option>
                       <option value="Basica">Basica</option>
@@ -474,18 +509,51 @@
                     </select>
                   </div>
 
-                  <div class="form-group" id="Teaching">
+                  <div class="form-group" id="Teaching-mod">
                     <label for="bio">Decreto docente:</label><br>
-                    <select class="form-control" type="brand" id="mod_Teaching_list" name="Teaching">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Teaching_list" name="Teaching">
                       <option value="1278">1278</option>
                       <option value="2277">2277</option>
                     </select>
                   </div>
-
-                  <div class="form-group" id="promotionLadder">
-                    <label for="bio">Grado de escalafón:</label><br>
-                    <input id="mod_promotionLadder" class="form-control" type="text" name="promotionLadder" required>
-                  </div>
+                  <div class="form-group" id="promotionLadder2277_mod" style="display :none">
+                  <label for="bio">Grado de escalafón:</label><br>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" name="promotionLadder" id="mod_promotionLadder">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                  </select>
+                </div>
+                <div class="form-group" id="promotionLadder1278_mod" style="display :none">
+                  <label for="bio">Grado de escalafón:</label><br>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" name="promotionLadder" id="mod_promotionLadder">
+                    <option value="A">1A</option>
+                    <option value="B">1B</option>
+                    <option value="1">1C</option>
+                    <option value="2">1D</option>
+                    <option value="3">2A</option>
+                    <option value="4">2B</option>
+                    <option value="5">2C</option>
+                    <option value="6">2D</option>
+                    <option value="7">3A</option>
+                    <option value="8">3B</option>
+                    <option value="9">3C</option>
+                    <option value="10">3D</option>
+                  </select>
+                </div>
 
                   <div class="form-group" id="educationalInstitution">
                     <label for="bio">Institución Educativa:</label><br>
@@ -494,14 +562,14 @@
 
                   <div class="form-group" id="municipalityWorking">
                     <label for="bio">Municipio al que pertenece la institución:</label><br>
-                    <select class="form-control" type="brand" id="mod_municipalityWorking_list" name="municipalityWorking">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_municipalityWorking_list" name="municipalityWorking">
                       <!--json-->
                     </select>
                   </div>
 
                   <div class="form-group" id="employeeClass">
                     <label for="bio">Típo de empleado:</label><br>
-                    <select class="form-control" type="brand" id="mod_employeeClass_list" name="employeeClass">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_employeeClass_list" name="employeeClass">
                       <option value="Docente">Docente</option>
                       <option value="Directivo Docente">Directivo Docente</option>
                       <option value="Administrativo">Administrativo</option>
@@ -510,7 +578,7 @@
 
                   <div class="form-group">
                     <label for="bio">Área de desempeño:</label><br>
-                    <select class="form-control" type="brand" id="mod_areaPerformance_list" name="areaPerformance">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_areaPerformance_list" name="areaPerformance">
                       <option value="Primaria">Primaria</option>
                       <option value="Bachillerato">Bachillerato</option>
                       <option value="DirectivoDocente">Directivo Docente</option>
@@ -521,7 +589,7 @@
 
                   <div class="form-group" id="typeOfAppointment">
                     <label for="bio">Tipo de Nombramiento:</label><br>
-                    <select class="form-control" type="brand" id="mod_typeOfAppointment_list" name="typeOfAppointment">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_typeOfAppointment_list" name="typeOfAppointment">
                       <option value="Provisional">Provisional</option>
                       <option value="Propiedad">Propiedad</option>
                       <option value="Administrativo">Administrativo</option>
@@ -534,7 +602,7 @@
 
                   <div class="form-group" id="state">
                     <label for="bio">Estado:</label><br>
-                    <select class="form-control" type="brand" id="mod_state_list" name="state">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_state_list" name="state">
                       <option value="Activo">Activo</option>
                       <option value="ActivoPensionado">Activo Pensionado</option>
                       <option value="PensionadoRetirado">Pensionado Retirado</option>
@@ -543,7 +611,7 @@
 
                   <div class="form-group" id="Zone">
                     <label for="bio">Zona:</label><br>
-                    <select class="form-control" type="brand" id="mod_Zone_list" name="Zone">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_Zone_list" name="Zone">
                       <option value="Uno">Uno</option>
                       <option value="Dos">Dos</option>
                     </select>
@@ -551,13 +619,13 @@
 
                   <div class="form-group" id="municipalitySindical">
                     <label for="bio">Municipio (Sindicato):</label><br>
-                    <select class="form-control" type="brand" id="mod_municipalitySindical"  name="municipalitySindical">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_municipalitySindical"  name="municipalitySindical">
                      </select>
                   </div>
 
                   <div class="form-group" id="affiliationPaymentType">
                     <label for="bio">Típo de pago:</label><br>
-                    <select class="form-control" type="brand" id="mod_affiliationPaymentType_list" name="affiliationPaymentType">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_affiliationPaymentType_list" name="affiliationPaymentType">
                       <option value="Nomina">Nómina</option>
                       <option value="Ventanilla">Ventanilla</option>
                     </select>
@@ -565,7 +633,8 @@
 
                   <div class="form-group" id="integraCommission">
                     <label for="bio">Comisión a la cual está integrado/a:</label><br>
-                    <select class="form-control" type="brand" id="mod_integraCommission_list" name="integraCommission">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_integraCommission_list" name="integraCommission">
+                      <option value="Ninguno">Ninguno</option>
                       <option value="Electoral">Electoral</option>
                       <option value="Financiera">Financiera</option>
                       <option value="Etica">Ética</option>
@@ -576,7 +645,7 @@
 
                   <div class="form-group" id="integraCommittee">
                     <label for="bio">Comité al cual está integrado/a:</label><br>
-                    <select class="form-control" type="brand" id="mod_integraCommittee_list" name="integraCommittee">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_integraCommittee_list" name="integraCommittee">
                       <option value="Ninguno">Ninguno</option>
                       <option value="Municipal">Municipal</option>
                       <option value="Zonal">Zonal</option>
@@ -586,7 +655,7 @@
 
                   <div class="form-group" id="delegateGeneralAssembly">
                     <label for="bio">Delegado a la Asamblea General:</label><br>
-                    <select class="form-control" type="brand" id="mod_delegateGeneralAssembly_list" name="delegateGeneralAssembly">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_delegateGeneralAssembly_list" name="delegateGeneralAssembly">
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                       <option value="Municipio">Municipio</option>
@@ -683,17 +752,62 @@
           if($('#sel_university').val()==="Si"){
             $("#specialist").removeAttr("style").none();
           }
-      })
+        })
         $('#specialist').change(function(){
           if($('#sel_specialist').val()==="Si"){
             $("#masterDegree").removeAttr("style").none();
           }
-      })
-      $('#masterDegree').change(function(){
+        })
+        $('#masterDegree').change(function(){
           if($('#sel_masterDegree').val()==="Si"){
             $("#doctorate").removeAttr("style").none();
           }
-      })
+        })
+        $('#Teaching').change(function(){
+          if($('#sel_Teaching').val()==="1278"){
+            $("#promotionLadder1278").show();
+            $("#promotionLadder2277").hide();
+          }
+        })
+        $('#Teaching').change(function(){
+          if($('#sel_Teaching').val()==="2277"){
+            $("#promotionLadder2277").show();
+            $("#promotionLadder1278").hide();
+          }
+        })
+        
+        $('#normalista').change(function(){
+          if($('#mod_Normalista_list').val()==="Si"){
+            $("#university").removeAttr("style").none();
+          }
+        })
+        $('#university').change(function(){
+          if($('#mod_University_list').val()==="Si"){
+            $("#specialist").removeAttr("style").none();
+          }
+        })
+        $('#specialist').change(function(){
+          if($('#mod_Specialist_list').val()==="Si"){
+            $("#masterDegree").removeAttr("style").none();
+          }
+        })
+        $('#masterDegree').change(function(){
+          if($('#mod_MasterDegree_list').val()==="Si"){
+            $("#doctorate").removeAttr("style").none();
+          }
+        })
+        $('#Teaching-mod').change(function(){
+          if($('#mod_Teaching_list').val()==="1278"){
+            $("#promotionLadder1278_mod").show();
+            $("#promotionLadder2277_mod").hide();
+          }
+        })
+        $('#Teaching-mod').change(function(){
+          if($('#mod_Teaching_list').val()==="2277"){
+            $("#promotionLadder2277_mod").show();
+            $("#promotionLadder1278_mod").hide();
+          }
+        })
       })
       
     </script>

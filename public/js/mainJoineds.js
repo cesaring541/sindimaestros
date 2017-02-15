@@ -9,6 +9,7 @@ $(document).ready(function(){
  			for (var i = 0; i < array.length; i++) {
  				$("#municipality_list, #mod_municipality_list, #mod_municipalityWorking_list, #municipalityWorking_list, #municipalitySindical_list, #mod_municipalitySindical_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
  			};
+ 			$("#municipality_list, #mod_municipality_list, #mod_municipalityWorking_list, #municipalityWorking_list, #municipalitySindical_list, #mod_municipalitySindical_list" ).selectpicker('refresh');
  		},
  		error:function(msg) {
  			console.log(msg+" Listado de objetos fallido");
