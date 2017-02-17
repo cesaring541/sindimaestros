@@ -141,19 +141,21 @@
                   <label for="bio">Número celular:</label><br>
                   <input class="form-control" type="text" name="cellPhoneNumber" required>
                 </div>
-                <div class="form-group" id="professional">
-                  <label for="bio">Profesional:</label><br>
-                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="professional">
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
+
 
                 <div class="form-group" id="normalista">
                   <label for="bio">Normalista:</label><br>
                   <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="normalista" id="sel_normalista">
                     <option value="Si">Si</option>
                     <option value="No" selected>No</option>
+                  </select>
+                </div>
+
+                <div class="form-group" id="professional">
+                  <label for="bio">Profesional:</label><br>
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="professional">
+                    <option value="licenciado">Licenciado</option>
+                    <option value="profesional">Profesional</option>
                   </select>
                 </div>
 
@@ -617,9 +619,16 @@
                     </select>
                   </div>
 
+                  <div class="form-group">
+                  <label for="bio">Municipio del Sindicato:</label><br>
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="municipalitySindical" id="municipality_list" >
+                  <!--json-->
+                  </select>
+                </div>  
+
                   <div class="form-group" id="municipalitySindical">
                     <label for="bio">Municipio (Sindicato):</label><br>
-                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_municipalitySindical"  name="municipalitySindical">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_municipalitySindical"  name="municipalitySindical" id="municipality_list">
                      </select>
                   </div>
 
