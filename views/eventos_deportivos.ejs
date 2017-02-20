@@ -62,14 +62,14 @@
                     
                     <% if (objSportEv.phase == "Municipal") { %>
                     <tr class="<%= objSportEv._id %>" style="text-align:center;">
-                      <td><%= objSportEv.nameEvent %></td>
+                      <td><%= objSportEv.nameEvent %>, fase Municipal</td>
                       <td> - </td>
                       <td> - </td>
                       <td> - </td>
                     </tr>
                     <% } else if (objSportEv.phase == "Interzonal") { %>
                     <tr class="<%= objSportEv._id %>" style="text-align:center;">
-                      <td><%= objSportEv.nameEvent %></td>
+                      <td><%= objSportEv.nameEvent %>, fase Interzonal</td>
                       <td><%= objSportEv.category %></td>
                       <td><%= objSportEv.sport %></td>
                       <td><%= objSportEv.gender %></td>
@@ -92,7 +92,14 @@
                   <label for=""><h2>Ingrese el nuevo evento deportivo</h2></label>
                 </div>
 
-                <section class="col-md-12">
+                <section class="col-md-6">
+                  <div class="form-group">
+                    <label for="bio">Nombre del evento</label><br>
+                    <input class="form-control" type="text" name="nameEvent" placeholder="Ejemplo: XVIII Juegos de la Confraternidad Docente" required="true">
+                  </div>
+                </section>
+
+                <section class="col-md-6">
                   <div class="form-group">
                     <label for="bio">Fase del evento</label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="phase" name="phase" title="Seleccione..." required="true">
@@ -102,7 +109,9 @@
                       <!--option value="final">final</option-->
                     </select>
                   </div>
+                </section>
 
+                <section class="col-md-12">
                   <div class="form-group participantsJoinedsField" style="display: none;">
                     <label for="bio">Afiliados participantes:</label><br>
                     <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds">
@@ -193,13 +202,22 @@
                   <label for=""><h2>Modificar evento deportivo</h2></label>
                 </div>
 
-                <section class="col-md-12">
+                <section class="col-md-6">
                   <div class="form-group"> 
                    <label for="bio">Fase del evento</label><br>
                     <select class="selectpicker form-control" type="brand" id="mod_phase" name="phase" required="true">
                     </select>
                   </div>
-                  
+                </section>
+
+                <section class="col-md-6">
+                  <div class="form-group"> 
+                   <label for="bio">Nombre del evento</label><br>
+                    <input class="form-control" type="text" id="mod_nameEvent" name="nameEvent" placeholder="Ejemplo: XVIII Juegos de la Confraternidad Docente" required="true">
+                  </div>
+                </section>
+
+                <section class="col-md-12">
                   <div class="form-group participantsJoinedsField" style="display: none;">
                     <label for="bio">Afiliados participantes:</label><br>
                     <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds" id="mod_participantsJoineds">
