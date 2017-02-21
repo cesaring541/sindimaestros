@@ -114,7 +114,7 @@
                 <section class="col-md-12">
                   <div class="form-group participantsJoinedsField" style="display: none;">
                     <label for="bio">Afiliados participantes:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds">
+                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds" data-size="5">
                       <% if (objectJoined) { %>
                         <% objectJoined.forEach(function(objJoi) { %>
                           <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
@@ -173,7 +173,7 @@
 
                   <div class="form-group teamsField" style="display: none;">
                     <label for="bio">Equipos participantes:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" multiple id="teams" data-selected-text-format="count" type="brand" name="teams">
+                    <select class="selectpicker form-control" data-live-search="true" multiple id="teams" data-selected-text-format="count" type="brand" name="teams" data-size="5">
                       <% if (objectTeam) { %>
                         <% objectTeam.forEach(function(objTea) { %>
                           <option value="<%= objTea._id %>"
@@ -204,23 +204,23 @@
 
                 <section class="col-md-6">
                   <div class="form-group"> 
+                   <label for="bio">Nombre del evento</label><br>
+                    <input class="form-control" type="text" id="mod_nameEvent" name="nameEvent" placeholder="Ejemplo: XVIII Juegos de la Confraternidad Docente" required="true">
+                  </div>
+                </section>
+
+                <section class="col-md-6">
+                  <div class="form-group"> 
                    <label for="bio">Fase del evento</label><br>
                     <select class="selectpicker form-control" type="brand" id="mod_phase" name="phase" required="true">
                     </select>
                   </div>
                 </section>
 
-                <section class="col-md-6">
-                  <div class="form-group"> 
-                   <label for="bio">Nombre del evento</label><br>
-                    <input class="form-control" type="text" id="mod_nameEvent" name="nameEvent" placeholder="Ejemplo: XVIII Juegos de la Confraternidad Docente" required="true">
-                  </div>
-                </section>
-
                 <section class="col-md-12">
                   <div class="form-group participantsJoinedsField" style="display: none;">
                     <label for="bio">Afiliados participantes:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds" id="mod_participantsJoineds">
+                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="participantsJoineds" id="mod_participantsJoineds" data-size="5">
                       <% if (objectJoined) { %>
                         <% objectJoined.forEach(function(objJoi) { %>
                           <option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
@@ -279,7 +279,7 @@
 
                   <div class="form-group teamsField" style="display: none;">
                     <label for="bio">Equipos participantes:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="teams" id="mod_teams">
+                    <select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" name="teams" id="mod_teams" data-size="5">
                       <% if (objectTeam) { %>
                         <% objectTeam.forEach(function(objTea) { %>
                           <option value="<%= objTea._id %>"
