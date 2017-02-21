@@ -18,7 +18,7 @@ var joinedSchema = mongoose.Schema({
 	specialist				: { type: String},
 	doctorate				: { type: String},
 	typeOfAppointment		: { type: String, enum: ['Ninguno','Provisional','Propiedad', 'Administrativo', 'Nacional', 'Departamental', 'Nacionalizado', 'Municipal'] },
-	state					: { type: String, enum: ['Ninguno','Activo','ActivoPensionado', 'PensionadoRetirado'] },
+	state					: { type: String, enum: ['Inactivo','Activo','ActivoPensionado', 'PensionadoRetirado'] },
 	municipalityWorking		: { type: String },
 	degree 					: { type: String },
 	professional			: { type: String, enum: ['Ninguno','licenciado','profesional'] },

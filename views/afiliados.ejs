@@ -48,6 +48,7 @@
 
               <table id="fresh-table" class="table">
                 <thead>
+                  <th data-field></th>
                   <th data-field="identityCard">Documento de identidad </th>
                   <th data-field="fullName">Nombre </th>
                   <th data-field="email">Email </th>
@@ -73,6 +74,17 @@
                   <% } %>
                 </tbody>
               </table>
+              <script>
+                var tables = document.getElementsByTagName('table');
+                var table = tables[tables.length - 1];
+                var rows = table.rows;
+                for(var id = 0, td; id < rows.length; id++){
+                  td = document.createElement('td');
+                  td.appendChild(document.createTextNode(id));
+                  rows[id].insertBefore(td, rows[id].firstChild);
+                }
+              </script>
+
             </div>
 
             <!-- Formulario agregar -->
@@ -464,7 +476,7 @@
 
                   <div class="form-group" id="Normalista">
                     <label for="bio">Normalista:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Normalista_list" >
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_normalista_list" name="normalista">
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                       <option value="Ninguno">Ninguno</option>
@@ -482,7 +494,7 @@
 
                   <div class="form-group" id="University">
                     <label for="bio">Universidad:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_University_list" >
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_university_list" name="university" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                       <option value="Ninguno">Ninguno</option>
@@ -491,7 +503,7 @@
 
                   <div class="form-group" id="Specialist">
                     <label for="bio">Especialista:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Specialist_list" >
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_specialist_list" name="specialist">
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                       <option value="Ninguno">Ninguno</option>
@@ -500,9 +512,10 @@
 
                   <div class="form-group" id="MasterDegree">
                     <label for="bio">Magister:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_MasterDegree_list" >
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_masterDegree_list" name="MasterDegree" >
+                    <option value="Si">Si</option>
                       <option value="No">No</option>
-                      <option value="Si">Si</option>
+                      
                       
                       <option value="Ninguno">Ninguno</option>
                     </select>
@@ -510,7 +523,7 @@
 
                   <div class="form-group" id="Doctorate">
                     <label for="bio">Doctorado:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Doctorate_list" >
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_doctorate_list" name="doctorate">
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                       <option value="Ninguno">Ninguno</option>
@@ -536,7 +549,7 @@
 
                   <div class="form-group" id="Teaching-mod">
                     <label for="bio">Decreto docente:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Teaching_list" name="Teaching">
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_teaching_list" name="Teaching">
                       <option value="1278">1278</option>
                       <option value="2277">2277</option>
                       <option value="Ninguno">Ninguno</option>

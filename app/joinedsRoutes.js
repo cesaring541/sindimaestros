@@ -111,6 +111,8 @@ module.exports = function(app, passport) {
 		objJoined.integraCommittee 				= req.body.integraCommittee;
 		objJoined.delegateGeneralAssembly	= req.body.delegateGeneralAssembly;
 		objJoined.employeeClass						= req.body.employeeClass;
+
+		console.log(req.body)
 		
 
       	objJoined.save({_id:id}, function(err){

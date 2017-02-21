@@ -691,20 +691,20 @@ $(document).ready(function(){
 					$("#mod_municipalityWorking").val(data.municipalityWorking);
 					$("#mod_degree").val(data.degree);
 					$("#mod_professional_list option[value='"+data.professional+"']").attr("selected","selected");
-					$("#mod_MasterDegree_list option[value='"+data.MasterDegree+"']").attr("selected","selected");
+					$("#mod_masterDegree_list option[value='"+data.MasterDegree+"']").attr("selected","selected");
 					$("#mod_promotionLadder").val(data.promotionLadder);
-					$("#mod_Teaching_list option[value='"+data.Teaching+"']").attr("selected","selected");
+					$("#mod_teaching_list option[value='"+data.Teaching+"']").attr("selected","selected");
 					$("#mod_level_list option[value='"+data.level+"']").attr("selected","selected");
 					$("#mod_municipalitySindical").val(data.municipalitySindical);
 					$("#mod_affiliationPaymentType_list option[value='"+data.affiliationPaymentType+"']").attr("selected","selected");
 					$("#mod_integraCommission_list option[value='"+data.integraCommission+"']").attr("selected","selected");
-					$("#mod_Zone_list option[value='"+data.Zone+"']").attr("selected","selected");
+					$("#mod_zone_list option[value='"+data.Zone+"']").attr("selected","selected");
 					$("#mod_integraCommittee_list option[value='"+data.integraCommittee+"']").attr("selected","selected");
 					$("#mod_delegateGeneralAssembly_list option[value='"+data.delegateGeneralAssembly+"']").attr("selected","selected");
 					$("#mod_employeeClass_list option[value='"+data.employeeClass+"']").attr("selected","selected");
 
 
-					$("#mod_professional_list, #mod_rh_list, #mod_gender_list, #mod_municipality_list, #mod_areaPerformance_list, #mod_university_list, #mod_normalista_list, #mod_specialist_list, #mod_doctorate_list, #mod_typeOfAppointment_list, #mod_state_list, #mod_MasterDegree_list, #mod_Teaching_list, #mod_level_list, #mod_affiliationPaymentType_list, #mod_integraCommission_list, #mod_Zone_list, #mod_integraCommittee_list, #mod_delegateGeneralAssembly_list, #mod_employeeClass_list").selectpicker('refresh');
+					$("#mod_professional_list, #mod_rh_list, #mod_gender_list, #mod_municipality_list, #mod_areaPerformance_list, #mod_university_list, #mod_normalista_list, #mod_specialist_list, #mod_doctorate_list, #mod_typeOfAppointment_list, #mod_state_list, #mod_masterDegree_list, #mod_teaching_list, #mod_level_list, #mod_affiliationPaymentType_list, #mod_integraCommission_list, #mod_Zone_list, #mod_integraCommittee_list, #mod_delegateGeneralAssembly_list, #mod_employeeClass_list").selectpicker('refresh');
 				},
 				error:function(msg) {
 					console.log(msg+"Peticion de datos fallida");
