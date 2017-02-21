@@ -116,6 +116,7 @@ module.exports = function(app, passport) {
       	objJoined.save({_id:id}, function(err){
 	        if (err) {
 	        	console.log("Error modificando objeto")
+	        	console.log(err)
 	          	res.redirect("/joineds");
 	        } else{
 	        	console.log("Objeto modificado")

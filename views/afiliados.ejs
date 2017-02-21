@@ -84,12 +84,12 @@
               <section class="col-md-6 ">
                 <div class="form-group" id="identityCard">
                   <label for="bio">Documento de identidad:</label><br>
-                  <input class="form-control" type="text" name="identityCard" required>
+                  <input class="form-control" type="text" name="identityCard" >
                 </div>
 
                 <div class="form-group" id="fullName">
                   <label for="bio">Nombre:</label><br>
-                  <input class="form-control" type="text" name="fullName" required>
+                  <input class="form-control" type="text" name="fullName" >
                 </div>
 
                 <div class="form-group" id="birthdate">
@@ -107,6 +107,10 @@
                     <option value="B-">B-</option>
                     <option value="O+">O+</option>
                     <option value="O-">O-</option>
+                    <option value="O-">O-</option>
+                    <option value="Ninguno" selected>Ninguno</option>
+                    
+                    
                   </select>
                 </div>
 
@@ -116,17 +120,18 @@
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
                     <option value="O">Otro</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
                 <div class="form-group" id="address">
                   <label for="bio">Dirección casa:</label><br>
-                  <input class="form-control" type="text" name="address" required>
+                  <input class="form-control" type="text" name="address" >
                 </div>
 
                 <div class="form-group" id="email">
                   <label for="bio">Email:</label><br>
-                  <input id="Email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                  <input id="Email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" >
                   <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso, por favor, cambiarlo</p>
                 </div>               
 
@@ -139,7 +144,7 @@
 
                 <div class="form-group" id="cellPhoneNumber">
                   <label for="bio">Número celular:</label><br>
-                  <input class="form-control" type="text" name="cellPhoneNumber" required>
+                  <input class="form-control" type="text" name="cellPhoneNumber" >
                 </div>
 
 
@@ -153,8 +158,8 @@
 
                 <div class="form-group" id="professional">
                   <label for="bio">Profesional:</label><br>
-                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="professional">
-                    <option value="licenciado">Licenciado</option>
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="professional" id="sel_profesional">
+                    <option value="licenciado" selected>Licenciado</option>
                     <option value="profesional">Profesional</option>
                   </select>
                 </div>
@@ -197,7 +202,7 @@
 
                 <div class="form-group" id="degree">
                   <label for="bio">Título:</label><br>
-                  <input  class="form-control" type="text" name="degree" required>
+                  <input  class="form-control" type="text" name="degree" >
                 </div>                
               </section>
 
@@ -209,6 +214,7 @@
                     <option value="Primaria">Primaria</option>
                     <option value="Basica">Basica</option>
                     <option value="Media">Media</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
@@ -217,6 +223,7 @@
                   <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="Teaching" id="sel_Teaching">
                     <option value="1278">1278</option>
                     <option value="2277">2277</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
@@ -239,6 +246,7 @@
                     <option value="12">12</option>
                     <option value="13">13</option>
                     <option value="14">14</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
                 <div class="form-group" id="promotionLadder1278" style="display :none">
@@ -256,12 +264,13 @@
                     <option value="8">3B</option>
                     <option value="9">3C</option>
                     <option value="10">3D</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
                 <div class="form-group" id="educationalInstitution">
                   <label for="bio">Institución Educativa:</label><br>
-                  <input class="form-control" type="text" name="educationalInstitution" required>
+                  <input class="form-control" type="text" name="educationalInstitution" >
                 </div>
 
                 <div class="form-group">
@@ -277,6 +286,7 @@
                     <option value="Docente">Docente</option>
                     <option value="Directivo Docente">Directivo Docente</option>
                     <option value="Administrativo">Administrativo</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
@@ -288,6 +298,7 @@
                     <option value="DirectivoDocente">Directivo Docente</option>
                     <option value="Provisional">Provisional</option>
                     <option value="Administrativo">Administrativo</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
@@ -301,6 +312,7 @@
                     <option value="Departamental">Departamental</option>
                     <option value="Nacionalizado">Nacionalizado</option>
                     <option value="Municipal">Municipal</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
@@ -310,6 +322,7 @@
                     <option value="Activo">Activo</option>
                     <option value="ActivoPensionado">Activo Pensionado</option>
                     <option value="PensionadoRetirado">Pensionado Retirado</option>
+                    <option value="Inactivo" selected>Inactivo</option>
                   </select>
                 </div>
 
@@ -318,6 +331,7 @@
                   <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="Zone">
                     <option value="Uno">Uno</option>
                     <option value="Dos">Dos</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
@@ -333,13 +347,14 @@
                   <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="affiliationPaymentType">
                     <option value="Nomina">Nómina</option>
                     <option value="Ventanilla">Ventanilla</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label for="bio">Comisión a la cual está integrado/a:</label><br>
                   <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="integraCommission">
-                    <option value="Ninguno">Ninguno</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                     <option value="Electoral">Electoral</option>
                     <option value="Financiera">Financiera</option>
                     <option value="Etica">Ética</option>
@@ -353,7 +368,7 @@
                 <div class="form-group">
                   <label for="bio">Comité al cual está integrado/a:</label><br>
                   <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="integraCommittee">
-                    <option value="Ninguno">Ninguno</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                     <option value="Municipal">Municipal</option>
                     <option value="Zonal">Zonal</option>
                     <option value="Directivo">Directivo</option>
@@ -366,6 +381,7 @@
                     <option value="Si">Si</option>
                     <option value="No">No</option>
                     <option value="Municipio">Municipio</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
@@ -387,12 +403,12 @@
                 <section class="col-md-6 ">
                   <div class="form-group" id="identityCard">
                     <label for="bio">Documento de identidad:</label><br>
-                    <input id="mod_identityCard" class="form-control" type="text" name="identityCard" required>
+                    <input id="mod_identityCard" class="form-control" type="text" name="identityCard" >
                   </div>
 
                   <div class="form-group" id="fullName">
                     <label for="bio">Nombre:</label><br>
-                    <input id="mod_fullName" class="form-control" type="text" name="fullName" required>
+                    <input id="mod_fullName" class="form-control" type="text" name="fullName" >
                   </div>
 
                   <div class="form-group" id="birthdate">
@@ -411,6 +427,7 @@
                       <option value="B-">B-</option>
                       <option value="O+">O+</option>
                       <option value="O-">O-</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -420,17 +437,18 @@
                       <option value="M">Masculino</option>
                       <option value="F">Femenino</option>
                       <option value="O">Otro</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
                   <div class="form-group" id="address">
                     <label for="bio">Dirección casa:</label><br>
-                    <input id="mod_address" class="form-control" type="text" name="address" required>
+                    <input id="mod_address" class="form-control" type="text" name="address" >
                   </div>
 
                   <div class="form-group" id="email">
                     <label for="bio">Email:</label><br>
-                    <input id="mod_email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+                    <input id="mod_email" class="form-control" type="email" name="email" placeholder="usuario@ejemplo.com" >
                     <p class="bg-warning" style="display: none;" id="msgEmail">Este correo ya se encuentra en uso por favor cambiarlo</p>
                   </div>
 
@@ -443,22 +461,25 @@
 
                   <div class="form-group" id="cellPhoneNumber">
                     <label for="bio">Número celular:</label><br>
-                    <input id="mod_cellPhoneNumber" class="form-control" type="text" name="cellPhoneNumber" required>
+                    <input id="mod_cellPhoneNumber" class="form-control" type="text" name="cellPhoneNumber" >
                   </div>
-                  
-                  <div class="form-group" id="professional">
-                    <label for="bio">Profesional:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_professional_list" name="professional">
-                      <option value="Si">Si</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
+                              
 
                    <div class="form-group" id="Normalista">
                     <label for="bio">Normalista:</label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Normalista_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
+                      <option value="Ninguno" selected>Ninguno</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="professional">
+                    <label for="bio">Profesional:</label><br>
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_professional_list" name="professional">
+                      <option value="licenciado">Licenciado</option>
+                      <option value="profesional">Profesional</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -467,6 +488,7 @@
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_University_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -476,6 +498,7 @@
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Specialist_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -484,6 +507,7 @@
                     <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_MasterDegree_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -492,12 +516,13 @@
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Doctorate_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>                  
 
                   <div class="form-group" id="degree">
                     <label for="bio">Título:</label><br>
-                    <input id="mod_degree" class="form-control" type="text" name="degree" required>
+                    <input id="mod_degree" class="form-control" type="text" name="degree" >
                   </div>
                 </section>
                 <section class="col-md-6 ">
@@ -508,6 +533,7 @@
                       <option value="Primaria">Primaria</option>
                       <option value="Basica">Basica</option>
                       <option value="Media">Media</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -516,6 +542,7 @@
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Teaching_list" name="Teaching">
                       <option value="1278">1278</option>
                       <option value="2277">2277</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
                   <div class="form-group" id="promotionLadder2277_mod" style="display :none">
@@ -537,6 +564,7 @@
                     <option value="12">12</option>
                     <option value="13">13</option>
                     <option value="14">14</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
                 <div class="form-group" id="promotionLadder1278_mod" style="display :none">
@@ -554,12 +582,13 @@
                     <option value="8">3B</option>
                     <option value="9">3C</option>
                     <option value="10">3D</option>
+                    <option value="Ninguno" selected>Ninguno</option>
                   </select>
                 </div>
 
                   <div class="form-group" id="educationalInstitution">
                     <label for="bio">Institución Educativa:</label><br>
-                    <input id="mod_educationalInstitution" class="form-control" type="text" name="educationalInstitution" required>
+                    <input id="mod_educationalInstitution" class="form-control" type="text" name="educationalInstitution" >
                   </div>
 
                   <div class="form-group" id="municipalityWorking">
@@ -575,6 +604,7 @@
                       <option value="Docente">Docente</option>
                       <option value="Directivo Docente">Directivo Docente</option>
                       <option value="Administrativo">Administrativo</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -586,6 +616,7 @@
                       <option value="DirectivoDocente">Directivo Docente</option>
                       <option value="Provisional">Provisional</option>
                       <option value="Administrativo">Administrativo</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -599,6 +630,7 @@
                       <option value="Departamental">Departamental</option>
                       <option value="Nacionalizado">Nacionalizado</option>
                       <option value="Municipal">Municipal</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -608,6 +640,7 @@
                       <option value="Activo">Activo</option>
                       <option value="ActivoPensionado">Activo Pensionado</option>
                       <option value="PensionadoRetirado">Pensionado Retirado</option>
+                      <option value="Inactivo" selected>Inactivo</option>
                     </select>
                   </div>
 
@@ -616,19 +649,13 @@
                     <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_Zone_list" name="Zone">
                       <option value="Uno">Uno</option>
                       <option value="Dos">Dos</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
-                  </div>
-
-                  <div class="form-group">
-                  <label for="bio">Municipio del Sindicato:</label><br>
-                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="municipalitySindical" id="municipality_list" >
-                  <!--json-->
-                  </select>
-                </div>  
+                  </div>  
 
                   <div class="form-group" id="municipalitySindical">
                     <label for="bio">Municipio (Sindicato):</label><br>
-                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_municipalitySindical"  name="municipalitySindical" id="municipality_list">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_municipalitySindical"  name="municipalitySindical">
                      </select>
                   </div>
 
@@ -637,6 +664,7 @@
                     <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_affiliationPaymentType_list" name="affiliationPaymentType">
                       <option value="Nomina">Nómina</option>
                       <option value="Ventanilla">Ventanilla</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -649,6 +677,7 @@
                       <option value="Etica">Ética</option>
                       <option value="Mujer">Mujer</option>
                       <option value="Pedagogica">Pedagógica</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>                  
 
@@ -668,6 +697,7 @@
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                       <option value="Municipio">Municipio</option>
+                      <option value="Ninguno" selected>Ninguno</option>
                     </select>
                   </div>
 
@@ -757,7 +787,7 @@
             $("#university").removeAttr("style").none();
           }
         })
-        $('#university').change(function(){
+        $('#professional').change(function(){
           if($('#sel_university').val()==="Si"){
             $("#specialist").removeAttr("style").none();
           }
