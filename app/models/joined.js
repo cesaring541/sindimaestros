@@ -29,7 +29,7 @@ var joinedSchema = mongoose.Schema({
 	municipalitySindical	: { type: String },
 	affiliationPaymentType	: { type: String, enum: ['Ninguno','Nomina','Ventanilla'] },
 	integraCommission		: { type: String, enum: ['Ninguno','Electoral','Financiera','Etica','Mujer','Pedagogica'] },
-	Zone					: { type: String, enum: ['Ninguno','Uno','Dos'] },
+	Zone					: { type: String},
 	integraCommittee		: { type: String, enum: ['Ninguno','Municipal','Zonal','Directivo'] },
 	delegateGeneralAssembly	: { type: String, enum: ['Ninguno','Si','No', 'Municipio'] },
 	employeeClass			: { type: String, enum: ['Ninguno','Docente','Directivo Docente', 'Administrativo'] }

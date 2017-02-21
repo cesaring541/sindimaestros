@@ -328,16 +328,13 @@
 
                 <div class="form-group">
                   <label for="bio">Zona:</label><br>
-                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="Zone">
-                    <option value="Uno">Uno</option>
-                    <option value="Dos">Dos</option>
-                    <option value="Ninguno" selected>Ninguno</option>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="zone_list" name="zone" required="true">
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label for="bio">Municipio del Sindicato:</label><br>
-                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="municipalitySindical" id="municipality_list" >
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="municipalitySindical" id="municipalitySindical" >
                   <!--json-->
                   </select>
                 </div>        
@@ -427,7 +424,7 @@
                       <option value="B-">B-</option>
                       <option value="O+">O+</option>
                       <option value="O-">O-</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -437,7 +434,7 @@
                       <option value="M">Masculino</option>
                       <option value="F">Femenino</option>
                       <option value="O">Otro</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -465,12 +462,12 @@
                   </div>
                               
 
-                   <div class="form-group" id="Normalista">
+                  <div class="form-group" id="Normalista">
                     <label for="bio">Normalista:</label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Normalista_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -479,7 +476,7 @@
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_professional_list" name="professional">
                       <option value="licenciado">Licenciado</option>
                       <option value="profesional">Profesional</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -488,26 +485,26 @@
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_University_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
-
 
                   <div class="form-group" id="Specialist">
                     <label for="bio">Especialista:</label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Specialist_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
                   <div class="form-group" id="MasterDegree">
                     <label for="bio">Magister:</label><br>
                     <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_MasterDegree_list" >
-                      <option value="Si">Si</option>
                       <option value="No">No</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Si">Si</option>
+                      
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -516,7 +513,7 @@
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Doctorate_list" >
                       <option value="Si">Si</option>
                       <option value="No">No</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>                  
 
@@ -526,14 +523,14 @@
                   </div>
                 </section>
                 <section class="col-md-6 ">
-                <div class="form-group" id="level">
+                  <div class="form-group" id="level">
                     <label for="bio">Nivel:</label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_level_list" name="level">
                       <option value="Preescolar">Preescolar</option>
                       <option value="Primaria">Primaria</option>
                       <option value="Basica">Basica</option>
                       <option value="Media">Media</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -542,49 +539,51 @@
                     <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_Teaching_list" name="Teaching">
                       <option value="1278">1278</option>
                       <option value="2277">2277</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
+
                   <div class="form-group" id="promotionLadder2277_mod" style="display :none">
-                  <label for="bio">Grado de escalafón:</label><br>
-                  <select class="selectpicker form-control" data-live-search="true" type="brand" name="promotionLadder" id="mod_promotionLadder">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="Ninguno" selected>Ninguno</option>
-                  </select>
-                </div>
-                <div class="form-group" id="promotionLadder1278_mod" style="display :none">
-                  <label for="bio">Grado de escalafón:</label><br>
-                  <select class="selectpicker form-control" data-live-search="true" type="brand" name="promotionLadder" id="mod_promotionLadder">
-                    <option value="A">1A</option>
-                    <option value="B">1B</option>
-                    <option value="1">1C</option>
-                    <option value="2">1D</option>
-                    <option value="3">2A</option>
-                    <option value="4">2B</option>
-                    <option value="5">2C</option>
-                    <option value="6">2D</option>
-                    <option value="7">3A</option>
-                    <option value="8">3B</option>
-                    <option value="9">3C</option>
-                    <option value="10">3D</option>
-                    <option value="Ninguno" selected>Ninguno</option>
-                  </select>
-                </div>
+                    <label for="bio">Grado de escalafón:</label><br>
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" name="promotionLadder" id="mod_promotionLadder">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="Ninguno">Ninguno</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="promotionLadder1278_mod" style="display :none">
+                    <label for="bio">Grado de escalafón:</label><br>
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" name="promotionLadder" id="mod_promotionLadder">
+                      <option value="A">1A</option>
+                      <option value="B">1B</option>
+                      <option value="1">1C</option>
+                      <option value="2">1D</option>
+                      <option value="3">2A</option>
+                      <option value="4">2B</option>
+                      <option value="5">2C</option>
+                      <option value="6">2D</option>
+                      <option value="7">3A</option>
+                      <option value="8">3B</option>
+                      <option value="9">3C</option>
+                      <option value="10">3D</option>
+                      <option value="Ninguno">Ninguno</option>
+                    </select>
+                  </div>
 
                   <div class="form-group" id="educationalInstitution">
                     <label for="bio">Institución Educativa:</label><br>
@@ -604,7 +603,7 @@
                       <option value="Docente">Docente</option>
                       <option value="Directivo Docente">Directivo Docente</option>
                       <option value="Administrativo">Administrativo</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -616,7 +615,7 @@
                       <option value="DirectivoDocente">Directivo Docente</option>
                       <option value="Provisional">Provisional</option>
                       <option value="Administrativo">Administrativo</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -630,7 +629,7 @@
                       <option value="Departamental">Departamental</option>
                       <option value="Nacionalizado">Nacionalizado</option>
                       <option value="Municipal">Municipal</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -640,22 +639,19 @@
                       <option value="Activo">Activo</option>
                       <option value="ActivoPensionado">Activo Pensionado</option>
                       <option value="PensionadoRetirado">Pensionado Retirado</option>
-                      <option value="Inactivo" selected>Inactivo</option>
+                      <option value="Inactivo">Inactivo</option>
                     </select>
                   </div>
 
                   <div class="form-group" id="Zone">
                     <label for="bio">Zona:</label><br>
-                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_Zone_list" name="Zone">
-                      <option value="Uno">Uno</option>
-                      <option value="Dos">Dos</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" id="mod_zone_list" name="Zone">
                     </select>
                   </div>  
 
-                  <div class="form-group" id="municipalitySindical">
+                  <div class="form-group">
                     <label for="bio">Municipio (Sindicato):</label><br>
-                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_municipalitySindical"  name="municipalitySindical">
+                    <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_municipalitySindical" name="municipalitySindical">
                      </select>
                   </div>
 
@@ -664,7 +660,7 @@
                     <select class="selectpicker form-control" data-live-search="true"  type="brand" id="mod_affiliationPaymentType_list" name="affiliationPaymentType">
                       <option value="Nomina">Nómina</option>
                       <option value="Ventanilla">Ventanilla</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -677,7 +673,7 @@
                       <option value="Etica">Ética</option>
                       <option value="Mujer">Mujer</option>
                       <option value="Pedagogica">Pedagógica</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>                  
 
@@ -697,7 +693,7 @@
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                       <option value="Municipio">Municipio</option>
-                      <option value="Ninguno" selected>Ninguno</option>
+                      <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
 
@@ -782,26 +778,14 @@
     </script>
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#normalista').change(function(){
-          if($('#sel_normalista').val()==="Si"){
-            $("#university").removeAttr("style").none();
-          }
-        })
+
         $('#professional').change(function(){
-          if($('#sel_university').val()==="Si"){
-            $("#specialist").removeAttr("style").none();
-          }
-        })
-        $('#specialist').change(function(){
-          if($('#sel_specialist').val()==="Si"){
-            $("#masterDegree").removeAttr("style").none();
-          }
-        })
-        $('#masterDegree').change(function(){
-          if($('#sel_masterDegree').val()==="Si"){
-            $("#doctorate").removeAttr("style").none();
-          }
-        })
+            $("#university").show();
+            $("#specialist").show();
+            $("#masterDegree").show();
+            $("#doctorate").show();
+          });
+        
         $('#Teaching').change(function(){
           if($('#sel_Teaching').val()==="1278"){
             $("#promotionLadder1278").show();
@@ -814,27 +798,7 @@
             $("#promotionLadder1278").hide();
           }
         })
-        
-        $('#normalista').change(function(){
-          if($('#mod_Normalista_list').val()==="Si"){
-            $("#university").removeAttr("style").none();
-          }
-        })
-        $('#university').change(function(){
-          if($('#mod_University_list').val()==="Si"){
-            $("#specialist").removeAttr("style").none();
-          }
-        })
-        $('#specialist').change(function(){
-          if($('#mod_Specialist_list').val()==="Si"){
-            $("#masterDegree").removeAttr("style").none();
-          }
-        })
-        $('#masterDegree').change(function(){
-          if($('#mod_MasterDegree_list').val()==="Si"){
-            $("#doctorate").removeAttr("style").none();
-          }
-        })
+    
         $('#Teaching-mod').change(function(){
           if($('#mod_Teaching_list').val()==="1278"){
             $("#promotionLadder1278_mod").show();
