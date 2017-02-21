@@ -153,6 +153,7 @@ $(document).ready(function(){
 	// LISTADO DE EQUIPOS PARTICIPANTES DEPENDIENDO EL DEPORTE, GÉNERO O CATEGORÍA SELECCIONADOS ====
 	//===============================================================================================
 	function filterTeams(){
+		$("#teams").selectpicker('deselectAll');
 		$("#teams option").each(function(){
 			$(this).show(); // Hace visibles todas las opciones, refrescando la lista
 			if (
