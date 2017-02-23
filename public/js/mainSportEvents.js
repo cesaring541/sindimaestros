@@ -168,19 +168,7 @@ $(document).ready(function(){
 		});
 	}
 
-	$('#typeOfParticipation').on('change', function(){
-		filterTeams();
-	});
-
-	$('#sport').on('change', function(){
-		filterTeams();
-	});
-
-	$('#gender').on('change', function(){
-		filterTeams();
-	});
-
-	$('#category').on('change', function(){
+	$('#typeOfParticipation, #sport, #gender, #category').on('change', function(){
 		filterTeams();
 	});
 

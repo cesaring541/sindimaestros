@@ -52,6 +52,80 @@ $(document).ready(function(){
 		}
 	});
 
+
+	// LISTADO DE AFILIADOS DEPENDIENDO GÉNERO Y CATEGORÍA SELECCIONADOS ============================
+	//===============================================================================================
+
+	// Asigna un atributo categoría a las opciones del select de Miembros del equipo (Agregar)
+	$("#members option").each(function(){
+		if (moment().diff( $(this).data('birthdate'), 'years') > 0 && moment().diff( $(this).data('birthdate'), 'years') <= 30){
+			$(this).attr('data-category', 'A');
+		} else if (moment().diff( $(this).data('birthdate'), 'years') > 30 && moment().diff( $(this).data('birthdate'), 'years') <= 40){
+			$(this).attr('data-category', 'B');
+		} else if (moment().diff( $(this).data('birthdate'), 'years') > 40 && moment().diff( $(this).data('birthdate'), 'years') <= 50){
+			$(this).attr('data-category', 'C');
+		} else if (moment().diff( $(this).data('birthdate'), 'years') > 50){
+			$(this).attr('data-category', 'D');
+		} else {
+			$(this).attr('data-category', 'Ninguno');
+		}
+
+		$("#members").selectpicker("refresh");
+	});
+
+	// Asigna un atributo categoría a las opciones del select de Miembros del equipo (Editar)
+	$("#mod_members_list option").each(function(){
+		if (moment().diff( $(this).data('birthdate'), 'years') > 0 && moment().diff( $(this).data('birthdate'), 'years') <= 30){
+			$(this).attr('data-category', 'A');
+		} else if (moment().diff( $(this).data('birthdate'), 'years') > 30 && moment().diff( $(this).data('birthdate'), 'years') <= 40){
+			$(this).attr('data-category', 'B');
+		} else if (moment().diff( $(this).data('birthdate'), 'years') > 40 && moment().diff( $(this).data('birthdate'), 'years') <= 50){
+			$(this).attr('data-category', 'C');
+		} else if (moment().diff( $(this).data('birthdate'), 'years') > 50){
+			$(this).attr('data-category', 'D');
+		} else {
+			$(this).attr('data-category', 'Ninguno');
+		}
+
+		$("#mod_members_list").selectpicker("refresh");
+	});
+
+
+	function filterMembers(){
+		$("#members").selectpicker('deselectAll');
+		
+		$("#members option").each(function(){
+			$(this).show(); // Hace visibles todas las opciones, refrescando la lista
+			if ($(this).data('category') != $('#category').val()) {
+				$(this).hide();
+			} else if ($('#gender').val() != 'Mi') { // Si el género del equipo no es Mixto
+				if ($(this).data('gender') != $('#gender').val()) {
+					$(this).hide();
+				}
+			}
+			$("#members").selectpicker("refresh");
+		});
+	}
+
+	$('#category, #gender').on('change', function(){
+		filterMembers();
+	});
+
+	// Recorre el select de equipos en el formulario Modificar
+	function filterModMembers(){
+		$("#mod_members_list option").each(function(){
+			$(this).show(); // Hace visibles todas las opciones, refrescando la lista
+			if ($(this).data('category') != $('#mod_category').val()) {
+				$(this).hide();
+			} else if ($('#mod_gender').val() != 'Mi') { // Si el género del equipo no es Mixto
+				if ($(this).data('gender') != $('#mod_gender').val()) {
+					$(this).hide();
+				}
+			}
+			$("#mod_members_list").selectpicker("refresh");
+		});
+	}
+
 	// LISTADO DE ZONAS =============================================================================
 	//===============================================================================================
 	$.ajax({ 
@@ -396,6 +470,8 @@ $(document).ready(function(){
 
 					// Selecciona las opciones del select multiple
 					$('#mod_members_list').selectpicker('val', data.members);
+
+					filterModMembers();
 				},
 				error:function(msg) {
 					console.log(msg+"Peticion de datos fallida");

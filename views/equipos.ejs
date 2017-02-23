@@ -84,13 +84,13 @@
 
 							<section class="col-md-6 ">
 								<div class="form-group">
-                  <label for="bio">Género</label><br>
-                  <select class="selectpicker form-control" type="brand" id="gender" name="gender" title="Seleccione...">
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                    <option value="Mixto">Mixto</option>
-                  </select>
-                </div>
+									<label for="bio">Género</label><br>
+									<select class="selectpicker form-control" type="brand" id="gender" name="gender" title="Seleccione...">
+										<option value="M">Masculino</option>
+										<option value="F">Femenino</option>
+										<option value="Mi">Mixto</option>
+									</select>
+								</div>
 
 								<div class="form-group">
 									<label for="bio">Tipo de participacion</label><br>
@@ -135,10 +135,12 @@
 
 								<div class="form-group">
 									<label for="bio">Miembros</label><br>
-									<select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" required="true" name="members">
+									<select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" required="true" id="members" name="members">
 										<% if (objectJoined) { %>
 											<% objectJoined.forEach(function(objJoi) { %>
-												<option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+												<option value="<%= objJoi._id %>"
+												data-birthdate="<%= objJoi.birthdate %>"
+												data-gender="<%= objJoi.gender %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
 											<% }); %>
 										<% } %>
 									</select>
@@ -161,10 +163,10 @@
 
 							<section class="col-md-6 ">
 								<div class="form-group">
-                  <label for="bio">Género</label><br>
-                  <select class="form-control" type="brand" id="mod_gender_list" name="gender">
-                  </select>
-                </div>
+									<label for="bio">Género</label><br>
+									<select class="form-control" type="brand" id="mod_gender_list" name="gender">
+									</select>
+								</div>
 
 								<div class="form-group">
 									<label for="bio">Tipo de participacion</label><br>
@@ -204,7 +206,9 @@
 									<select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" id="mod_members_list" required="true" name="members">
 										<% if (objectJoined) { %>
 											<% objectJoined.forEach(function(objJoi) { %>
-												<option value="<%= objJoi._id %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+												<option value="<%= objJoi._id %>"
+												data-birthdate="<%= objJoi.birthdate %>"
+												data-gender="<%= objJoi.gender %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
 											<% }); %>
 										<% } %>                  
 									</select>
