@@ -136,13 +136,9 @@
 								<div class="form-group">
 									<label for="bio">Miembros</label><br>
 									<select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" required="true" id="members" name="members">
-										<% if (objectJoined) { %>
-											<% objectJoined.forEach(function(objJoi) { %>
-												<option value="<%= objJoi._id %>"
-												data-birthdate="<%= objJoi.birthdate %>"
-												data-gender="<%= objJoi.gender %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
-											<% }); %>
-										<% } %>
+										<option value="<%= objJoi._id %>"
+										data-birthdate="<%= objJoi.birthdate %>"
+										data-gender="<%= objJoi.gender %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
 									</select>
 								</div>
 							</section>
@@ -204,13 +200,9 @@
 								<div class="form-group">
 									<label for="bio">Miembros</label><br>
 									<select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" id="mod_members_list" required="true" name="members">
-										<% if (objectJoined) { %>
-											<% objectJoined.forEach(function(objJoi) { %>
-												<option value="<%= objJoi._id %>"
-												data-birthdate="<%= objJoi.birthdate %>"
-												data-gender="<%= objJoi.gender %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
-											<% }); %>
-										<% } %>                  
+										<option value="<%= objJoi._id %>"
+										data-birthdate="<%= objJoi.birthdate %>"
+										data-gender="<%= objJoi.gender %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
 									</select>
 								</div>
 							</section>

@@ -81,6 +81,19 @@ module.exports = function(app, passport) {
 			});
 		});
 	});
+
+	// List joineds participants based in Municipality
+	app.get('/list-joineds/:id',function(req, res){
+		var id = req.param("id");
+		Team.findById(id, function(err, objTeam){
+			if (err) {
+				res.send('error');
+			}
+			else{
+				res.send(objTeam);
+			}
+		});
+	});
 };
 
 // route middleware to make sure a user is logged in
