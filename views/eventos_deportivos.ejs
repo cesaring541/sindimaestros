@@ -51,6 +51,7 @@
               <table id="fresh-table" class="table">
                 <thead>
                   <th data-field="nameEvent">Nombre </th>
+                  <th data-field="phase">Fase </th>
                   <th data-field="category">Categoría </th>
                   <th data-field="sport">Deporte </th>
                   <th data-field="gender">Género </th>
@@ -62,14 +63,16 @@
                     
                     <% if (objSportEv.phase == "Municipal") { %>
                     <tr class="<%= objSportEv._id %>" style="text-align:center;">
-                      <td><%= objSportEv.nameEvent %>, fase Municipal</td>
+                      <td><%= objSportEv.nameEvent %></td>
+                      <td><%= objSportEv.phase %></td>
                       <td> - </td>
                       <td> - </td>
                       <td> - </td>
                     </tr>
                     <% } else if (objSportEv.phase == "Interzonal") { %>
                     <tr class="<%= objSportEv._id %>" style="text-align:center;">
-                      <td><%= objSportEv.nameEvent %>, fase Interzonal</td>
+                      <td><%= objSportEv.nameEvent %></td>
+                      <td><%= objSportEv.phase %></td>
                       <td><%= objSportEv.category %></td>
                       <td><%= objSportEv.sport %></td>
                       <td><%= objSportEv.gender %></td>

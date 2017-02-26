@@ -85,7 +85,7 @@
 							<section class="col-md-6 ">
 								<div class="form-group">
 									<label for="bio">Género</label><br>
-									<select class="selectpicker form-control" type="brand" id="gender" name="gender" title="Seleccione...">
+									<select class="selectpicker form-control" type="brand" id="gender" name="gender" title="Seleccione..." required="true">
 										<option value="M">Masculino</option>
 										<option value="F">Femenino</option>
 										<option value="Mi">Mixto</option>
@@ -94,7 +94,7 @@
 
 								<div class="form-group">
 									<label for="bio">Tipo de participacion</label><br>
-									<select class="selectpicker form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation" title="Seleccione...">
+									<select class="selectpicker form-control" type="brand" id="typeOfParticipation" name="typeOfParticipation" title="Seleccione..." required="true">
 										<option value="Conjunto">Conjunto</option>
 										<option value="Equipo">Equipo</option>
 										<option value="Individual">Individual</option>
@@ -103,13 +103,13 @@
 
 								<div class="form-group">
 									<label for="bio">Deporte</label><br>
-									<select class="form-control" type="brand" id="sport" name="sport">
+									<select class="selectpicker form-control" type="brand" id="sport" name="sport" title="Seleccione..." required="true">
 									</select>
 								</div>
 
 								<div class="form-group">
 									<label for="bio">Categoría</label><br>
-									<select class="selectpicker form-control" type="brand" id="category" name="category" title="Seleccione...">
+									<select class="selectpicker form-control" type="brand" id="category" name="category" title="Seleccione..." required="true">
 										<option value="A">A</option>
 										<option value="B">B</option>
 										<option value="C">C</option>
@@ -121,24 +121,22 @@
 							<section class="col-md-6 ">
 								<div class="form-group">
 									<label for="bio">Zona</label><br>
-									<select class="form-control" type="brand" id="zone_list" name="zone">
-										<option selected="true" disabled="true">Seleccione una opción</option>
+									<select class="selectpicker form-control" type="brand" data-live-search="true" data-size="5" id="zone" name="zone" title="Seleccione..." required="true">
+
 									</select>
 								</div>
 
 								<div class="form-group">
 									<label for="bio">Municipio</label><br>
-									<select class="form-control" type="brand" id="municipality_list" name="municipality">
-									<!--json-->
+									<select class="selectpicker form-control" type="brand" data-live-search="true" data-size="5" id="municipality" name="municipality" title="Seleccione..." required="true">
+
 									</select>
 								</div>
 
 								<div class="form-group">
 									<label for="bio">Miembros</label><br>
 									<select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" required="true" id="members" name="members">
-										<option value="<%= objJoi._id %>"
-										data-birthdate="<%= objJoi.birthdate %>"
-										data-gender="<%= objJoi.gender %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+										
 									</select>
 								</div>
 							</section>
@@ -160,25 +158,25 @@
 							<section class="col-md-6 ">
 								<div class="form-group">
 									<label for="bio">Género</label><br>
-									<select class="form-control" type="brand" id="mod_gender_list" name="gender">
+									<select class="selectpicker form-control" type="brand" id="mod_gender" name="gender" required="true">
 									</select>
 								</div>
 
 								<div class="form-group">
 									<label for="bio">Tipo de participacion</label><br>
-									<select class="form-control" type="brand" id="mod_typeOfParticipation_list" name="typeOfParticipation">
+									<select class="selectpicker form-control" type="brand" id="mod_typeOfParticipation" name="typeOfParticipation" required="true">
 									</select>
 								</div>
 
 								<div class="form-group">
 									<label for="bio">Deporte</label><br>
-									<select class="form-control" type="brand" id="mod_sport_list" name="sport">
+									<select class="selectpicker form-control" type="brand" id="mod_sport" name="sport" required="true">
 									</select>
 								</div>
 
 								<div class="form-group">
 									<label for="bio">Categoría</label><br>
-									<select class="form-control" type="brand" id="mod_category_list" name="category">
+									<select class="selectpicker form-control" type="brand" id="mod_category" name="category" required="true">
 									</select>
 								</div>
 							</section>
@@ -186,23 +184,21 @@
 							<section class="col-md-6 ">
 								<div class="form-group">
 									<label for="bio">Zona</label><br>          
-									<select class="form-control" type="brand" id="mod_zone_list" name="zone">
+									<select class="selectpicker form-control" type="brand" data-live-search="true" id="mod_zone" name="zone" required="true">
 									</select>
 								</div>
 
 								<div class="form-group">
 									<label for="bio">Municipio</label><br>
-									<select class="form-control" type="brand" id="mod_municipality_list" name="municipality">
-									<!--json-->
+									<select class="selectpicker form-control" type="brand" data-live-search="true" id="mod_municipality" name="municipality" required="true">
+
 									</select>                
 								</div>
 
 								<div class="form-group">
 									<label for="bio">Miembros</label><br>
-									<select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" id="mod_members_list" required="true" name="members">
-										<option value="<%= objJoi._id %>"
-										data-birthdate="<%= objJoi.birthdate %>"
-										data-gender="<%= objJoi.gender %>"><%= objJoi.identityCard %> - <%= objJoi.fullName %></option>
+									<select class="selectpicker form-control" data-live-search="true" multiple data-selected-text-format="count" type="brand" id="mod_members" required="true" name="members" required="true">
+										
 									</select>
 								</div>
 							</section>

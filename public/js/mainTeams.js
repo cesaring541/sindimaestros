@@ -2,9 +2,10 @@ $(document).ready(function(){
 	// LISTADO DE DEPORTES DEPENDIENDO EL TIPO DE PARTICIPACIÓN SELECCIONADO ========================
 	//===============================================================================================
 	$('#typeOfParticipation').on('change', function() { 
-		$("#sport").empty();
+		$('#sport').find('option').remove(); // Elimina las opciones que pueda tener el select
+		$("#sport").selectpicker('refresh');
 
-		if ($('#typeOfParticipation').val()=="Conjunto") {
+		if ($('#typeOfParticipation').val() == "Conjunto") {
 			$.ajax({
 				type: 'GET',
 				url: 'json/conjunto.json',
@@ -14,12 +15,13 @@ $(document).ready(function(){
 					for (var i = 0; i < array.length; i++) {
 						$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 					};
+					$("#sport").selectpicker('refresh');
 				},
 				error:function(msg) {
 					console.log(msg+" Listado de objetos fallido");
 				}
 			});
-		} else if ($('#typeOfParticipation').val()=="Equipo") {
+		} else if ($('#typeOfParticipation').val() == "Equipo") {
 			$.ajax({
 				type: 'GET',
 				url: 'json/equipo.json',
@@ -29,12 +31,13 @@ $(document).ready(function(){
 					for (var i = 0; i < array.length; i++) {
 						$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 					};
+					$("#sport").selectpicker('refresh');
 				},
 				error:function(msg) {
 					console.log(msg+" Listado de objetos fallido");
 				}
 			});
-		} else if ($('#typeOfParticipation').val()=="Individual") {
+		} else if ($('#typeOfParticipation').val() == "Individual") {
 			$.ajax({
 				type: 'GET',
 				url: 'json/individual.json',
@@ -44,6 +47,7 @@ $(document).ready(function(){
 					for (var i = 0; i < array.length; i++) {
 						$("#sport" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
 					};
+					$("#sport").selectpicker('refresh');
 				},
 				error:function(msg) {
 					console.log(msg+" Listado de objetos fallido");
@@ -53,62 +57,367 @@ $(document).ready(function(){
 	});
 
 
-	// LISTADO DE AFILIADOS DEPENDIENDO GÉNERO Y CATEGORÍA SELECCIONADOS ============================
+	// LISTADO DE ZONAS =============================================================================
+	//===============================================================================================
+	
+	$.ajax({ 
+		type: 'GET', 
+		url: 'json/zones.json', 
+		dataType: 'json',
+		success: function (data) {
+			var array = data[1].ZONA;
+			for (var i = 0; i < array.length; i++) {
+				$("#zone").append("<option value="+ array[i] +">" + array[i] + "</option>");
+			};
+			$("#zone").selectpicker('refresh');
+		},
+		error:function(msg) {
+			console.log(msg+" Listado de objetos fallido");
+		}
+	});
+
+	$('#zone').on('change', function() { 
+		$('#municipality').find('option').remove(); // Elimina las opciones que pueda tener el select
+		$("#municipality").selectpicker('refresh');
+		
+		if ($('#zone').val() == "CENTRO") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/centro.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].CENTRO;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "GUATEQUE") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/guateque.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].GUATEQUE;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "RICAURTE-BAJO") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/ricaurte-bajo.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].RICAURTE-BAJO;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "RICAURTE-ALTO") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/ricaurte-alto.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].RICAURTE-ALTO;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "TUNDAMA") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/tundama.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].TUNDAMA;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "DUITAMA") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/duitama.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].DUITAMA;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "VALDERRAMA") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/valderrama.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].VALDERRAMA;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "GARAGOA") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/garagoa.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].GARAGOA;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "GUTIERREZ") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/gutierrez.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].GUTIERREZ;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "NORTE") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/norte.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].NORTE;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "SUGAMUXI") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/sugamuxi.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].SUGAMUXI;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "SOGAMOSO") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/sogamoso.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].SOGAMOSO;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "LENGUPA") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/lengupa.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].LENGUPA;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "OCCIDENTE") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/occidente.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].OCCIDENTE;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "MARQUEZ") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/marquez.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].MARQUEZ;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "PUERTO-BOYACÁ") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/puerto.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].PUERTO-BOYACÁ;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "TUNJA") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/tunja.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].TUNJA;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+
+		} else if ($('#zone').val() == "CHIQUINQUIRA") {
+			$.ajax({ 
+				type: 'GET', 
+				url: 'json/chiquinquira.json', 
+				dataType: 'json',
+				success: function (data) {
+					var array = data[1].CHIQUINQUIRA;
+					for (var i = 0; i < array.length; i++) {
+						$("#municipality" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
+					};
+					$("#municipality").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
+				}
+			});
+		}
+	});
+
+
+	// LISTADO DE AFILIADOS DEPENDIENDO MUNICIPIO, GÉNERO Y CATEGORÍA SELECCIONADOS =================
 	//===============================================================================================
 
-	// Asigna un atributo categoría a las opciones del select de Miembros del equipo (Agregar)
-	$("#members option").each(function(){
-		if (moment().diff( $(this).data('birthdate'), 'years') > 0 && moment().diff( $(this).data('birthdate'), 'years') <= 30){
-			$(this).attr('data-category', 'A');
-		} else if (moment().diff( $(this).data('birthdate'), 'years') > 30 && moment().diff( $(this).data('birthdate'), 'years') <= 40){
-			$(this).attr('data-category', 'B');
-		} else if (moment().diff( $(this).data('birthdate'), 'years') > 40 && moment().diff( $(this).data('birthdate'), 'years') <= 50){
-			$(this).attr('data-category', 'C');
-		} else if (moment().diff( $(this).data('birthdate'), 'years') > 50){
-			$(this).attr('data-category', 'D');
-		} else {
-			$(this).attr('data-category', 'Ninguno');
-		}
+	// Lista los afiliados de acuerdo al municipio, género y categoría seleccionados
+	$('#municipality, #gender, #category').on('change', function(){
+		$('#members').find('option').remove(); // Elimina las opciones que pueda tener el select
+		$("#members").selectpicker('refresh');
 
-		$("#members").selectpicker("refresh");
-	});
+		var mun = $('#municipality').val();
+		var gen = $('#gender').val();
+		var cat = $('#category').val();
 
-	// Asigna un atributo categoría a las opciones del select de Miembros del equipo (Editar)
-	$("#mod_members_list option").each(function(){
-		if (moment().diff( $(this).data('birthdate'), 'years') > 0 && moment().diff( $(this).data('birthdate'), 'years') <= 30){
-			$(this).attr('data-category', 'A');
-		} else if (moment().diff( $(this).data('birthdate'), 'years') > 30 && moment().diff( $(this).data('birthdate'), 'years') <= 40){
-			$(this).attr('data-category', 'B');
-		} else if (moment().diff( $(this).data('birthdate'), 'years') > 40 && moment().diff( $(this).data('birthdate'), 'years') <= 50){
-			$(this).attr('data-category', 'C');
-		} else if (moment().diff( $(this).data('birthdate'), 'years') > 50){
-			$(this).attr('data-category', 'D');
-		} else {
-			$(this).attr('data-category', 'Ninguno');
-		}
-
-		$("#mod_members_list").selectpicker("refresh");
-	});
-
-
-	function filterMembers(){
-		$("#members").selectpicker('deselectAll');
-		
-		$("#members option").each(function(){
-			$(this).show(); // Hace visibles todas las opciones, refrescando la lista
-			if ($(this).data('category') != $('#category').val()) {
-				$(this).hide();
-			} else if ($('#gender').val() != 'Mi') { // Si el género del equipo no es Mixto
-				if ($(this).data('gender') != $('#gender').val()) {
-					$(this).hide();
+		if (mun != "" && gen != "" && cat != "") {
+			$.ajax({ 
+				type: 'GET', 
+				url: '/list-joineds/'+mun+'/'+gen+'/'+cat,
+				dataType: 'json',
+				success: function (data) {
+					for (var i = 0; i < data.length; i++) {
+						$("#members").append("<option value="+data[i]._id+">"+data[i].identityCard+" - "+data[i].fullName+"</option>");
+					};
+					$("#members").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
 				}
-			}
-			$("#members").selectpicker("refresh");
-		});
-	}
+			});
+		}
 
-	$('#category, #gender').on('change', function(){
-		filterMembers();
 	});
 
 	// Recorre el select de equipos en el formulario Modificar
@@ -126,305 +435,9 @@ $(document).ready(function(){
 		});
 	}
 
-	// LISTADO DE ZONAS =============================================================================
+
+	// BOTONES CRUD =================================================================================
 	//===============================================================================================
-	$.ajax({ 
-		type: 'GET', 
-		url: 'json/zones.json', 
-		dataType: 'json',
-		success: function (data) {
-			var array = data[1].ZONA;
-			for (var i = 0; i < array.length; i++) {
-				$("#zone_list").append("<option value="+ array[i] +">" + array[i] + "</option>");
-			};
-		},
-		error:function(msg) {
-			console.log(msg+" Listado de objetos fallido");
-		}
-	});
-
-	$('#zone_list').on('change', function() { 
-		$("#municipality_list").empty();
-		
-		if ($('#zone_list').val()=="CENTRO") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/centro.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].CENTRO;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="GUATEQUE") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/guateque.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].GUATEQUE;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="RICAURTE-BAJO") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/ricaurte-bajo.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].RICAURTE-BAJO;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="RICAURTE-ALTO") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/ricaurte-alto.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].RICAURTE-ALTO;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="TUNDAMA") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/tundama.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].TUNDAMA;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="DUITAMA") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/duitama.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].DUITAMA;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="VALDERRAMA") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/valderrama.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].VALDERRAMA;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="GARAGOA") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/garagoa.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].GARAGOA;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="GUTIERREZ") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/gutierrez.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].GUTIERREZ;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="NORTE") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/norte.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].NORTE;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="SUGAMUXI") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/sugamuxi.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].SUGAMUXI;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="SOGAMOSO") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/sogamoso.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].SOGAMOSO;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="LENGUPA") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/lengupa.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].LENGUPA;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="OCCIDENTE") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/occidente.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].OCCIDENTE;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="MARQUEZ") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/marquez.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].MARQUEZ;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="PUERTO-BOYACÁ") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/puerto.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].PUERTO-BOYACÁ;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="TUNJA") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/tunja.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].TUNJA;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		} else if ($('#zone_list').val()=="CHIQUINQUIRA") {
-			$.ajax({ 
-				type: 'GET', 
-				url: 'json/chiquinquira.json', 
-				dataType: 'json',
-				success: function (data) {
-					var array = data[1].CHIQUINQUIRA;
-					for (var i = 0; i < array.length; i++) {
-						$("#municipality_list" ).append("<option value="+ array[i] +">" + array[i] + "</option>");
-					};
-				},
-				error:function(msg) {
-					console.log(msg+" Listado de objetos fallido");
-				}
-			});
-		}
-	});
-
-
-
-
-
-
-	
 
 	// Al dar click en el boton Agregar...
 	$("#add-object").click(function(){
@@ -465,8 +478,8 @@ $(document).ready(function(){
 					$("#mod_typeOfParticipation_list").append($('<option>', {value: data.typeOfParticipation, text: data.typeOfParticipation}));
 					$("#mod_sport_list").append($('<option>', {value: data.sport, text: data.sport}));
 					$("#mod_category_list").append($('<option>', {value: data.category, text: data.category}));
-					$("#mod_zone_list").append($('<option>', {value: data.zone, text: data.zone}));
-					$("#mod_municipality_list").append($('<option>', {value: data.municipality, text: data.municipality}));
+					$("#mod_zone").append($('<option>', {value: data.zone, text: data.zone}));
+					$("#mod_municipality").append($('<option>', {value: data.municipality, text: data.municipality}));
 
 					// Selecciona las opciones del select multiple
 					$('#mod_members_list').selectpicker('val', data.members);
