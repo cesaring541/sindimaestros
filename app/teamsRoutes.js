@@ -91,7 +91,7 @@ module.exports = function(app, passport) {
 		var cat = req.param("Cat");
 		var filteredJoineds = [];
 
-		if (gen != "Mi") { // Si el género seleccionado es masculino o femenino
+		if (gen != "Mixto") { // Si el género seleccionado es masculino o femenino
 			var age = 0;
 			
 			Joined.find({ $and: [{municipality: mun},{gender: gen}] }, 'identityCard fullName birthdate gender municipality', function(err, joineds){

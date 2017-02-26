@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var teamSchema = mongoose.Schema({
 	name				: { type: String, required: true },
-	gender				: { type: String, enum: ['M', 'F', 'Mi'] },
+	gender				: { type: String, enum: ['Masculino', 'Femenino', 'Mixto'] },
 	typeOfParticipation	: { type: String, enum: ['Conjunto', 'Equipo', 'Individual'] },
 	zone				: { type: String, required: true },
 	municipality		: { type: String, required: true },

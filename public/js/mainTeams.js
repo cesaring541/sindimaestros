@@ -393,6 +393,7 @@ $(document).ready(function(){
 	//===============================================================================================
 
 	// Lista los afiliados de acuerdo al municipio, género y categoría seleccionados
+	// en el formulario Añadir
 	$('#municipality, #gender, #category').on('change', function(){
 		$('#members').find('option').remove(); // Elimina las opciones que pueda tener el select
 		$("#members").selectpicker('refresh');
@@ -417,22 +418,34 @@ $(document).ready(function(){
 				}
 			});
 		}
-
 	});
 
-	// Recorre el select de equipos en el formulario Modificar
+	// Lista los afiliados de acuerdo al municipio, género y categoría seleccionados
+	// en el formulario Modificar
 	function filterModMembers(){
-		$("#mod_members_list option").each(function(){
-			$(this).show(); // Hace visibles todas las opciones, refrescando la lista
-			if ($(this).data('category') != $('#mod_category').val()) {
-				$(this).hide();
-			} else if ($('#mod_gender').val() != 'Mi') { // Si el género del equipo no es Mixto
-				if ($(this).data('gender') != $('#mod_gender').val()) {
-					$(this).hide();
+		$('#mod_members').find('option').remove(); // Elimina las opciones que pueda tener el select
+		$("#mod_members").selectpicker('refresh');
+
+		var mun = $('#mod_municipality').val();
+		var gen = $('#mod_gender').val();
+		var cat = $('#mod_category').val();
+
+		if (mun != "" && gen != "" && cat != "") {
+			$.ajax({ 
+				type: 'GET', 
+				url: '/list-joineds/'+mun+'/'+gen+'/'+cat,
+				dataType: 'json',
+				success: function (data) {
+					for (var i = 0; i < data.length; i++) {
+						$("#mod_members").append("<option value="+data[i]._id+">"+data[i].identityCard+" - "+data[i].fullName+"</option>");
+					};
+					$("#mod_members").selectpicker('refresh');
+				},
+				error:function(msg) {
+					console.log(msg+" Listado de objetos fallido");
 				}
-			}
-			$("#mod_members_list").selectpicker("refresh");
-		});
+			});
+		}
 	}
 
 
@@ -474,17 +487,21 @@ $(document).ready(function(){
 
 					$("#button_update").attr("id", dataId);
 
-					$("#mod_gender_list").append($('<option>', {value: data.gender, text: data.gender}));
-					$("#mod_typeOfParticipation_list").append($('<option>', {value: data.typeOfParticipation, text: data.typeOfParticipation}));
-					$("#mod_sport_list").append($('<option>', {value: data.sport, text: data.sport}));
-					$("#mod_category_list").append($('<option>', {value: data.category, text: data.category}));
+					$("#mod_gender").append($('<option>', {value: data.gender, text: data.gender}));
+					$("#mod_typeOfParticipation").append($('<option>', {value: data.typeOfParticipation, text: data.typeOfParticipation}));
+					$("#mod_sport").append($('<option>', {value: data.sport, text: data.sport}));
+					$("#mod_category").append($('<option>', {value: data.category, text: data.category}));
 					$("#mod_zone").append($('<option>', {value: data.zone, text: data.zone}));
 					$("#mod_municipality").append($('<option>', {value: data.municipality, text: data.municipality}));
 
-					// Selecciona las opciones del select multiple
-					$('#mod_members_list').selectpicker('val', data.members);
-
 					filterModMembers();
+
+					setTimeout(function() {
+						// Selecciona las opciones del select multiple
+						$('#mod_members').selectpicker('val', data.members);
+					}, 2000);
+
+					$('#mod_gender, #mod_typeOfParticipation, #mod_sport, #mod_category, #mod_zone, #mod_municipality, #mod_members').selectpicker('refresh');
 				},
 				error:function(msg) {
 					console.log(msg+"Peticion de datos fallida");
