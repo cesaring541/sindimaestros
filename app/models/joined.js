@@ -8,7 +8,7 @@ var joinedSchema = mongoose.Schema({
 	address					: { type: String },
 	email					: { type: String },
 	rh						: { type: String, enum: ['Ninguno','AB+','AB-','A+','A-','B+','B-','O+','O-'] },
-	gender					: { type: String, enum: ['Ninguno','M','F','O'] },
+	gender					: { type: String, enum: ['Ninguno','Masculino','Femenino','Otro'] },
 	municipality 			: { type: String },
 	cellPhoneNumber			: { type: String },    
 	educationalInstitution	: { type: String },
