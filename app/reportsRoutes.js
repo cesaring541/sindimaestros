@@ -3,34 +3,32 @@ var Joined = require('./models/joined'); //Import database model
 module.exports = function(app, passport) {
 
 
-app.get('/', function (req, res){
-
-    Joined.aggregate([
-        {
-            $match:
-            {
-                gender : "",
-                municipality:"",
-                Zone:"",
-                Teaching:"",
-                typeOfAppointment:"",
-                state:"",
-                affiliationPaymentType:""
-            }
-        }       
-
-    ],function (err,query) {
-            if (err){
-                res.send('error');
-                console.log(err)
-            }
-            else{
-                res.send(query)
-                    
-            }
-    });
+app.get('/reports', function (req, res){
+  console.log(req.data)
+	if (req.user.role == "Administrador") {
+      Joined.find({},function(err, objJoined){
+        res.render('reportes.ejs', {
+          user : req.user, // Logged user
+          message: ""
+        });
+      });
+    } else {
+      res.redirect('/reports')
+    }
 });
-
+app.post('/search-reports', function (req, res){
+  console.log(req.data)
+  if (req.user.role == "Administrador") {
+      Joined.find({},function(err, objJoined){
+        res.render('reportes.ejs', {
+          user : req.user, // Logged user
+          message: ""
+        });
+      });
+    } else {
+      res.redirect('/reports')
+    }
+});
 }
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

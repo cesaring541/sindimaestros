@@ -1,73 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Reportes | Sindimaestros</title>
+  <head>
+    <title>Reportes | Sindimaestros</title>
+    
+    <% include ./partials/head.ejs %>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <% include ./partials/nav-header.ejs %>
+      <% include ./partials/left-column.ejs %>
 
-  <% include ./partials/head.ejs %>
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
-
-  <% include ./partials/nav-header.ejs %>
-
-  <% include ./partials/left-column.ejs %>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>Gestionar Reportes</h1>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-      
-      <div class="row"><!-- Small boxes (Crear Usuarios) -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>Reporte de Eventos</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">Take me there<i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-
-        <div class="row"><!-- Small boxes (Crear Usuarios) -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>Filtrar reporte</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">Take me there<i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        
-        
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>Generar Reportes</h1>
+        </section>
+        <section>
+          <form class="form-user" id="formUser" action="new-user" method="POST" >
+              <div id="form-add-user" class="col-md-12" >
+                <section class="col-md-6">
+                  <div class="form-group">
+                    <label for="bio">Zona</label><br>
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="zone_list" name="zone" required="true">
+                    <!--json-->
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="bio">Municipio</label><br>
+                    <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="municipality_list" name="municipality" required="true">
+                    <!--json-->
+                    </select>
+                  </div>
+                </section>
+                <button type="submit" class="btn btn-success btn-block btn-flat">Registrar</button>
+              </div>
+            </form>           
+        </section>
       </div>
-
-    </section>
-
-  </div>
-
-  <% include ./partials/footer.ejs %>
-  
-</div>
-<!-- ./wrapper -->
-
-<% include ./partials/footer-scripts.ejs %>
-</body>
+      <% include ./partials/footer.ejs %>
+    </div>
+    <!-- ./wrapper -->
+    <% include ./partials/footer-scripts.ejs %>
+      <!-- Script main-->
+    <script src="js/mainReports.js" type="text/javascript" charset="utf-8" ></script>
+  </body>
 </html>
+
