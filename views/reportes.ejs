@@ -16,36 +16,95 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>Generar Reportes</h1>
-        </section>
-        <section>
-          <form class="form-user" id="formUser" action="new-user" method="POST" >
-              <div id="form-add-user" class="col-md-12" >
-                <section class="col-md-2">
-                  <div class="form-group">
-                    <br>
-                    <h5>
-                      Municipo de trabajo:
-                    </h5>
-                  </div>
-                </section>
-                <section class="col-md-5">
-                  <div class="form-group">
-                    <label for="bio">Zona</label><br>
-                    <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="zone_list" name="zone" required="true">
-                    <!--json-->
-                    </select>
-                  </div>
-                </section>
-                <section class="col-md-5">
-                  <div class="form-group">
-                    <label for="bio">Municipio de trabajo </label><br>
-                    <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="municipality_list" name="municipality" required="true">
-                    <!--json-->
-                    </select>
-                  </div>
-                </section>                
-              </div>
-            </form>
+          <div id="form-add-user" class="col-md-12" >
+            <table>
+              <tr>
+                <td class="col-md-2">
+                  <h5>Municipo de trabajo:</h5>
+                </td>
+                <td class="col-md-5">
+                  <label for="bio">Zona</label>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="zone_list" name="zone" required="true">
+                  </select>
+                </td>
+                <td class="col-md-5">
+                  <label for="bio">Municipio de trabajo </label>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="municipality_list" name="municipality" required="true">
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2">
+                  <h5>Genero:</h5>
+                </td>
+                <td class="col-md-4">
+                  <label for="bio">Zona</label>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="zone_list1" name="zone1" required="true">
+                  </select>
+                </td>
+                <td class="col-md-4">
+                  <label for="bio">Municipio de trabajo </label>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="municipality_list1" name="municipality1" required="true">
+                  </select>
+                </td>
+                <td>
+                  <label for="bio">Género:</label><br>
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="gender" id="gender">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Otro">Otro</option>
+                    <option value="Ninguno" selected>Ninguno</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2">
+                  <h5>Decreto:</h5>
+                </td>
+                <td class="col-md-5">
+                  <label for="bio">Zona</label>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="zone_list2" name="zone2" required="true">
+                  </select>
+                </td>
+                <td class="col-md-5">
+                  <label for="bio">Municipio de trabajo </label>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="municipality_list2" name="municipality2" required="true">
+                  </select>
+                </td>
+                <td>
+                  <label for="bio">Decreto:</label><br>
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="Teaching" id="sel_Teaching">
+                    <option value="1278">1278</option>
+                    <option value="2277">2277</option>
+                    <option value="Ninguno" selected>Ninguno</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2">
+                  <h5>Típo de pago:</h5>
+                </td>
+                <td class="col-md-5">
+                  <label for="bio">Zona</label>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="zone_list3" name="zone3" required="true">
+                  </select>
+                </td>
+                <td class="col-md-5">
+                  <label for="bio">Municipio de trabajo </label>
+                  <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="municipality_list3" name="municipality3" required="true">
+                  </select>
+                </td>
+                <td>
+                  <label for="bio">Típo de pago:</label><br>
+                  <select class="selectpicker form-control" data-live-search="true" title="Seleccione..." type="brand" name="affiliationPaymentType" id="affiliationPaymentType">
+                    <option value="Nomina">Nómina</option>
+                    <option value="Ventanilla">Ventanilla</option>
+                    <option value="Ninguno" selected>Ninguno</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
         </section>
       </div>
       <% include ./partials/footer.ejs %>
