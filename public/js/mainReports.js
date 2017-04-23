@@ -334,18 +334,20 @@ $(document).ready(function(){
 	}
 
 	$("#municipality_list").change(function(){
+		console.log($("#municipality_list").val());
 		$.ajax({ 
 		    type: 'POST', 
-		    url: './app/reportsRoutes/search-reports',
+		    url: '/search-reports',
 		    dataType: 'json',
 		    data: {"municipality":$("#municipality_list").val()},
-		    	success: function (data) {
-	        		if (data = true) {
-	       			}else {
-	        	    	console.log(msg+" Peticion de datos fallida");
-	        		}
-	    		},
-	    		error:function(msg) {
+	    	success: function (data) {
+	    		if (data = true) {
+	      			window.location = '/reportes/Afiliados-por-municipio.csv';
+	      		}else {
+	      			console.log(msg+" Peticion de datos fallida");
+	      		}
+       		},
+	    	error:function(msg) {
 	        	console.log(msg+" Peticion de datos fallida");
 	    	}
 		});

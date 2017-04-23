@@ -20,23 +20,32 @@
         <section>
           <form class="form-user" id="formUser" action="new-user" method="POST" >
               <div id="form-add-user" class="col-md-12" >
-                <section class="col-md-6">
+                <section class="col-md-2">
+                  <div class="form-group">
+                    <br>
+                    <h5>
+                      Municipo de trabajo:
+                    </h5>
+                  </div>
+                </section>
+                <section class="col-md-5">
                   <div class="form-group">
                     <label for="bio">Zona</label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="zone_list" name="zone" required="true">
                     <!--json-->
                     </select>
                   </div>
+                </section>
+                <section class="col-md-5">
                   <div class="form-group">
-                    <label for="bio">Municipio</label><br>
+                    <label for="bio">Municipio de trabajo </label><br>
                     <select class="selectpicker form-control" data-live-search="true" type="brand" title="Seleccione..." id="municipality_list" name="municipality" required="true">
                     <!--json-->
                     </select>
                   </div>
-                </section>
-                <button type="submit" class="btn btn-success btn-block btn-flat">Registrar</button>
+                </section>                
               </div>
-            </form>           
+            </form>
         </section>
       </div>
       <% include ./partials/footer.ejs %>
