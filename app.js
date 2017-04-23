@@ -11,6 +11,16 @@ var passport = require('passport');
 var flash    = require('connect-flash');
 var morgan = require('morgan');
 var cookieSession = require('cookie-session');
+var tunnel = require('tunnel-ssh');
+
+var config = {
+    username:'root',
+    host:'138.68.41.96',
+    port:22,
+    dstPort:27017,
+    password:'4dm1n.lze'
+};
+
 
 var app = express();
 
@@ -52,16 +62,18 @@ require('./app/reportsRoutes.js')(app, passport);
 
 var configDB = require('./config/database.js');
 //Database connection
-mongoose.connect(configDB.url, {
-  server:{
-    auto_reconnect: true
-  }
-}, function(err, db){
-      if(err){
-        console.log("Error conectando a la BD: "+ err);
-      } else {
-        console.log("Conexión a la BD satisfactoria");
-      }
+var server = tunnel(config, function (error, server) {
+    if(error){
+        console.log("SSH connection error: " + error);
+    }
+    mongoose.connect('mongodb://localhost:27017/sindimaestros');
+
+    var db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'DB connection error:'));
+    db.once('open', function() {
+        // we're connected!
+        console.log("DB connection successful");
+    });
 });
 
 // error handlers
